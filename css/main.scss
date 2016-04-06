@@ -28,7 +28,44 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+.home
+{
+	width: 100%;
+	margin: 0 auto; 
+	text-align: center; 
+}
 
+.button1, .button2, .button3, .button4
+{
+	width: 30%;
+	height: 150px;
+	margin: 10px; 
+	min-width: 200px; 
+}
+
+.button1
+{
+	/* background-color: red; */
+	background-color: #F54F20;
+}
+
+.button2
+{	
+	/* background-color: green; */
+	background-color: #7DB909;
+}
+
+.button3
+{
+	/* background-color: blue; */
+	background-color: #02A4EF;	
+}
+
+.button4
+{
+	/* background-color: yellow; */
+	background-color: #FBB508;	
+}
 
 // Use media queries like this:
 // @include media-query($on-palm) {
