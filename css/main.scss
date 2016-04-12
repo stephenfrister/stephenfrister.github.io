@@ -28,11 +28,108 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+.hexagon 
+{
+	position: absolute; 
+	width: 20px;
+	height: 100px;
+	overflow: hidden;
+	visibility: hidden;
+	transform: rotate(120deg);
+	cursor: pointer;
+}
+
+.hexagon-in1 
+{
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	transform: rotate(-60deg);
+}
+
+.hexagon-in2
+{
+	width: 100%;
+	height: 100%;
+	visibility: visible;
+	transform: rotate(-60deg);
+	repeat: no-repeat;
+	position: 50%;
+	
+	//background: url('http://lorempixel.com/g/250/350/people');
+}
+  
+.hexagon-in2:hover
+{
+	background-color: rgba( 125, 125, 125, 0.5);
+	
+	//background: black; 
+	//background: url('http://lorempixel.com/250/350/people');	
+}
+
 .home
 {
 	width: 100%;
 	margin: 0 auto; 
 	text-align: center; 
+}
+
+.spacer
+{
+	color: black; 
+	font-size: 20px; 
+}
+
+.hex
+{
+	position: absolute;
+    display:block;
+	font-size: 40px; 
+	background-color: rgba( 125, 125, 125, 0);
+    /* -webkit-transform: rotate(-30deg); */
+    /* -moz-transform: rotate(-30deg); */
+}
+
+.hex-water, .hex-town, .hex-field, .hex-forest, .hex-mountain, .hex-swamp, .hex-desert, .hex-water
+{
+	//position: absolute;
+	//text-decoration:none !important;
+}
+
+.hex-water
+{
+	/* color: blue;  */
+	background: #3232FF;
+}
+.hex-town
+{
+	/* color: gray;  */
+	background: gray; 
+}
+.hex-field
+{
+	/* color: light-green;  */
+	background: #66CD00;
+}
+.hex-forest
+{
+	/* color: dark-green;  */
+	background: #308014;
+}
+.hex-mountain
+{
+	/* color: dark-gray;  */
+	background: #444444;
+}
+.hex-swamp
+{
+	/* color: black;  */
+	background: black; 
+}
+.hex-desert
+{
+	/* color: yellow;  */
+	background: yellow;
 }
 
 .button1, .button2, .button3, .button4
