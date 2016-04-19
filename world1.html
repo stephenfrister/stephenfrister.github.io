@@ -1,134 +1,42 @@
 ---
 layout: maps
+title: "World 1"
 ---
-
 
 <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 <script type="text/javascript" src="/scripts/jquery.js"></script>
-<script type="text/javascript" src="/scripts/hex.js"></script>
+
+<!-- style="position:relative; width:100%; margin:0 auto;" -->
 
 
-<div class="home">
-	  
-	  <button type="button" class="button1">Welcome to World 1</button>
-	  </br>	  
-	  
-	  <!--div class="hex">&#x2B22;</div-->
-	  <!--span class="hex">&#x2B22;</span-->
-		<div class='hexagon' style='top:10px; left:10px;'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-water'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		<div class='hexagon' style='top:10px; left:31px;'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-water'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		<div class='hexagon' style='top:10px; left:52px;'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-water'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		<div class='hexagon' style='top:28px; left:21px;'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-water'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		<div class='hexagon' style='top:28px; left:42px;'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-water'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		<div class='hexagon' style='top:28px; left:63px;'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-water'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		
-		<div class='hexagon'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-town'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		
-		<div class='hexagon'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-forest'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		<div class='hexagon'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-forest'></div>
-			</div>
-		</div><div class="spacer">.</div>
-		<div class='hexagon'>
-			<div class='hexagon-in1'>
-				<div class='hexagon-in2  hex-forest'></div>
-			</div>
-		</div><div class="spacer">.</div>
-	  <!--span style="color: #6C6; font-size: 40px;">&#x2B22;</span-->
-	  <!--span style="color: #606; background-color:#CCCCCC; font-size: 40px;">&#x2B22;&#x2B22;&#x2B22;</span-->
-	  
-	  <!--span id="hometown" class="hex hex-town">
-		<a href="#1" class="hex-town">&#x2B22;</a><div class="spacer">.</div>
-		<a href="#2" class="hex-water">&#x2B22;</a><div class="spacer">.</div>
-		<a href="#3" class="hex-forest">&#x2B22;</a><div class="spacer">.</div>
-	  </span-->
-	  
-	  <!--span id="hometown" class="hex"><div class="hex-town">&#x2B22;</div></span><div>.</div>
-	  <span id="hometown" class="hex"><div class="hex-town">&#x2B22;</div></span><div>.</div>
-	  <span class="hex hex-town">&#x2B22;</span><div>.</div>
-	  
-	  <span id="hometown" class="hex hex-town">&#x2B22;</span><div>.</div>	
-	  <span id="2" class="hex hex-water"><a href="#">&#x2B22;</a></span><div>.</div>  
-	  <span id="2" class="hex hex-water">&#x2B22;</span><div>.</div>
-	  <span id="3" class="hex hex-field">&#x2B22;</span><div>.</div>
-	  <span id="4" class="hex hex-forest">&#x2B22;</span><div>.</div>
-	  <span id="5" class="hex hex-mountain">&#x2B22;</span><div>.</div>
-	  <span id="6" class="hex hex-swamp">&#x2B22;</span><div>.</div>
-	  <span id="7" class="hex hex-desert">&#x2B22;</span><div>.</div-->
-	  
-	  <!--canvas id="hextest" width="300" height="200" style="background:#333333">
-	  </canvas-->
-	  	  
-	  <!--script>
-		for (i = 0; i < spanArr.length; i++) {
-			spanArr.left = 0;
-			spanArr.top = 0; 
-		}
-	  
-		//var myTown = document.getElementById("home");
-		//myTown.
-		//var ctx = myTown.getContext("2d"); 
-		//var ctx = myTown.
-		//ctx.rotate(-30); 
-		
-		
-		//var hexCanvas = document.getElementById("hextest");
-		//var ctx = hexCanvas.getContext("2d");
-		//ctx.font = "30px Arial";
-		//ctx.strokeText(&#x2B22,10,50);
-		//ctx.fillStyle = "#FF0000";
-		//ctx.fillRect(0,0,75,75);
-		//ctx.Hex(75,75,75); 
-	  </script-->
-	  
-	  <!-- hex.point(10,10); -->
-	  
-	  <!-- makeParts(); -->
-	  
-	  <!--script type="text/javascript">
-		//alert("foobar");
-		//point(10,10);
-		//hextest.Layout(0,1,1);
-	  </script-->
+	
+<body style="position:relative; margin:0 auto;" onload="javascript:makeSquareGrid(120,150)">
+	
+	<div id="squareDiv">
+	</div>		
+	 
+	<!--div style="position:relative; z-index:10;">
+		<button type="button" onclick="hunting()">Hunt</a>
+		<button type="button" onclick="mining()">Mine</a>
+		<button type="button" onclick="build()">Build</a>
+	</div-->	
+	 
+	<!--
+	<span id="hometown" class="hex hex-town">&#x2B22;</span><div>.</div>	
+	<span id="2" class="hex hex-water">&#x2B22;</span><div>.</div>
+	<span id="3" class="hex hex-field">&#x2B22;</span><div>.</div>
+	<span id="4" class="hex hex-forest">&#x2B22;</span><div>.</div>
+	<span id="5" class="hex hex-mountain">&#x2B22;</span><div>.</div>
+	<span id="6" class="hex hex-swamp">&#x2B22;</span><div>.</div>
+	<span id="7" class="hex hex-desert">&#x2B22;</span><div>.</div>
+	-->
 
-	  </br>
-	  
-	  <!--button onclick="complain('test')">test</button-->
-	  <!--button onclick="orient(false)">flat topped</button-->
-	  
-</div>
+	</br>
+
+	<!--button type="button" onclick="complain('test')">test</button-->
+	<!--button type="button" onclick="readTextFile('./todo.txt')">Click Me</a-->	
+	<!--button type="button" onclick="pingup()">Click Me</a-->	  
+		  	
+</body>
 
 
