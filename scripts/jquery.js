@@ -206,7 +206,7 @@ function squareGrid( col, row )
 			*/
 			else
 			{
-				ret += '<div class="hex hex-clouds"';
+				ret += '<div class="hex hex-cloud"';
 			}
 			
 			if(r%2 == 0)
