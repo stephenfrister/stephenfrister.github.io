@@ -5,43 +5,46 @@ title: "World 1"
 
 <script type="text/javascript" src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 <script type="text/javascript" src="/scripts/jquery.js"></script>
+<script type="text/javascript" src="/scripts/world.js"></script>
+	
+<body>	
 
-<!-- style="position:relative; width:100%; margin:0 auto;" -->
-
-	
-<body onload="javascript:makeSquareGrid(40,60)">
-	
-	<div class="mapContainer">
-	
-		<div id="squareDiv">
-		</div>		
-	 
+	<div id="worldDiv" class="mapContainer">	 
+		<!-- <div id="worldDiv"></div> -->
 	</div>
 	
-	<div >
-		
+	<div class="worldResources">
+		World </br>
+		</br>
+		kills: <div id="totalGoblinsDiv" style="float:right;"></div></br>
+		minerals: <div id="totalMineralsDiv" style="float:right;"></div></br>
+		buildings: <div id="totalBuildingsDiv" style="float:right;"></div></br>
 	</div>
 	
-	<!--div style="position:relative; z-index:10;">
-		<button type="button" onclick="hunting()">Hunt</a>
-		<button type="button" onclick="mining()">Mine</a>
-		<button type="button" onclick="build()">Build</a>
-	</div-->	
-	 
-	<!--
-	<span id="hometown" class="hex hex-town">&#x2B22;</span><div>.</div>	
-	<span id="2" class="hex hex-water">&#x2B22;</span><div>.</div>
-	<span id="3" class="hex hex-field">&#x2B22;</span><div>.</div>
-	<span id="4" class="hex hex-forest">&#x2B22;</span><div>.</div>
-	<span id="5" class="hex hex-mountain">&#x2B22;</span><div>.</div>
-	<span id="6" class="hex hex-swamp">&#x2B22;</span><div>.</div>
-	<span id="7" class="hex hex-desert">&#x2B22;</span><div>.</div>
-	-->
-
-	</br>
-
+	<div class="userResources">
+		Personal</br>
+		</br>
+		kills:  <div id="userGoblinsDiv" style="float:right;"></div></br>
+		minerals:<div id="userMineralsDiv" style="float:right;"></div></br>
+		buildings: <div id="userBuildingsDiv" style="float:right;"></div></br>
+	</div>
+	
+	
 	<!--button type="button" onclick="complain('test')">test</button-->
 	<!--button type="button" onclick="readTextFile('./todo.txt')">Click Me</a-->	
 	<!--button type="button" onclick="pingup()">Click Me</a-->	  
-		  	
+	
+	
+	<!-- <script type="text/javascript">javascript:makeWorldGrid(70,110);</script> -->
+	<!-- <script type="text/javascript">javascript:makeWorldGrid(40,3);</script> -->
+	<script type="text/javascript">javascript:makeWorldGrid(60,80);</script>
+			
+	<script type="text/javascript">javascript:getValue("userGoblins", "userGoblinsDiv");</script>
+	<script type="text/javascript">javascript:getValue("userMinerals", "userMineralsDiv");</script>
+	<script type="text/javascript">javascript:getValue("userBuildings", "userBuildingsDiv");</script>
+			
+	<script type="text/javascript">javascript:getValue("totalGoblins", "totalGoblinsDiv");</script>
+	<script type="text/javascript">javascript:getValue("totalMinerals", "totalMineralsDiv");</script>
+	<script type="text/javascript">javascript:getValue("totalBuildings", "totalBuildingsDiv");</script>
+
 </body>
