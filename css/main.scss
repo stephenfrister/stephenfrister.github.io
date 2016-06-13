@@ -30,34 +30,56 @@ $on-laptop:        800px;
 
 .mapContainer
 {
-	position: absolute; 
-	float: left; 
-	height: 80%; 
-	width: 80%; 
-	left: 10%; 
+	position: relative; 
+	float: right; 
+	height: 118px; 
+	width: 118px; 
+	overflow: hidden; 
 	border-radius: 10px; 
 	border-style: solid; 
 	border-width: medium;
-	z-index: 1; 
+	margin: 5px 50px 0 10px;
+	z-index: 1; 	
+}
+.knightContainer
+{
+	position: relative; 
+	float: right; 
+	top: 55px; 
+	right: -79px; 
 	overflow: hidden; 
-	
+	height: 19px; 
+	width: 19px; 
+	z-index: 2; 	
+}
+#knightPic
+{
+	background: url(http://vignette2.wikia.nocookie.net/lego/images/e/ec/HeroicKnight.jpg/revision/latest?cb=20121203132017);
+	background-size: 90% 100%;
+	background-repeat: no-repeat;
+	background-position: 5px 5px;
 }
 
-.userResources, .worldResources
+.userResources, .worldResources, .worldInformation, .knightInformation
 {
 	position: relative; 
 	float: right; 
 	width: 20%;
-	height: 200px; 
+	height: 120px; 
 	border-radius: 5px; 
 	border-style: solid; 
 	border-width: medium;
-	margin: 10px 10px 0 0;
+	margin: 0 10px 0 10px;
 	padding: 10px; 
 	text-align: left;
 	background: white; 
 	z-index: 1; 
 	
+}
+
+.stackedDiv 
+{
+	height: 160px;
 }
 
 .coinblock
@@ -90,7 +112,7 @@ $on-laptop:        800px;
 	background-color: rgba(125,125,125,.5);
 }
 
-.hex-water, .hex-town, .hex-field, .hex-forest, .hex-mountain, .hex-swamp, .hex-desert, .hex-clouds
+.hex-water, .hex-town, .hex-plains, .hex-forest, .hex-mountain, .hex-swamp, .hex-desert, .hex-clouds
 {
 	//opacity: 0.5;
 }
@@ -105,7 +127,7 @@ $on-laptop:        800px;
 	/* color: gray;  */
 	background: gray; 
 }
-.hex-field
+.hex-plains
 {
 	/* color: light-green;  */
 	background: #66CD00;
@@ -147,25 +169,25 @@ $on-laptop:        800px;
 .button1
 {
 	/* background-color: red; */
-	background-color: #F54F20;
+	background-color: #7DB909;
 }
 
 .button2
 {
 	/* background-color: yellow; */
-	background-color: #FBB508;	
+	background-color: #02A4EF;	
 }
 
 .button3
 {	
 	/* background-color: green; */
-	background-color: #7DB909;
+	background-color: #F54F20;
 }
 
 .button4
 {
 	/* background-color: blue; */
-	background-color: #02A4EF;	
+	background-color: #FBB508;	
 }
 
 .page-title
@@ -224,6 +246,31 @@ $on-laptop:        800px;
 .world-nav .page-link:not(:last-child) 
 {
 	margin-right: 0; 	
+}
+
+.twinkle {
+    //background: green;
+    //padding: 0.2em;
+    //margin: 50px;
+}
+
+@-webkit-keyframes twinkly {
+    0%   { opacity: 0.1; }
+    100% { opacity: 1; }
+}
+@-moz-keyframes twinkly  {
+    0%   { opacity: 0.1; }
+    100% { opacity: 1; }
+}
+@-ms-keyframes twinkly  {
+    0%   { opacity: 0.1; }
+    100% { opacity: 1; }
+}
+
+.twinkle{
+    -webkit-animation: twinkly 0.5s alternate infinite;
+    -moz-animation: twinkly 0.5s alternate infinite;
+    -ms-animation: twinkly 0.5s alternate infinite;
 }
 
 // Use media queries like this:

@@ -4,12 +4,6 @@ var totalGob = new Firebase('https://github-website-sgf.firebaseio.com/goblins')
 var totalMin = new Firebase('https://github-website-sgf.firebaseio.com/minerals');
 var totalCon = new Firebase('https://github-website-sgf.firebaseio.com/construction');
 
-function pingup()
-{
-	ping.transaction(function (current_value) {
-	return (current_value || 0) + 1; 
-	});
-}	
 
 function hunting(count)
 {
@@ -56,9 +50,18 @@ function getValue(type, divID)
 	}
 	else
 	{
-		obj.innerHTML = "failed";
+		obj.innerHTML = "n/a";
 	}
 }
+
+function pingServer()
+{
+	ping.transaction(function (current_value) {
+	return (current_value || 0) + 1; 
+	});
+}	
+
+
 /*
 function randomDice(dice)
 {
@@ -67,6 +70,7 @@ function randomDice(dice)
 }
 */
 
+/*
 function readTextFile(file)
 {
     var rawFile = new XMLHttpRequest();
@@ -84,12 +88,7 @@ function readTextFile(file)
     }
     rawFile.send(null);
 }
-
-
-
-
-
-
+*/
 
 
 
