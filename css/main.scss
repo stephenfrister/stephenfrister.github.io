@@ -27,6 +27,19 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
+.moveContainer
+{
+	position: relative; 
+	float: right; 
+	height: 118px; 
+	width: 118px; 
+	overflow: hidden; 
+	border-radius: 10px; 
+	border-style: solid; 
+	border-width: medium;
+	margin: 5px 50px 0 10px;
+	z-index: 1; 	
+}
 
 .mapContainer
 {
@@ -41,6 +54,22 @@ $on-laptop:        800px;
 	margin: 5px 50px 0 10px;
 	z-index: 1; 	
 }
+
+.old_mapContainer
+{
+	position: absolute; 
+	float: left; 
+	height: 80%; 
+	width: 80%; 
+	left: 10%; 
+	border-radius: 10px; 
+	border-style: solid; 
+	border-width: medium;
+	z-index: 1; 
+	overflow: hidden; 
+	
+}
+
 .knightContainer
 {
 	position: relative; 

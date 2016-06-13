@@ -11,61 +11,63 @@ function pushMap()
 {
 	var grid = 
 	[
-"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
-"wwwwwwwwwwwwwwwwwwwwpswwwwwwwwwwwww",
-"wwwwwwwwwwwpwwwwwwwwspdppdwwdmwwmwc",
-"wwwtpfwwwwppwwpwwpsfwwpppppppmmmmmc",
-"wwwpfppwwwppdffwwssswwpfffppsmmmmcc",
-"wwwffpfffpfffppdwppdppppppdsmmmmccc",
-"wwpppmfppppddpfswmpppfpppppmmmmcccc",
-"wwfddsmdpfpppppsmmdppppdpfpmmmccccc",
-"wwfdpmmmdfmfwwpfmmmfpfpppmmmmcccccc",
-"wwwpsmmfffffwwfppmmppdpppmmmmcccccc",
-"wwwmmmsffpfpffpfmmwwwwdwpmmmccccccc",
-"wwpmmfffpffffppmmmwwpwwwfpmmccccccc",
-"wwpmfpppfppppfpmmffppffpffmmccccccc",
-"wwwsfppfpppfpffmmfpppffffmmmccccccc",
-"wwwwpffpsddmfpmmmpfffffffmmmccccccc",
-"wwwwpfppsddmppmfmfffffffffmmccccccc",
-"wwwwffspssspfmffmfpfmmmfffmmccccccc",
-"wwwwffpffppmpmfmmpfmfmfffmmmccccccc",
-"wwwppfppfpmmpppmmffmmfpffmmcccccccc",
-"wwpfpdpfpfmmfmmfmmfmmmfffmmcccccccc",
-"wwwfddppfmfppfpmmfmffmfffmmmccccccc",
-"wpppdfpsfmmdppmmmfpfmmfffmmmccccccc",
-"wwwwwpspdmdfmfmfwmmmmmmmfmmcccccccc",
-"wwddwwdpwwwffpmmmmwwwwwmfmmcccccccc",
-"wppppwwwwfwwpfpmmwwmmwwmfmmmccccccc",
-"wpwdddpppddwwpfmmwffmmmmfmmmccccccc",
-"wpddpddpfdddwwffmwsmmmmmfmmmccccccc",
-"wwpdpdpfdddddwwwwwmmfffffmmmccccccc",
-"wpdpdpfdfpdddwfpmmmffffffmmcccccccc",
-"wwdpdpppppdddwpdmmmfffffmmmcccccccc",
-"wwwwwdfddpdddwpdmmfffwwfmmmcccccccc",
-"wwwwwddddddddwwpmmffpwwfmmmcccccccc",
-"wwwwwdddddddddwpmmffppffmmmmccccccc",
-"wwwwwdddddddddwwmmfffffmmmmmccccccc",
-"wwwwwddddpddddwwfmfffffwwmmmccccccc",
-"wwwwwddddpppwwwwwmmmmfmwwwmmccccccc",
-"wwwwwddddpwwwwwwwmmfmmmmwmmmccccccc",
-"wwwwwppppppwwwfwwwwwwsmmmmmmccccccc",
-"wwwwwddddppdwwwwfmfmsmmmmmmcccccccc",
-"wwwwwdppffpdwwwmpmmmmfmmmmmcccccccc",
-"wwwwwdppdfddwmmmmmffmmmmmcccccccccc",
-"wwwwwdddddddwmmmmmffmmmmmcccccccccc",
-"wwwwwdddddddwwwwmmffmmmmmcccccccccc",
-"wwwwwdddddddwmmmmmmmmmmmmcccccccccc",
-"wwwwwdmmmmpwwmmmmmmmmmmmmcccccccccc",
-"wwwwwmmmmwwwwmmmwmmmmmmmccccccccccc",
-"wwwwmmmmmwmmwmmmmmmmmmmcccccccccccc",
-"wwwmmmmmwwmmwwmmmmmmmmmcccccccccccc",
-"wmmmmmmmwmmmmmmmmmmmmmccccccccccccc",
-"wwwmmmmmwmmwmmmmmcccccccccccccccccc",
-"wwwwmmmmwmmmmmmmmcccccccccccccccccc",
-"wwwwmmmmwmmmmmmmccccccccccccccccccc",
-"wwwpmmccwmccmmmcccccccccccccccccccc",
-"wwccccccccccccccccccccccccccccccccc",
-"wcccccccccccccccccccccccccccccccccc"
+"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwcc",
+"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwcc",
+"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwc",
+"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",
+"wwwwwwwwwwwwwwwwwwwwwwpswwwwwwwwwwwww",
+"wwwwwwwwwwwwwpwwwwwwwwspdppdwwdmwwmwc",
+"wwwwwtpfwwwwppwwpwwpsfwwpppppppmmmmmc",
+"wwwwwpfppwwwppdffwwssswwpfffppsmmmmcc",
+"wwwwwffpfffpfffppdwppdppppppdsmmmmccc",
+"wwwwpppmfppppddpfswmpppfpppppmmmmcccc",
+"wwwwfddsmdpfpppppsmmdppppdpfpmmmccccc",
+"wwwwfdpmmmdfmfwwpfmmmfpfpppmmmmcccccc",
+"wwwwwpsmmfffffwwfppmmppdpppmmmmcccccc",
+"wwwwwmmmsffpfpffpfmmwwwwdwpmmmccccccc",
+"wwwwpmmfffpffffppmmmwwpwwwfpmmccccccc",
+"wwwwpmfpppfppppfpmmffppffpffmmccccccc",
+"wwwwwsfppfpppfpffmmfpppffffmmmccccccc",
+"wwwwwwpffpsddmfpmmmpfffffffmmmccccccc",
+"wwwwwwpfppsddmppmfmfffffffffmmccccccc",
+"wwwwwwffspssspfmffmfpfmmmfffmmccccccc",
+"wwwwwwffpffppmpmfmmpfmfmfffmmmccccccc",
+"wwwwwppfppfpmmpppmmffmmfpffmmcccccccc",
+"wwwwpfpdpfpfmmfmmfmmfmmmfffmmcccccccc",
+"wwwwwfddppfmfppfpmmfmffmfffmmmccccccc",
+"wwwpppdfpsfmmdppmmmfpfmmfffmmmccccccc",
+"wwwwwwwpspdmdfmfmfwmmmmmmmfmmcccccccc",
+"wwwwddwwdpwwwffpmmmmwwwwwmfmmcccccccc",
+"wwwppppwwwwfwwpfpmmwwmmwwmfmmmccccccc",
+"wwwpwdddpppddwwpfmmwffmmmmfmmmccccccc",
+"wwwpddpddpfdddwwffmwsmmmmmfmmmccccccc",
+"wwwwpdpdpfdddddwwwwwmmfffffmmmccccccc",
+"wwwpdpdpfdfpdddwfpmmmffffffmmcccccccc",
+"wwwwdpdpppppdddwpdmmmfffffmmmcccccccc",
+"wwwwwwwdfddpdddwpdmmfffwwfmmmcccccccc",
+"wwwwwwwddddddddwwpmmffpwwfmmmcccccccc",
+"wwwwwwwdddddddddwpmmffppffmmmmccccccc",
+"wwwwwwwdddddddddwwmmfffffmmmmmccccccc",
+"wwwwwwwddddpddddwwfmfffffmmmmmccccccc",
+"wwwwwwwddddpppwwwwwmmmmfmmmmmmccccccc",
+"wwwwwwwddddpwwwwwwwmmfmmmmmmmmccccccc",
+"wwwwwwwppppppwwwfwwwwwwsmmmmmmccccccc",
+"wwwwwwwddddppdwwwwfmfmsmmmmmmcccccccc",
+"wwwwwwwdppffpdwwwmpmmmmfmmmmmcccccccc",
+"wwwwwwwdppdfddwmmmmmffmmmmmcccccccccc",
+"wwwwwwwdddddddwmmmmmffmmmmmcccccccccc",
+"wwwwwwwdddddddwmmmmmffmmmmmcccccccccc",
+"wwwwwwwdddddddwmmmmmmmmmmmmcccccccccc",
+"wwwwwwwdmmmmpwwmmmmmmmmmmmmcccccccccc",
+"wwwwwwwmmmmwwwwmmmwmmmmmmmccccccccccc",
+"wwwwwwmmmmmwmmwmmmmmmmmmmcccccccccccc",
+"wwwwwmmmmmmwmmmmmmmmmmmmmcccccccccccc",
+"wwwmmmmmmmmmmmmmmmmmmmmmccccccccccccc",
+"wwwwwmmmmmmmmwmmmmmcccccccccccccccccc",
+"wwwwwwmmmmmmmmmmmmmcccccccccccccccccc",
+"wwwwwwmmmmmmmmmmmmccccccccccccccccccc",
+"cwwwwpmmccmmccmmmcccccccccccccccccccc",
+"ccwwccccccccccccccccccccccccccccccccc"
 	]
 	//	
 	world.set({
@@ -76,24 +78,32 @@ function pushMap()
 
 function makeWorld( col, row )
 {
-    var obj = document.getElementById("worldDiv");
+    var objWorld = document.getElementById("worldDiv");
+	var objMap = document.getElementById("moveDiv");
     //obj.innerHTML = makeGrid( row, col );
-    obj.innerHTML = accessWorld();
 	
-	if(obj.innerHTML == "undefined")
+    objWorld.innerHTML = accessWorldMap(3,2);
+	objMap.innerHTML = accessMoveMap(0,0); 
+	
+	if(objWorld.innerHTML == "undefined")
 	{
-		obj.innerHTML = "</br><center>Loading...</center>";
+		objWorld.innerHTML = "</br><center>Loading...</center>";
+	}		
+	if(objMap.innerHTML == "undefined")
+	{
+		objMap.innerHTML = "</br><center>Loading...</center>";
 	}
+	
 	// else
 	// {
-		// //obj.innerHTML = "Done.";		
+		// //objWorld.innerHTML = "Done.";	
 	// }
 }
 
-function accessWorld()
-{		
-	var obj = document.getElementById("worldDiv");
-	var test = ["1","2","3"];
+function accessMoveMap( moveRow, moveCol )
+{
+	var objMap = document.getElementById("moveDiv");
+	
 	var array;    
 	
 	var colSpace = 17;
@@ -108,85 +118,171 @@ function accessWorld()
 	var top = 0; 
 	var left = 0; 
 	
-	var rowMax = 8;
-	var colMax = 8; 
+	var rowMin = moveRow;
+	var colMin = moveCol;
+	var rowMax = rowMin + 8;
+	var colMax = colMin + 8; 	
+	
+		objMap.innerHTML = "";
+		for ( var r = 0; (r < array.length) & (r < rowMax) ; r++ )
+		{			
+			for ( var c = 0; (c < array[r].length) & (c < colMax) ; c++ )
+			{					
+				if((r+rowMin)%2 == 0)
+				{
+					top = r * rowSpace + rowStart - rowMin * rowSpace; 
+					left = c * colSpace + colStart - colMin * colSpace; 
+				}
+				else
+				{
+					top = r * rowSpace + rowStart + rowOffset - rowMin * rowSpace;   
+					left = c * colSpace + colStart + colOffset - colMin * colSpace; 
+				}
+				
+				objMap.innerHTML += '<div class="hex hex-water" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+			}
+		}
+	
+}
+
+function accessWorldMap( moveRow, moveCol )
+{		
+	var objWorld = document.getElementById("worldDiv");	
+	var objMap = document.getElementById("moveDiv");
+	
+	//var test = ["1","2","3"];
+	var array;    
+	
+	var colSpace = 17;
+	var rowSpace = 17;
+	
+	var rowOffset = 0; 
+	var colOffset = 8;
+	
+	var rowStart = 0;
+	var colStart = 0; 	
+	
+	var top = 0; 
+	var left = 0; 
+	
+	var rowMin = moveRow;
+	var colMin = moveCol;
+	var rowMax = rowMin + 8;
+	var colMax = colMin + 8; 
 	
 	worldMap.once("value", function(snapshot) {
 		
 		array = snapshot.val();
 		
-		obj.innerHTML = "";
-		//obj.innerHTML += "</br>length: " + array.length;
-		//obj.innerHTML += "</br>";
-		//for ( var r = 0; r < array.length ; r++ )
-		for ( var r = 0; (r < array.length) & (r < rowMax) ; r++ )
+		objWorld.innerHTML = "";
+		objMap.innerHTML = "";
+		
+		for ( var r = rowMin+2; (r < array.length) & (r < rowMax-3) ; r++ )
 		{			
-			//obj.innerHTML += '<div class="hexColumn" id="Column'+(r+1)+'">';
-			//for ( var c = 0; c < array[r].length ; c++ )
-			for ( var c = 0; (c < array[r].length) & (c < colMax) ; c++ )
+			for ( var c = colMin+2; (c < array[r].length) & (c < colMax-3) ; c++ )
 			{					
-				if(r%2 == 0)
+				if((r+rowMin)%2 == 0)
 				{
-					top = r * rowSpace + rowStart; 
-					left = c * colSpace + colStart; 
+					top = r * rowSpace + rowStart - rowMin * rowSpace; 
+					left = c * colSpace + colStart - colMin * colSpace; 
 				}
 				else
 				{
-					top = r * rowSpace + rowStart + rowOffset;  
-					left = c * colSpace + colStart + colOffset; 
+					top = r * rowSpace + rowStart + rowOffset - rowMin * rowSpace;   
+					left = c * colSpace + colStart + colOffset - colMin * colSpace; 
+				}
+				
+				//1 - empty
+				if ( r == rowMin+2 && c == colMin+2)
+				{
+					// do nothing
+				}
+				//2 - up left 
+				//3 - up right 
+				
+				//4 - left 
+				//5 - empty
+				else if ( r == rowMin+3 && c == colMin+3)
+				{
+					// do nothing
+				}
+				//6 - right 
+				
+				//7 - empty
+				else if ( r == rowMin+4 && c == colMin+2)
+				{
+					// do nothing
+				}
+				//8 - down left 
+				//9 - down right 
+				
+				else 
+				{					
+					objMap.innerHTML += '<div class="hex hex-swamp" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+				}
+			}
+		}
+		
+		for ( var r = rowMin; (r < array.length) & (r < rowMax) ; r++ )
+		{			
+			for ( var c = colMin; (c < array[r].length) & (c < colMax) ; c++ )
+			{					
+				if((r+rowMin)%2 == 0)
+				{
+					top = r * rowSpace + rowStart - rowMin * rowSpace; 
+					left = c * colSpace + colStart - colMin * colSpace; 
+				}
+				else
+				{
+					top = r * rowSpace + rowStart + rowOffset - rowMin * rowSpace;   
+					left = c * colSpace + colStart + colOffset - colMin * colSpace; 
 				}
 				
 				//hex-water 	w	water
 				if ( array[r].charAt(c) == 'w')
 				{
-					//obj.innerHTML += '<div class="hex hex-water"';
-					obj.innerHTML += '<div class="hex hex-water" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+					objWorld.innerHTML += '<div class="hex hex-water" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
 				}
 				//hex-town		t	town
 				if ( array[r].charAt(c) == 't')
 				{
-					obj.innerHTML += '<div class="hex hex-town" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+					objWorld.innerHTML += '<div class="hex hex-town" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
 				}
 				//hex-plains	p	plains
 				if ( array[r].charAt(c) == 'p')
 				{
-					obj.innerHTML += '<div class="hex hex-plains" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+					objWorld.innerHTML += '<div class="hex hex-plains" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
 				}
 				//hex-forest	f	forest
 				if ( array[r].charAt(c) == 'f')
 				{
-					obj.innerHTML += '<div class="hex hex-forest" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+					objWorld.innerHTML += '<div class="hex hex-forest" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
 				}
 				//hex-mountain	m	mountain
 				if ( array[r].charAt(c) == 'm')
 				{
-					obj.innerHTML += '<div class="hex hex-mountain" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+					objWorld.innerHTML += '<div class="hex hex-mountain" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
 				}
 				//hex-swamp		s	swamp
 				if ( array[r].charAt(c) == 's')
 				{
-					obj.innerHTML += '<div class="hex hex-swamp" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+					objWorld.innerHTML += '<div class="hex hex-swamp" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
 				}
 				//hex-desert	d	desert
 				if ( array[r].charAt(c) == 'd')
 				{
-					obj.innerHTML += '<div class="hex hex-desert" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+					objWorld.innerHTML += '<div class="hex hex-desert" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
 				}
 				//hex-clouds	c	cloud
 				if ( array[r].charAt(c) == 'c')
 				{
-					obj.innerHTML += '<div class="hex hex-cloud" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+					objWorld.innerHTML += '<div class="hex hex-cloud" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
 				}
 
 			}
-			//obj.innerHTML += '</br>';
-			//obj.innerHTML += "</br>row[" + r + "]: " + array[r] + " , type: " + array[r].charAt(3);
-			//obj.innerHTML += "</br>row[" + r + "]: " + array[r] + " , type: " + array[r].length;
 			
-			// obj.innerHTML += '</div>'  
-		}		
+		}
 		
-		//obj.innerHTML = array;
 	});
 	
 }
