@@ -140,6 +140,9 @@ function accessMoveMap( moveRow, moveCol )
 				}
 				
 				objMap.innerHTML += '<div class="hex hex-water" id="' + 'r:' + r + ',c:' + c + '" style="top:' + top + 'px; left:' + left + 'px;"></div>';
+				
+				//<input type="hidden" name="CategoryID" id="CategoryID" />
+				//var categoryID = $('#CategoryID').val();
 			}
 		}
 	
