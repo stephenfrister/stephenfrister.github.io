@@ -3,6 +3,49 @@ layout: legistar
 title: "Legistar"
 ---
 
+<head>
+<style>
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+</style>
+</head>
+
 <body>	
 
 	<div id="legistarDiv" class="legistarContainer">	
@@ -13,8 +56,11 @@ title: "Legistar"
 		<div>&nbsp row 4</div>
 	</div>
 	
+	<br>
+	<br>
+	
 	<div class="dropdown">
-		<button onclick="myFunction()" class="dropbtn">Dropdown</button>
+		<button onclick="loadXMLDoc()" class="dropbtn">Dropdown</button>
 		<div id="myDropdown" class="dropdown-content">
 			<a href="#">Item 1</a>
 			<a href="#">Item 2</a>
@@ -22,8 +68,70 @@ title: "Legistar"
 		</div>
 	</div>
 	
+	<br>
+	<br>
+	
+	<p id="xmlBlock"></p>
+	
+	<br>
+	<br>
+	
+	<div>
+		end
+	</div>
+	
+	
 	<script type="text/javascript">javascript:foobar("legistarDiv");</script>
-			
+	
+	<script>
+	/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+	function myFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+	  if (!event.target.matches('.dropbtn')) {
+
+		var dropdowns = document.getElementsByClassName("dropdown-content");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+		  var openDropdown = dropdowns[i];
+		  if (openDropdown.classList.contains('show')) {
+			openDropdown.classList.remove('show');
+		  }
+		}
+	  }
+	}
+	</script>
+	
+	<script>
+	function loadXMLDoc() {
+	  var xmlhttp = new XMLHttpRequest();
+	  var mySearch = "http://webapi.legistar.com/v1/Seattle/matters?$top=1&$orderby=MatterId+desc";
+	  xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+		  loadXML(this);
+		}
+	  };
+	  xmlhttp.open("GET", mySearch, true);
+	  xmlhttp.setRequestHeader("Accept", "application/json");
+	  xmlhttp.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+	  xmlhttp.send();
+	}
+	
+	function loadXML(xml) {
+	  var x, i, xmlDoc, txt;
+	  xmlDoc = xml.responseXML;
+	  txt = "success";
+	  
+	  document.getElementById("xmlBlock").innerHTML = txt;
+	}
+	</script>
+	
+	
+	
 </body>
 
 
