@@ -2,6 +2,7 @@
 // var root = new Firebase('https://python-clockwork-warriors.firebaseio.com/');
 // var ping = new Firebase('https://python-clockwork-warriors.firebaseio.com/_ping');
 
+/*
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -15,10 +16,17 @@
   };
   firebase.initializeApp(config);
 </script>
+*/
 
-//var lists = new Firebase('https://legislationlistplusplus.firebaseio.com/activeLists');
-//var items = new Firebase('https://legislationlistplusplus.firebaseio.com/shoppingListItems');
+var config = {
+  apiKey: "AIzaSyClcH0NPVJJ5ToYDZd8nLbthBGlMNVjZ0M",
+  authDomain: "python-clockwork-warriors.firebaseapp.com",
+  databaseURL: "https://python-clockwork-warriors.firebaseio.com",
+};
 
+firebase.initializeApp(config);
+
+var ping = firebase.database().ref('_ping');
 
 function pingServer()
 {
@@ -28,6 +36,38 @@ function pingServer()
 }	
 
 
+/*
+
+var ref = firebase.database().ref('node/clicks');
+ref.transaction(function(currentClicks) {
+  // If node/clicks has never been set, currentRank will be `null`.
+  return (currentClicks || 0) + 1;
+});
+
+var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+starCountRef.on('value', function(snapshot) {
+  updateStarCount(postElement, snapshot.val());
+});
+
+var userId = firebase.auth().currentUser.uid;
+return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+  var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+  // ...
+});
+*/
+
+
+/*
+function pingServer()
+{
+	ping.transaction(function (current_value) {
+		return (current_value || 0) + 1; 
+	});
+}	
+*/
+
+
+/*
 function foobar(divID)
 {
 	var obj = document.getElementById(divID);
@@ -67,14 +107,16 @@ function foobar(divID)
 	// });	
 
 }
+*/
 
+/*
 function foo()
 {
 	root.transaction(function (current_value) {
 		return (current_value || 0) + 1; 
 	});
 }	
-
+*/
 
 
 
