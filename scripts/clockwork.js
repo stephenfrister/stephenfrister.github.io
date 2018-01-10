@@ -1,6 +1,6 @@
 
 var root = new Firebase('https://python-clockwork-warriors.firebaseio.com/');
-var ping = new Firebase('https://legislationlistplusplus.firebaseio.com/_ping');
+var ping = new Firebase('https://python-clockwork-warriors.firebaseio.com/_ping');
 
 //var lists = new Firebase('https://legislationlistplusplus.firebaseio.com/activeLists');
 //var items = new Firebase('https://legislationlistplusplus.firebaseio.com/shoppingListItems');
