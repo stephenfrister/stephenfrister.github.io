@@ -3,15 +3,18 @@ layout: clockwork
 title: "Clockwork Warriors"
 ---
 
-<!--script type="text/javascript" src="https://cdn.firebase.com/js/client/4.8.1/firebase.js"></script--> 
-<!--script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script-->
-
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
 <script type="text/javascript" src="/scripts/clockwork.js"></script>
 	
 <body>	
 
     <button type="button" onclick="pingServer()">Ping</button>	
+    
+    <div>
+        <div id="clockworkUsersId" class="clockworkUsersDiv">
+        
+        </div>
+    </div>
 
 	<div id="clockworkDiv" class="clockworkContainer">	
 		<div>&nbsp </div>
@@ -20,6 +23,8 @@ title: "Clockwork Warriors"
 		<div>&nbsp row 3</div>
 		<div>&nbsp row 4</div>
 	</div>
+    
+	<script type="text/javascript">javascript:getUsers("clockworkUsersDiv");</script>
 	
 	<!--script type="text/javascript">javascript:foobar("legislationDiv");</script-->
 	

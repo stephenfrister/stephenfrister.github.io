@@ -1,23 +1,4 @@
 
-// var root = new Firebase('https://python-clockwork-warriors.firebaseio.com/');
-// var ping = new Firebase('https://python-clockwork-warriors.firebaseio.com/_ping');
-
-/*
-<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyClcH0NPVJJ5ToYDZd8nLbthBGlMNVjZ0M",
-    authDomain: "python-clockwork-warriors.firebaseapp.com",
-    databaseURL: "https://python-clockwork-warriors.firebaseio.com",
-    projectId: "python-clockwork-warriors",
-    storageBucket: "python-clockwork-warriors.appspot.com",
-    messagingSenderId: "602129261580"
-  };
-  firebase.initializeApp(config);
-</script>
-*/
-
 var config = {
   apiKey: "AIzaSyClcH0NPVJJ5ToYDZd8nLbthBGlMNVjZ0M",
   authDomain: "python-clockwork-warriors.firebaseapp.com",
@@ -27,6 +8,7 @@ var config = {
 firebase.initializeApp(config);
 
 var ping = firebase.database().ref('_ping');
+var users = firebase.database().ref('users');
 
 function pingServer()
 {
@@ -35,6 +17,17 @@ function pingServer()
 	});
 }	
 
+function getUsers(divID)
+{
+	var obj = document.getElementById(divID);
+	
+	if(type == "clockworkUsersDiv")
+	{				 
+		totalGob.on("users", function(snapshot) {
+			obj.innerHTML = snapshot.val();
+			});
+	}
+}
 
 /*
 
