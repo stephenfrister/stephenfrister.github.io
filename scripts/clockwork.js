@@ -56,7 +56,7 @@ function getUsers(divID)
         var html = ""
         var i = 0; 
     
-        html = "<table id='characters'>"
+        html = "<table id='users-table'>"
         
         html += "<tr class='ff7-header'>"
         html += "<td style='width:150px'>Name</td>"

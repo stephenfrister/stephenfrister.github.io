@@ -4,22 +4,6 @@
 
 <html>
   
-  {% include head.html %} 
-  {% include legislation-head.html %} 
-  
-	<div class="page-title">{{ page.title }}</div>
-
-    <nav class="world-nav">
-
-      <div class="trigger">
-        {% for my_page in site.pages %}
-          {% if my_page.title %}
-          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </nav>
-  
   <body>  
 		
     <div class="page-content">

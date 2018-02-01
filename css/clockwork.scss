@@ -1,7 +1,23 @@
 ---
 ---
 
+html{
+    overflow-x: hidden;
+    max-width: 100%; 
+}
+
 body{
+    max-width: 100%; 
+
+}
+
+.page-content{
+    max-width: 100%; 
+
+}
+
+.wrapper{
+    max-width: 100%; 
 
 }
 
@@ -23,21 +39,42 @@ body{
     -moz-background-size: cover;
     -o-background-size: cover;
     opacity: 0.3;
+    //max-width: 100%; 
+    max-width: 100px; 
 }
+
 
 .front-div{
-   z-index: -1;
-   opacity: 1;
 }
 
-.title{
-    display: block;
-    margin: 0 auto;
-    padding-top: 0px; 
+.title-div{
     padding-bottom: 5px; 
-    min-width: 520px;
-    width: 520px;
+    align: center; 
 }
+
+.title-img{
+    max-width: 550px; 
+}
+
+.users-div{
+    max-width: 550px;
+}
+
+.users-table{
+}
+
+.story-div{
+}
+
+.front-div .title-div {
+}
+
+.front-div .users-div {
+}
+
+.front-div .story-div {
+}
+
 
 div.ff7{
     border: solid 1px #424542;
@@ -48,7 +85,6 @@ div.ff7{
               0 -2px #9c9a9c,
               -2px 0 #7b757b, 
               0 2px #424542;
-    width: 500px;
     padding: 0px 10px;
     margin: 0 auto;
 
@@ -60,7 +96,6 @@ div.ff7{
     background: -ms-linear-gradient(top,  #04009d 0%,#06004d 100%);
     background: linear-gradient(to bottom,  #04009d 0%,#06004d 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04009d', endColorstr='#06004d',GradientType=0 );
-
 
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
