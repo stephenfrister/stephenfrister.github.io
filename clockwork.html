@@ -1,51 +1,67 @@
 ---
 layout: clockwork
-title: "Clockwork Warriors"
 ---
 
+<!--
+title: "Clockwork Warriors"
+-->
+
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+
+<!-- Local Scripts -->
 <script type="text/javascript" src="/scripts/clockwork.js"></script>
 	
 <body>	
 
-    <div> 
-        <table> 
-        <tr>
-        <td><button type="button" onclick="pingServer()">Ping</button></td>
-        <td id="pingValue"></td>
-        </tr>
-        </table>
+    <div class="background-div"> 
+    
+        <div class="front-div">
+    
+            <div>
+                <img src="../images/clockwork-title-blue.png" class="title" ></img>
+            </div>
+            
+            <div align="center">
+                <div id="clockworkUsersDivBottom" class="ff7" ></div>
+            <div>
+            
+        </div>
+        
     </div>
+
+        
+    <!--div>
+
+        <div> 
+            <table> 
+            <tr>
+            <td><button type="button" onclick="pingServer()">Ping</button></td>
+            <td id="pingValue"></td>
+            </tr>
+            </table>
+        </div>
     
-    <div>&nbsp </div>
-    
-    <div>
+        <div>&nbsp </div>
+        
         <div id="clockworkUsersDiv"></div>
-    </div>
     
-    <div>
-        <div id="clockworkUsersDivTop">
+        <div id="clockworkUsersDivTop" class="ff7">
             <table id="clockworkUsersTableTop">
                 <tr>
-                    <td style='width:150px'>Char</td>
+                    <td style='width:150px'>Name</td>
                     <td style='width:50px'>Lvl</td>
-                    <td style='width:50px'>HP</td>
+                    <td style='width:100px'>Energy</td>
                     <td style='width:100px'>Exp</td>
                     <td style='width:50px'> </td>
                 </tr>
             </table>        
         </div>
-    </div>    
-    
-    <div>
-        <div id="clockworkUsersDivBottom"></div>
-    </div>
-    
+    </div-->    
     
 	<script type="text/javascript">javascript:getPing("pingValue");</script>
 	<script type="text/javascript">javascript:getUsers("clockworkUsersDivBottom");</script>
     
-			
 </body>
 
 

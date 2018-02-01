@@ -10,6 +10,7 @@ firebase.initializeApp(config);
 var ping = firebase.database().ref('_ping');
 var users = firebase.database().ref('users');
 //var ghosts = firebase.database().ref('ghosts');
+//var ghosts = firebase.database().ref('chapters');
 
 function pingServer()
 {
@@ -31,14 +32,11 @@ function getPing(divID)
 function claimExp(userId1, userId2)
 {
     var userId = userId1.toString().concat( userId2.toString() );
-    //var userId = userId1.concat(userId2);
-    //userId = ""
-    //userId = 
     var exp = firebase.database().ref('users/' + userId + '/exp' );
-    //var exp = firebase.database().ref('users/108360043117969116770/exp' );
 	exp.transaction(function (current_value) {
 		return (current_value || 0) + 1; 
 	});
+    
 }	
 
 
@@ -58,13 +56,22 @@ function getUsers(divID)
         var html = ""
         var i = 0; 
     
-        html = "<table id='table2'>"
+        html = "<table id='characters'>"
+        
+        html += "<tr class='ff7-header'>"
+        html += "<td style='width:150px'>Name</td>"
+        html += "<td style='width:50px'>Lvl</td>"
+        html += "<td style='width:150px' align='center'>Energy</td>"
+        html += "<td style='width:100px' align='center'>Exp</td>"
+        html += "<td style='width:50px'> </td>"
+        html += "</tr>"
         
         characters.forEach(function(userid) {
             html += "<tr>"
             //obj.innerHTML += "<div>" + "user: " + userid.key + "</div>";
-            
+                
             userid.forEach(function(attribute) {
+                
                 if(attribute.key == "cname") {
                     chars[i] = attribute.val();
                     //chars[i] = userid.key
@@ -88,48 +95,59 @@ function getUsers(divID)
                 
             });
             
-            if(typeof chars[i] == 'undefined'){
-                chars[i] = "???"
-            }            
-            if(typeof lvl[i] == 'undefined'){
-                lvl[i] = "?"
-            }            
-            if(typeof hps[i] == 'undefined'){
-                hps[i] = "?"
-            }            
-            if(typeof exp[i] == 'undefined'){
-                exp[i] = "?"
-            }            
-            html += "<td style='width:150px'>"
-            html += chars[i]
-            html += "</td>"
+            if(typeof chars[i] != 'undefined') {
+                // skip
             
-            html += "<td style='width:50px'>"
-            html += lvl[i]
-            html += "</td>"
-            
-            html += "<td style='width:50px'>"
-            html += hps[i]
-            html += "</td>"
-            
-            html += "<td style='width:100px'>"
-            html += exp[i]
-            html += "</td>"  
-            
-            //var userId = "108360043117969116770"
-            var userId = userid.key
-            
-            userId1 = userId.slice(0,10)
-            userId2 = userId.slice(10,userId.length)
-            
-            html += "<td style='width:150px'>"
-            html += "<button type='button' "
-            html += "onclick='claimExp("
-            html += userId1 + "," + userId2
-            html += ")'>Claim Daily Exp</button></td></td>"
-            
-            html += "</tr>"
-            i++;      
+                /*
+                if(typeof chars[i] == 'undefined'){
+                    chars[i] = "???"
+                } 
+                */
+                
+                if(typeof lvl[i] == 'undefined'){
+                    lvl[i] = "?"
+                }            
+                if(typeof hps[i] == 'undefined'){
+                    hps[i] = "?"
+                }            
+                if(typeof exp[i] == 'undefined'){
+                    exp[i] = "?"
+                }            
+                //html += "<td style='width:150px'>"
+                html += "<td>"
+                html += chars[i]
+                html += "</td>"
+                
+               // html += "<td style='width:50px'>"
+                html += "<td>"
+                html += lvl[i]
+                html += "</td>"
+                
+                //html += "<td style='width:120px' align='center'>"
+                html += "<td align='center'>"
+                html += hps[i] + " / " + hps[i]
+                html += "</td>"
+                
+                //html += "<td style='width:100px' align='center'>"
+                html += "<td align='center'>"
+                html += exp[i]
+                html += "</td>"  
+                
+                var userId = userid.key
+                
+                userId1 = userId.slice(0,10)
+                userId2 = userId.slice(10,userId.length)
+                
+                //html += "<td style='width:150px' align='center'>"
+                html += "<td align='center'>"
+                html += "<button type='button' class='ff7' "
+                html += "onclick='claimExp("
+                html += userId1 + "," + userId2
+                html += ")'>Action</button></td></td>"
+                
+                html += "</tr>"   
+            }
+            i++;   
             
         });        
         

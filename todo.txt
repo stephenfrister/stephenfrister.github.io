@@ -1,6 +1,0 @@
-To Do: 
-    persistent avatars 
-    kill goblins
-    high scores
-    leaderboards
-    user logins
