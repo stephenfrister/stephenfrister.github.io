@@ -1,29 +1,15 @@
 
 html, body{
     display: table; 
+    overflow: hidden;
+    height: 100%; 
 }
 
-.background-div{
-    z-index: 1;
+.body-div{
+    overflow: hidden; 
+    height: 100%;
+    width: 100%;
 }
-
-.background-div:before{
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: url("../images/stone.png"); 
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    opacity: 0.3;
-    width: 1000px; 
-}
-
 
 .front-div{
     z-index: -1;
@@ -60,6 +46,36 @@ html, body{
 }
 
 
+.background-div{
+    z-index: 1;
+}
+
+.background-div:before{
+    content: "";
+    position: absolute;
+    display:inline-block;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    background-image: url("../images/stone.png"); 
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    
+    opacity: 0.3;
+    
+    width: 100%; 
+    height: 100%; 
+    
+    min-width: 570px; 
+    min-height: 1500px; 
+}
+
+
 div.ff7{
     border: solid 1px #424542;
     box-shadow: 1px 1px #e7dfe7,
@@ -71,7 +87,6 @@ div.ff7{
               0 2px #424542;
     padding: 0px 10px;
     margin: 0 auto;
-
     background: #04009d;
     background: -moz-linear-gradient(top,  #04009d 0%, #06004d 100%);
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#04009d), color-stop(100%,#06004d));
