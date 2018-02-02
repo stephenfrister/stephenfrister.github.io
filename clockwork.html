@@ -21,24 +21,59 @@ title: "Clockwork Warriors"
         
         <div class="front-div">
         
-            <div class="img-div">
+            <div class="title-div">
                 <img src="../images/clockwork-title-blue.png" class="title-img" ></img>
             </div> 
             
             <div class="users-div" align="center">
-                <div id="clockworkUsersDivBottom" class="ff7" ></div>
-            <div>
+                <div class="actionmenu">
+                    <div id="actionMenu" class="actionmenu-content ff7">
+                        <a href="#" onclick="#" id="actionMenuAttack" >Attack</a>
+                        <a href="#" onclick="#" id="actionMenuMagic" >Magic</a>
+                        <a href="#" onclick="#" id="actionMenuItem" >Item</a>
+                        <a href="#" onclick="#" id="actionMenuExp" >Exp</a>
+                    </div>
+                </div>
             
-            <div class="story-div" align="center">
-                <div id="test" class="ff7" >Story</div>
-            <div>
+                <div id="firebaseusers-div" class="ff7" >
+                </div>
+                
+            </div>
+            
+            <div class="story-div">
+                
+                <div id="story-title-div" class="story-title">
+                
+                    <div class="story-ctitle ff7" >
+                        <div id="ctitle-div" >Act Title</div>
+                    </div>
+                    <div class="story-ptitle ff7" >
+                        <div id="ptitle-div" >Part Title</div>
+                    </div>
+                    
+                </div>
+                
+                <div class="story-description ff7" >
+                    <div id="description-div">Description</div>
+                </div>
+                
+            </div>
+                
+            
+            <!--div id="firebasestory-div" class="story-div ff7" align="left">
+            </div-->
             
         </div>
         
     </div>
     
-	<script type="text/javascript">javascript:getPing("pingValue");</script>
-	<script type="text/javascript">javascript:getUsers("clockworkUsersDivBottom");</script>
+	<script type="text/javascript">javascript:getUsers("firebaseusers-div");</script>
+    
+	<!--script type="text/javascript">javascript:getTitleAct("ctitle-div");</script-->
+	<script type="text/javascript">javascript:getStoryParts("ctitle-div","ptitle-div","description-div");</script>
+    
+	<!--script type="text/javascript">javascript:getStory("firebasestory-div");</script-->
+	<!--script type="text/javascript">javascript:getPing("pingValue");</script-->
     
 </body>
 
