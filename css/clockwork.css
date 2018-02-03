@@ -32,32 +32,45 @@ html, body{
 .users-table{
 }
 
-.story-div{
+.story{
     max-width: 550px;
 }
 
 .story-title{
+    display: table;
     position: relative;
-    margin: 10px 0px 20px 0px; 
-    width: 100%;  
+    margin: 1px 0px 1px 0px; 
     min-height: 25px; 
+    width: 100%;  
+    border-spacing: 5px;
 }
 
 .story-ctitle {
+    /*
     width: 45%;
-    float: left; 
+    float: left;
+    margin: 0px 0px 0px 0px; 
+    */
+    display: table-cell;
+    width: 50%;
 }
 
 .story-ptitle {
+    /*
     width: 45%;
-    float: right; 
+    float: right;
+    margin: 0px 0px 0px 0px ; 
+    */
+    display: table-cell;
+    width: 50%;
 }
 
 .story-description{
+    padding: 0px 15px 5px 15px !important; 
+    position: relative;
     text-align: justify;
     font-style: italic;
     line-height: 30px;
-    padding: 0px 15px 5px 15px !important; 
 }
 
 /* Dropdown Button */
