@@ -77,10 +77,13 @@ html, body{
 .dropbtn {
     cursor: pointer;
     margin: 15px; 
+    outline: none; 
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
+.dropbtn:hover, .dropbtn:focus, .dropbtn:active{
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -88,8 +91,11 @@ html, body{
     position: absolute;
     display: inline-block;
     padding: 10px 20px 0px 0px;
-    top: 0px;
+    z-index: 1; 
+    
     right: 0px;
+    top: 0px;
+    
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -214,6 +220,7 @@ button.ff7{
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
+    z-index: 0; 
 }
 
 tr.ff7-header *{
