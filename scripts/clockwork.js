@@ -256,12 +256,10 @@ window.onclick = function(event) {
     }
     
     if ( d ) {
-        
         var themeID = event.target.id;
         setTheme(themeID);
         setCookie('theme',themeID,365);
         if (themeID == 'ff7-0') {
-            console.log('eraseCookie: ' +  themeID);
             deleteCookie('theme')
         }
         
@@ -376,26 +374,39 @@ function deleteAllCookies() {
     }
 }
 
+function checkLogin() {
+    if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
+   // signed in. Show the "sign out" button and explanation.
+   // ...
+    } else {
+       // not signed in. Show the "sign in" button and explanation.
+       // ...
+    }
+}
+
 
 function onSuccess(googleUser) {
     mName = googleUser.getBasicProfile().getName()
     mId = googleUser.getBasicProfile().getId()
     
+    
     console.log('getName: ' + mName);
     console.log('getId: ' + mId);
     
     //user-div
-    var userMessage = document.getElementsByClassName("user-div");
-    userMessage.innerHTML = "Welcome, " + mName + " , " + mId
+    //var userMessage = document.getElementsByClassName("user-div");
+	var userMessage = document.getElementById("id-user-welcome");
+    userMessage.innerHTML = "Welcome, " + mName + " , " + mId;
+    
+    //html = "Welcome, " + mName + " , " + mId;
+    //userMessage.innerHTML = html;
 
     //userMessage.innerHTML = html
     //Welcome, User...
 }
-
 function onFailure(error) {
     console.log(error);
 }
-
 function renderButton() {
     gapi.signin2.render('id-gSign', {
         'scope': 'profile email',
