@@ -312,6 +312,10 @@ function setTheme(themeID){
 // ELEMENT CLASS
     var menus = document.getElementsByClassName("ff7");
     var i;
+    
+    if(!themeID){
+        themeID = "ff7-0"
+    }
         
     for (i = 0; i < menus.length; i++) {
         var openMenu = menus[i];
@@ -360,6 +364,16 @@ function getCookie(name) {
 }
 function deleteCookie(name) {   
     document.cookie = name+'=; Max-Age=-99999999;';  
+}
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
 
 
