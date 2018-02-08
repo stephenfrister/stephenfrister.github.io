@@ -239,7 +239,7 @@ window.onclick = function(event) {
     //var b = !event.target.matches('.clickarea-div') 
     
     //console.log(event.target);
-    console.log(event.target.id);
+    //console.log(event.target.id);
     
     //console.log("d: " + d);
     //console.log("c: " + c);
@@ -366,11 +366,12 @@ function deleteCookie(name) {
 function onSuccess(googleUser) {
     mName = googleUser.getBasicProfile().getName()
     mId = googleUser.getBasicProfile().getId()
+    
     console.log('getName: ' + mName);
     console.log('getId: ' + mId);
     
     //user-div
-    var userMessage = document.getElementsByClassName("ff7");
+    var userMessage = document.getElementsByClassName("user-div");
     userMessage.innerHTML = "Welcome, " + mName + " , " + mId
 
     //userMessage.innerHTML = html
