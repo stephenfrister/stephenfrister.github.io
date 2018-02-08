@@ -16,6 +16,9 @@ var chapterAct = firebase.database().ref('chapters/active');
 var chapterPart = firebase.database().ref('chapters/activepart');
 
 
+
+
+
 function pingServer()
 {
 	ping.transaction(function (current_value) {
@@ -197,51 +200,197 @@ function getUsers(divID)
         });        
         html += "</table>"  
         obj.innerHTML = html
+        settingsGet();
     });
-    
 }
 
-
-function actionClick(userId1, userId2)
-{
-    document.getElementById("actionMenu").classList.toggle("show");
+function actionClick(userId1, userId2){
     
     var mString = "onclick=claimExp(" + userId1 + "," + userId2 + ")"
-    document.getElementById("actionMenuExp").setAttribute("onclick", mString);
+    document.getElementById("actionmenuExp").setAttribute("onclick", mString);
+    document.getElementById("id-actionmenu").classList.toggle("show");
     
-    document.getElementById("actionMenuAttack").style.color = "#33334d";
-    document.getElementById("actionMenuMagic").style.color = "#33334d";
-    document.getElementById("actionMenuItem").style.color = "#33334d";
     
-    document.getElementById("actionMenuAttack").className = "disabled-hover";
-    document.getElementById("actionMenuMagic").className = "disabled-hover";
-    document.getElementById("actionMenuItem").className = "disabled-hover";
+    document.getElementById("actionmenuAttack").style.color = "#33334d";
+    document.getElementById("actionmenuMagic").style.color = "#33334d";
+    document.getElementById("actionmenuItem").style.color = "#33334d";
     
-    //document.getElementById("actionMenuAttack").setAttribute("onclick", mString);
-    //document.getElementById("actionMenuMagic").setAttribute("onclick", mString);
-    //document.getElementById("actionMenuItem").setAttribute("onclick", mString);
+    document.getElementById("actionmenuAttack").className = "disabled-hover";
+    document.getElementById("actionmenuMagic").className = "disabled-hover";
+    document.getElementById("actionmenuItem").className = "disabled-hover";
     
-    //document.getElementById("actionMenu").innerHTML = "whatever";
-    //document.getElementById("actionMenu").setAttribute("id", "div_top1");
+    
+    //document.getElementById("actionmenuAttack").setAttribute("onclick", mString);
+    //document.getElementById("actionmenuMagic").setAttribute("onclick", mString);
+    //document.getElementById("actionmenuItem").setAttribute("onclick", mString);
+    
+    //document.getElementById("id-actionmenu").innerHTML = "whatever";
+    //document.getElementById("id-actionmenu").setAttribute("id", "div_top");
     
 }	
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("actionmenu-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+    
+    var a = !event.target.matches('.dropbtn')
+    var c = event.target.matches('.settings-close') 
+    var d = event.target.classList.contains('setting-selection') 
+    
+    //var b = !event.target.matches('.clickarea-div') 
+    
+    //console.log(event.target);
+    console.log(event.target.id);
+    
+    //console.log("d: " + d);
+    //console.log("c: " + c);
+    //console.log("b: " + b);
+    //console.log("a: " + a);
+    
+    if ( a ) {
+        removeShow("actionmenu-content"); 
     }
-  }
+    
+    if ( c ) {
+        removeShow("settings-div"); 
+        settingsSave() 
+    }
+    
+    if ( d ) {
+        
+        var themeID = event.target.id;
+        setTheme(themeID);
+        setCookie('theme',themeID,365);
+        if (themeID == 'ff7-0') {
+            console.log('eraseCookie: ' +  themeID);
+            deleteCookie('theme')
+        }
+        
+    }
+  
+}
+
+function navClick(){
+
+    // ELEMENT ID
+    document.getElementById("id-settings").classList.toggle("show");
+   
+    //document.getElementById("id-settings-header").classList.toggle("show");
+    //document.getElementById("id-settings-content").classList.toggle("show");
+    
+}
+
+function removeShow(className) {
+    
+    var mClass = document.getElementsByClassName(className);
+    var i;
+    for (i = 0; i < mClass.length; i++) {
+        var openClass = mClass[i];
+        if (openClass.classList.contains('show')) {
+            openClass.classList.remove('show');
+        }
+    }
+    
+}
+
+function settingsGet() {
+    var mTheme = getCookie('theme')
+    setTheme(mTheme)
+}
+function settingsSave() {
+    var mTheme = getCookie('theme')
+    setCookie( 'theme-saved', mTheme, 365 )
+    removeShow("settings-div");
+}
+function settingsCancel() {
+    var mThemeOld = getCookie('theme-saved')
+    setTheme(mThemeOld)
+    removeShow("settings-div");
+}
+
+function setTheme(themeID){
+
+// ELEMENT CLASS
+    var menus = document.getElementsByClassName("ff7");
+    var i;
+        
+    for (i = 0; i < menus.length; i++) {
+        var openMenu = menus[i];
+        if ( openMenu.classList.contains('ff7') && 
+            !openMenu.classList.contains('setting-selection') && 
+            !openMenu.classList.contains('settings-close')  && 
+            !openMenu.classList.contains('title-user') 
+            ) {
+            
+            openMenu.classList.remove('ff7-0')
+            openMenu.classList.remove('ff7-2')
+            openMenu.classList.remove('ff7-3')
+            openMenu.classList.remove('ff7-4')
+            openMenu.classList.remove('ff7-5')
+            openMenu.classList.remove('ff7-6')
+            openMenu.classList.remove('ff7-7')
+            openMenu.classList.remove('ff7-8')
+            openMenu.classList.remove('ff7-9')
+            openMenu.classList.remove('ff7-10')
+            
+            openMenu.classList.add(themeID);
+        }
+    }
+    
+}
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        //date.setTime(date.getTime() + (years*365*24*60*60*1000));
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function deleteCookie(name) {   
+    document.cookie = name+'=; Max-Age=-99999999;';  
 }
 
 
+function onSuccess(googleUser) {
+    mName = googleUser.getBasicProfile().getName()
+    mId = googleUser.getBasicProfile().getId()
+    console.log('getName: ' + mName);
+    console.log('getId: ' + mId);
+    
+    //user-div
+    var userMessage = document.getElementsByClassName("ff7");
+    userMessage.innerHTML = "Welcome, " + mName + " , " + mId
 
+    //userMessage.innerHTML = html
+    //Welcome, User...
+}
+
+function onFailure(error) {
+    console.log(error);
+}
+
+function renderButton() {
+    gapi.signin2.render('id-gSign', {
+        'scope': 'profile email',
+        'width': 30,
+        'height': 30,
+        'longtitle': true,
+        'theme': 'light',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
+}
 
 

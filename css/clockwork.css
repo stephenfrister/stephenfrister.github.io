@@ -1,22 +1,171 @@
 
 html, body{
     display: inline-block;
-    overflow: hidden;
     text-align: center;
-    height: 100%
+    height: 100%;
+    margin: 3px; 
+    overflow: hidden;
+    height: 700px; 
 }
 
 .body-div{
-    overflow: hidden; 
     height: 100%
 }
 
 .front-div{
+    overflow: hidden; 
     
 }
 
+.title-user{
+	position: absolute;
+    background: transparent !important; 
+    box-shadow: none !important;  
+    border: none !important; 
+	top: 5px;
+}
+.user-div{ 
+    font-size: 12px !important; 
+}
+
+.title-nav {
+	position: relative;
+    float: right; 
+    width: 35px; 
+	top: 0px;
+}
+
+.nav-div{
+}
+
+.menu-clickarea{
+	position: absolute;
+    float: right; 
+    width: 35px; 
+	top: 0px;
+    opacity: 0
+    
+}
+.clickarea-div{
+    height: 25px; 
+}
+
+.settings-div{
+    /* display: block; */
+    /* */ display: none;
+    
+    position: absolute; 
+    
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px !important;
+    
+    max-height: 525px; 
+    min-height: 525px; 
+    max-width: 550px;
+    min-width: 550px; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+}
+
+.settings-header{
+    text-align: center; 
+    margin: -1px 1px 0px -1px !important;
+}
+.settings-content{
+    text-align: left; 
+    min-height: 442px; 
+    padding: 5px 0px 5px 10px;
+    margin: 3px 1px 0px -1px !important;
+}
+.settings-text{
+    font-size: 17px !important;  
+    padding: 5px 0px 3px 0px;
+    color: #00CDCD !important;
+    text-shadow: 2px 2px #0032af,
+               1px 1px #0032af !important;
+}
+.setting-selection{
+    margin: 0px 0px 0px 15px !important; 
+    max-height: 20px;
+    min-height: 20px;
+    max-width: 5px;
+    min-width: 5px;
+    float: right; 
+}
+
+.gSign{
+    position: absolute; 
+    padding: 0px 0px 0px 5px;
+    margin: 2px 0px 0px 1px !important;  
+}
+.abcRioButton{
+    background: transparent !important; 
+}
+.abcRioButtonIcon{
+    opacity: 1 !important; 
+    margin: -8px 0px 0px 1px !important; 
+}
+.abcRioButtonContents{
+    display: none; 
+}
+.abcRioButtonContentWrapper{
+}
+
+.settings-save{
+    float: right; 
+    margin: 5px 1px 0px 5px !important; 
+}
+.settings-cancel{
+    float: right; 
+}
+.settings-close{
+    float: right; 
+    margin: -4px -10px 0px 0px !important; 
+    padding: 1px 2px 7px 2px !important; 
+    background: #800000 !important;  
+    
+    max-height: 22px;
+    min-height: 22px;
+    max-width: 25px;
+    min-width: 25px;
+}
+
+.title-nav .menu-icon {
+	display: block;
+	width: 15px;
+	height: 10px;
+	line-height: 0;
+	padding-top: 5px;
+	text-align: center; 
+}
+.title-nav .menu-icon > svg  {
+	width: 18px;
+	height: 15px; 
+	margin: -5px 0px 0px -2px;
+}
+.title-nav .menu-icon > svg path {
+	fill: #424242; 
+}
+.title-nav .nav-menu {
+	clear: both;
+	display: none; 
+}
+.title-nav:hover .nav-menu {
+	display: block;
+	padding-bottom: 5px; 
+}
+.title-nav .menu-link {
+	display: block;
+	padding: 10px 10px;
+	margin-left: 20px; 
+}
+.title-nav .menu-link:not(:last-child) {
+	margin-right: 0; 	
+}
+
 .title-div{
-    padding-top: 15px;
+    padding-top: 33px;
     padding-bottom: 5px; 
 }
 
@@ -31,6 +180,7 @@ html, body{
 
 .users-table{
 }
+
 
 .story{
     max-width: 550px;
@@ -95,7 +245,6 @@ html, body{
     
     right: 0px;
     top: 0px;
-    
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -120,20 +269,15 @@ html, body{
     opacity: 0.5; 
 }
 
-.disabled-hover{
-    background-color: transparent !important;
-    opacity: 1 !important; 
-}
-
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {
     display:block;
 }
 
-
-
-
-
+.disabled-hover{
+    background-color: transparent !important;
+    opacity: 1 !important; 
+}
 
 .background-div{
     z-index: 1;
@@ -153,7 +297,6 @@ html, body{
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     
     opacity: 0.3;
     
@@ -162,6 +305,50 @@ html, body{
     min-width: 570px; 
     min-height: 1500px; 
 }
+
+
+
+
+div.ff7-0, button.ff7-0{ /*Default*/
+    background: linear-gradient(to bottom, #04009d 0%,#06004d 100%) !important;
+}
+
+div.ff7-2, button.ff7-2{ /*Clash of the Elements*/
+    background: linear-gradient(to bottom right, #690c25, #2d2d2d, #250c69) !important;
+}
+
+div.ff7-3, button.ff7-3{ /*Catastrophe*/
+    background: linear-gradient(to bottom right, #230000, #5f0000, #010020) !important;
+}
+
+div.ff7-4, button.ff7-4{ /*Chocobo Plains*/
+    background: linear-gradient(to bottom right, #646a00, #323900, #000000) !important;
+}
+
+div.ff7-5, button.ff7-5{ /*Blue Moon*/
+    background: linear-gradient(to bottom right, #000000, #2458ff, #44ffff) !important;
+}
+
+div.ff7-6, button.ff7-6{ /*Beam of Darkness*/
+    background: linear-gradient(to bottom right, #1b871e, #002100, #1b871e) !important;
+}
+
+div.ff7-7, button.ff7-7{ /*Aurora Borealis*/
+    background: linear-gradient(to bottom right, #5100ff, #ff6f6f, #adc500) !important;
+}
+
+div.ff7-8, button.ff7-8{ /*Auron's Robe*/
+    background: linear-gradient(to bottom right, #780000, #500000, #969600) !important;
+}
+
+div.ff7-9, button.ff7-9{ /*Aqualung*/
+    background: linear-gradient(to bottom right, #0032af, #00c8ff, #0032af) !important;
+}
+
+div.ff7-10, button.ff7-10{ /*Aeris' Flowers*/
+    background: linear-gradient(to bottom right, #ffff00, #ffb058, #ffb000) !important;
+}
+
 
 
 div.ff7{

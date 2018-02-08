@@ -17,22 +17,52 @@ title: ""
 <body>	
     
     <div class="body-div">
-
+    
         <div class="background-div"></div>
         
         <div class="front-div">
         
+            <div class="menu-div">
+            
+                <div class="title-user ff7">
+                    <div class="user-div"> 
+                        Welcome, User...
+                    </div> 
+                </div> 
+                
+                <nav id="id-title-nav" class="title-nav">
+                
+                    <div class="nav-div ff7">
+                    
+                        <a href="#" class="menu-icon">
+                            <svg viewBox="0 0 18 15">
+                                <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                                <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                                <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                            </svg>
+                        </a>
+
+                    </div>
+                    
+                    <div class="menu-clickarea">
+                        <div class="clickarea-div ff7" onclick="navClick()"></div>
+                    </div>
+                    
+                </nav>
+            
+            </div> 
+            
             <div class="title-div">
                 <img src="../images/clockwork-title-blue.png" class="title-img" ></img>
             </div> 
             
             <div class="users-div" align="center">
                 <div class="actionmenu">
-                    <div id="actionMenu" class="actionmenu-content ff7">
-                        <a href="#" onclick="#" id="actionMenuAttack" >Attack</a>
-                        <a href="#" onclick="#" id="actionMenuMagic" >Magic</a>
-                        <a href="#" onclick="#" id="actionMenuItem" >Items</a>
-                        <a href="#" onclick="#" id="actionMenuExp" >Explore</a>
+                    <div id="id-actionmenu" class="actionmenu-content ff7">
+                        <a href="#" onclick="#" id="actionmenuAttack" >Attack</a>
+                        <a href="#" onclick="#" id="actionmenuMagic" >Magic</a>
+                        <a href="#" onclick="#" id="actionmenuItem" >Items</a>
+                        <a href="#" onclick="#" id="actionmenuExp" >Explore</a>
                     </div>
                 </div>
             
@@ -63,11 +93,64 @@ title: ""
             
         </div>
         
+        <div id="id-settings" class="settings-div ff7">
+        
+            <div id="id-settings-header" class="settings-header ff7">
+            
+                <div id="" class="">
+                    <div>Settings
+                        <div id="id-settings-close" class="settings-close ff7">&#10006</div>
+                    </div>
+                    
+                </div> 
+                
+            </div> 
+            
+            <div id="id-settings-content" class="settings-content ff7">
+            
+                <div id="id-settings-options" class="settings-options">
+                
+                    <div class="settings-text">Panel Color:
+                        <div id="ff7-0" class="setting-selection ff7 ff7-0"></div>
+                        <div id="ff7-9" class="setting-selection ff7 ff7-9"></div>
+                        <div id="ff7-5" class="setting-selection ff7 ff7-5"></div>
+                        <div id="ff7-6" class="setting-selection ff7 ff7-6"></div>
+                        <div id="ff7-4" class="setting-selection ff7 ff7-4"></div>
+                        <div id="ff7-10" class="setting-selection ff7 ff7-10"></div>
+                        <div id="ff7-7" class="setting-selection ff7 ff7-7"></div>
+                        <div id="ff7-8" class="setting-selection ff7 ff7-8"></div>
+                        <div id="ff7-3" class="setting-selection ff7 ff7-3"></div>
+                        <div id="ff7-2" class="setting-selection ff7 ff7-2"></div>
+                    </div>
+                    
+                    <div class="settings-text">Sound:</div>
+                    <div class="settings-text">Cursor:</div>
+                    <div class="settings-text">Controller:</div>
+                    <div class="settings-text">Magic Order:</div>
+                    
+                    <div style="display:none;">Login with Google:</div>
+                    <div style="display:none;">Share on Facebook:</div>
+                    <div style="display:none;">Share on Twitter:</div>
+                    
+                </div> 
+                
+            </div>
+
+            <div id="id-gSign" class="gSign"></div>
+            <div class="settings-save ff7" onclick="settingsSave()"><div>Save</div></div>
+            <div class="settings-cancel ff7" onclick="settingsCancel()"><div>Cancel</div></div>
+        
+        </div>
+        
     </div>
+    
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     
     <!-- Functions -->
 	<script type="text/javascript">javascript:getUsers("firebaseusers-div");</script>
     <script type="text/javascript">javascript:getStoryParts("ctitle-div","ptitle-div","description-div");</script>
+    
+	<!--script type="text/javascript">javascript:getSettings();</script-->
     
 </body>
 
