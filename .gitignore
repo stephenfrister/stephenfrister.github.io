@@ -3,3 +3,5 @@ _site
 .jekyll-metadata
 _ignore
 favicon.ico
+gemfile
+gemfile.lock

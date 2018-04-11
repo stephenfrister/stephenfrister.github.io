@@ -100,25 +100,37 @@ function getUsers(divID)
         var html = "";
         var dropdowns = "";
         
+        uid     = [];
+        
         chars   = [];
         lvl     = []; 
         exp     = [];   
         hps     = [];  
         hmax    = []; 
+        
+        rc      = []; 
+        cls     = [];
     
         html = "<table id='users-table'>"
         
         html += "<tr class='ff7-header'>"
         html += "<td style='width:150px'>Name</td>"
-        html += "<td style='width:50px'>Lvl</td>"
-        html += "<td style='width:150px' align='center'>Energy</td>"
-        html += "<td style='width:100px' align='center'>Exp</td>"
+        html += "<td style='width:100px' align='center'>Lvl</td>"
+        html += "<td style='width:150px'>Race</td>"
+        html += "<td style='width:100px'>Class</td>"
         html += "<td style='width:50px'> </td>"
         html += "</tr>"
+        
+        //html += "<td style='width:150px' align='center'>Race</td>"
+        //html += "<td style='width:100px' align='center'>Class</td>"
+        //html += "<td style='width:150px' align='center'>Energy</td>"
+        //html += "<td style='width:100px' align='center'>Exp</td>"
         
         characters.forEach(function(userid) {
                 
             userid.forEach(function(attribute) {
+                
+                uid[i] = userid.key
                 
                 if(attribute.key == "cname") {
                     chars[i] = attribute.val();
@@ -136,6 +148,22 @@ function getUsers(divID)
                 else if(attribute.key == "level") {
                     lvl[i] = attribute.val();
                 }
+                
+                
+                
+                // TODO: 
+                
+                else if(attribute.key == "race") {
+                    rc[i] = attribute.val();
+                }
+                else if(attribute.key == "class") {
+                    cls[i] = attribute.val();
+                }
+                
+                // END
+                
+                
+                
                 else if( attribute.key == "power" || attribute.key == "magic" ) {
                     // empty for now
                 }
@@ -145,7 +173,7 @@ function getUsers(divID)
                 
             });
             
-            if(typeof chars[i] != 'undefined') {
+            if( (typeof chars[i] != 'undefined') && (uid[i] != 108488361739358892865) ) {
                 
                 html += "<tr>"
                 
@@ -155,27 +183,46 @@ function getUsers(divID)
                 if(typeof hps[i] == 'undefined'){
                     hps[i] = "?"
                 }             
-                if(typeof hps[i] == 'undefined'){
+                if(typeof hmax[i] == 'undefined'){
                     hmax[i] = "?"
                 }           
                 if(typeof exp[i] == 'undefined'){
                     exp[i] = "?"
                 }            
-                html += "<td>"
-                html += chars[i]
-                html += "</td>"
+                if(typeof rc[i] == 'undefined'){
+                    rc[i] = "???"
+                }      
+                if(typeof cls[i] == 'undefined'){
+                    cls[i] = "???"
+                }             
                 
                 html += "<td>"
+                html += chars[i].split(":")[0]
+                //html += uid[i]
+                html += "</td>"
+                
+                //html += "<td>"
+                html += "<td align='center'>"
                 html += lvl[i]
                 html += "</td>"
                 
-                html += "<td align='center'>"
-                html += hps[i] + " / " + hmax[i]
+                html += "<td>"
+                //html += "<td align='center'>"
+                html += rc[i]
                 html += "</td>"
                 
-                html += "<td align='center'>"
-                html += exp[i]
-                html += "</td>"  
+                html += "<td>"
+                //html += "<td align='center'>"
+                html += cls[i]
+                html += "</td>"
+                
+                //html += "<td align='center'>"
+                //html += hps[i] + " / " + hmax[i]
+                //html += "</td>"
+                
+                //html += "<td align='center'>"
+                //html += exp[i]
+                //html += "</td>"  
                 
                 var userId = userid.key
                 
@@ -185,9 +232,11 @@ function getUsers(divID)
                 html += "<td align='center'>"
                 html += "<button "
                 html += "type='action-button' "
-                html += "class='ff7 dropbtn' "
-                html += "onclick='actionClick("
-                html += userId1 + "," + userId2
+                html += "class='ff7 dropbtn-disabled' "
+                // CURRENTLY DISABLED, CHANGE dropbtn-disabled TO dropbtn TO ENABLE
+                //html += "onclick='actionClick("
+                //html += userId1 + "," + userId2
+                // UNCOMMENT ABOVE TO ENABLE
                 html += ")' >"
                 html += "Action</button></td></td>"
                 
@@ -204,25 +253,30 @@ function getUsers(divID)
     });
 }
 
+function scrollDiv(){
+    document.getElementById("story-div").scrollTop += 200;
+}
+
 function actionClick(userId1, userId2){
     
-    var mString = "onclick=claimExp(" + userId1 + "," + userId2 + ")"
-    document.getElementById("actionmenuExp").setAttribute("onclick", mString);
-    document.getElementById("id-actionmenu").classList.toggle("show");
-    
-    
-    document.getElementById("actionmenuAttack").style.color = "#33334d";
-    document.getElementById("actionmenuMagic").style.color = "#33334d";
-    document.getElementById("actionmenuItem").style.color = "#33334d";
-    
-    document.getElementById("actionmenuAttack").className = "disabled-hover";
-    document.getElementById("actionmenuMagic").className = "disabled-hover";
-    document.getElementById("actionmenuItem").className = "disabled-hover";
-    
+    //var expString = "onclick=claimExp(" + userId1 + "," + userId2 + ")"
     
     //document.getElementById("actionmenuAttack").setAttribute("onclick", mString);
     //document.getElementById("actionmenuMagic").setAttribute("onclick", mString);
     //document.getElementById("actionmenuItem").setAttribute("onclick", mString);
+    //document.getElementById("actionmenuExp").setAttribute("onclick", expString);
+    
+    document.getElementById("id-actionmenu").classList.toggle("show");
+    
+    document.getElementById("actionmenuAttack").style.color = "#33334d";
+    document.getElementById("actionmenuMagic").style.color = "#33334d";
+    document.getElementById("actionmenuItem").style.color = "#33334d";
+    document.getElementById("actionmenuExp").style.color = "#33334d";
+    
+    document.getElementById("actionmenuAttack").className = "disabled-hover";
+    document.getElementById("actionmenuMagic").className = "disabled-hover";
+    document.getElementById("actionmenuItem").className = "disabled-hover";
+    document.getElementById("actionmenuExp").className = "disabled-hover";
     
     //document.getElementById("id-actionmenu").innerHTML = "whatever";
     //document.getElementById("id-actionmenu").setAttribute("id", "div_top");
@@ -271,6 +325,7 @@ function navClick(){
 
     // ELEMENT ID
     document.getElementById("id-settings").classList.toggle("show");
+    document.getElementById("id-description").classList.toggle("noshow");
    
     //document.getElementById("id-settings-header").classList.toggle("show");
     //document.getElementById("id-settings-content").classList.toggle("show");
@@ -278,13 +333,23 @@ function navClick(){
 }
 
 function removeShow(className) {
-    
     var mClass = document.getElementsByClassName(className);
     var i;
     for (i = 0; i < mClass.length; i++) {
         var openClass = mClass[i];
         if (openClass.classList.contains('show')) {
             openClass.classList.remove('show');
+        }
+    }
+    
+}
+function removeNoShow(className) {
+    var mClass = document.getElementsByClassName(className);
+    var i;
+    for (i = 0; i < mClass.length; i++) {
+        var openClass = mClass[i];
+        if (openClass.classList.contains('noshow')) {
+            openClass.classList.remove('noshow');
         }
     }
     
@@ -298,11 +363,13 @@ function settingsSave() {
     var mTheme = getCookie('theme')
     setCookie( 'theme-saved', mTheme, 365 )
     removeShow("settings-div");
+    removeNoShow("description-div");
 }
 function settingsCancel() {
     var mThemeOld = getCookie('theme-saved')
     setTheme(mThemeOld)
     removeShow("settings-div");
+    removeNoShow("description-div");
 }
 
 function setTheme(themeID){
@@ -374,38 +441,24 @@ function deleteAllCookies() {
     }
 }
 
-function checkLogin() {
-    if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-   // signed in. Show the "sign out" button and explanation.
-   // ...
-    } else {
-       // not signed in. Show the "sign in" button and explanation.
-       // ...
-    }
-}
-
 
 function onSuccess(googleUser) {
     mName = googleUser.getBasicProfile().getName()
     mId = googleUser.getBasicProfile().getId()
+    //console.log('getName: ' + mName);
+    //console.log('getId: ' + mId);
     
-    
-    console.log('getName: ' + mName);
-    console.log('getId: ' + mId);
-    
-    //user-div
-    //var userMessage = document.getElementsByClassName("user-div");
 	var userMessage = document.getElementById("id-user-welcome");
-    userMessage.innerHTML = "Welcome, " + mName + " , " + mId;
+    userMessage.innerHTML = "User: " + mName + ", " + mId;
+    //userMessage.innerHTML = "Welcome, " + mName + " : " + mId;
     
-    //html = "Welcome, " + mName + " , " + mId;
-    //userMessage.innerHTML = html;
-
-    //userMessage.innerHTML = html
-    //Welcome, User...
 }
 function onFailure(error) {
-    console.log(error);
+    //console.log(error);
+    
+	var userMessage = document.getElementById("id-user-welcome");
+    userMessage.innerHTML = "";
+    
 }
 function renderButton() {
     gapi.signin2.render('id-gSign', {

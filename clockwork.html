@@ -6,7 +6,7 @@ title: "Clockwork Warriors"
 <!--
 title: "Clockwork Warriors"
 title: ""
--->
+-->  
 
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
@@ -26,7 +26,6 @@ title: ""
             
                 <div class="title-user ff7">
                     <div id="id-user-welcome" class="user-div"> 
-                        Welcome, User...
                     </div> 
                 </div> 
                 
@@ -53,7 +52,14 @@ title: ""
             </div> 
             
             <div class="title-div">
-                <img src="../images/clockwork-title-blue.png" class="title-img" ></img>
+                <!--img src="../images/clockwork-title-blue.png" class="title-img" ></img-->
+                <!--img src="../images/dungeon-title-blue.png" class="title-img" ></img-->
+                <img src="../images/dragons-title-blue.png" class="title-img" ></img>
+            </div> 
+            
+            <div class="subtitle-div">
+                <!--img src="../images/dungeon-subtitle-blue.png" class="subtitle-img" ></img-->
+                <img src="../images/and-subtitle-blue.png" class="subtitle-img" ></img>
             </div> 
             
             <div class="users-div" align="center">
@@ -84,8 +90,11 @@ title: ""
                     
                 </div>
                 
-                <div class="story-description ff7" >
-                    <div id="description-div">Description</div>
+                <div id="story-div" class="story-description ff7" >
+                    <div id="id-description" class="description-div show">Description</div>
+                    <div class="arrow-wrapper">
+                        <div class="arrow bounce" onclick="scrollDiv()"></div>
+                    </div>
                 </div>
                 
                 
@@ -144,11 +153,12 @@ title: ""
         
     </div>
     
-    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    <!-- to enable login uncomment below -->
+    <!--script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script-->
     
     <!-- Functions -->
 	<script type="text/javascript">javascript:getUsers("firebaseusers-div");</script>
-    <script type="text/javascript">javascript:getStoryParts("ctitle-div","ptitle-div","description-div");</script>
+    <script type="text/javascript">javascript:getStoryParts("ctitle-div","ptitle-div","id-description");</script>
     
 	<!--script type="text/javascript">javascript:getSettings();</script-->
     
