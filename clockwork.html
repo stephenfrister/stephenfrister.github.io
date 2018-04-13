@@ -93,7 +93,7 @@ title: ""
                 <div id="story-div" class="story-description ff7" >
                     <div id="id-description" class="description-div show">Description</div>
                     <div class="arrow-wrapper">
-                        <div class="arrow bounce" onclick="scrollDiv()"></div>
+                        <div id="id-arrow" class="arrow bounce show" onclick="scroll_down()"></div>
                     </div>
                 </div>
                 
@@ -159,6 +159,7 @@ title: ""
     <!-- Functions -->
 	<script type="text/javascript">javascript:getUsers("firebaseusers-div");</script>
     <script type="text/javascript">javascript:getStoryParts("ctitle-div","ptitle-div","id-description");</script>
+	<script type="text/javascript">javascript:setStoryScrollListener();</script>
     
 	<!--script type="text/javascript">javascript:getSettings();</script-->
     
