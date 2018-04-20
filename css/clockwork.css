@@ -34,9 +34,6 @@ html, body{
 	top: 0px;
 }
 
-.nav-div{
-}
-
 .menu-clickarea{
 	position: absolute;
     float: right; 
@@ -49,7 +46,7 @@ html, body{
     height: 25px; 
 }
 
-.settings-div{
+.settings-div, .userview-div {
     /* display: block; */
     display: none;
     position: absolute; 
@@ -63,25 +60,44 @@ html, body{
     height: 100%; 
     top: 0; 
 }
-
-.settings-header{
+.settings-header, .userview-header {
     text-align: center; 
     margin: -1px 1px 0px -1px !important;
 }
-.settings-content{
+.settings-content, .userview-content {
     text-align: left; 
     min-height: 442px; 
     padding: 5px 0px 5px 10px;
     margin: 3px 1px 0px -1px !important;
 }
-.settings-text{
+.settings-text, .userview-header {
     font-size: 17px !important;  
     padding: 5px 0px 3px 0px;
     color: #00CDCD !important;
     text-shadow: 2px 2px #0032af,
                1px 1px #0032af !important;
 }
-.setting-selection{
+.settings-save, .userview-save {
+    float: right; 
+    margin: 5px 1px 0px 5px !important; 
+}
+.settings-cancel, .userview-cancel {
+    float: right; 
+}
+.settings-close, .userview-close {
+    float: right; 
+    margin: -4px -10px 0px 0px !important; 
+    padding: 1px 2px 7px 2px !important; 
+    background: #800000 !important;  
+    max-height: 22px;
+    min-height: 22px;
+    max-width: 25px;
+    min-width: 25px;
+}
+.userview-select {
+    float: left; 
+}
+.setting-selection {
     margin: 0px 0px 0px 15px !important; 
     max-height: 20px;
     min-height: 20px;
@@ -89,6 +105,37 @@ html, body{
     min-width: 5px;
     float: right; 
 }
+.userview-stats {
+    margin: 0px 0px 0px 7px !important; 
+    text-align: center;
+    max-height: 60px;
+    min-height: 60px;
+    max-width: 45px;
+    min-width: 45px;
+    float: left; 
+    top: 40px; 
+}
+.userview-headers {
+    margin: 0px 0px 7px 7px !important; 
+    max-height: 35px;
+    min-height: 35px;
+    max-width: 230px;
+    min-width: 230px;
+    float: left; 
+    top: 0px; 
+}
+.userview-description {
+    margin: 7px 0px 0px 7px !important;
+    overflow-y: scroll;
+    text-align: left;
+    max-height: 318px;
+    min-height: 318px;
+    max-width: 490px;
+    min-width: 490px;
+    float: left; 
+}
+
+
 
 .gSign{
     position: absolute; 
@@ -108,25 +155,6 @@ html, body{
 .abcRioButtonContentWrapper{
 }
 
-.settings-save{
-    float: right; 
-    margin: 5px 1px 0px 5px !important; 
-}
-.settings-cancel{
-    float: right; 
-}
-.settings-close{
-    float: right; 
-    margin: -4px -10px 0px 0px !important; 
-    padding: 1px 2px 7px 2px !important; 
-    background: #800000 !important;  
-    
-    max-height: 22px;
-    min-height: 22px;
-    max-width: 25px;
-    min-width: 25px;
-}
-
 .title-nav .menu-icon {
 	display: block;
 	width: 15px;
@@ -141,7 +169,8 @@ html, body{
 	margin: -5px 0px 0px -2px;
 }
 .title-nav .menu-icon > svg path {
-	fill: #424242; 
+	/* fill: #424242; */
+	fill: #eff1ff; 
 }
 .title-nav .nav-menu {
 	clear: both;
@@ -224,6 +253,13 @@ html, body{
   position: absolute;
   bottom: 35px;
   right: 40px;
+    
+}
+
+.arrow-wrapper-userinfo {
+  position: absolute;
+  bottom: 80px;
+  right: 75px;
     
 }
 /* width */
@@ -318,7 +354,7 @@ html, body{
 .actionmenu-content {
     display: none;
     position: relative;
-    min-width: 80px;
+    min-width: 60px;
 }
 
 /* Links inside the dropdown */

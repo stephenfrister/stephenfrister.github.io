@@ -5,6 +5,8 @@ title: "Clockwork Warriors"
 
 <!--
 title: "Clockwork Warriors"
+title: "Devons and Dragons"
+title: "Dungeons and Devons"
 title: ""
 -->  
 
@@ -65,10 +67,12 @@ title: ""
             <div class="users-div" align="center">
                 <div class="actionmenu">
                     <div id="id-actionmenu" class="actionmenu-content ff7">
-                        <a href="#" onclick="#" id="actionmenuAttack" >Attack</a>
-                        <a href="#" onclick="#" id="actionmenuMagic" >Magic</a>
-                        <a href="#" onclick="#" id="actionmenuItem" >Items</a>
-                        <a href="#" onclick="#" id="actionmenuExp" >Explore</a>
+                        <a href="#" onclick="#" id="actionmenuView" >View</a>
+                        <a href="#" onclick="#" id="actionmenuEdit" >Edit</a>
+                        <!--a href="#" onclick="#" id="actionmenuAttack" >Attack</a-->
+                        <!--a href="#" onclick="#" id="actionmenuMagic" >Magic</a-->
+                        <!--a href="#" onclick="#" id="actionmenuItem" >Items</a-->
+                        <!--a href="#" onclick="#" id="actionmenuExp" >Explore</a-->
                     </div>
                 </div>
             
@@ -90,10 +94,10 @@ title: ""
                     
                 </div>
                 
-                <div id="story-div" class="story-description ff7" >
+                <div id="id-story-div" class="story-description ff7" >
                     <div id="id-description" class="description-div show">Description</div>
                     <div class="arrow-wrapper">
-                        <div id="id-arrow" class="arrow bounce show" onclick="scroll_down()"></div>
+                        <div id="id-arrow" class="arrow bounce show" onclick="scroll_down('id-story-div')"></div>
                     </div>
                 </div>
                 
@@ -101,6 +105,79 @@ title: ""
             </div>
             
         </div>
+        
+        <div id="id-userview" class="userview-div ff7">
+        
+            <div id="id-userview-header" class="userview-header ff7">
+            
+                <div id="" class="">
+                    <div>User Info
+                        <div id="id-userview-close" class="userview-close ff7" onclick="userviewClose()">&#10006</div>
+                    </div>
+                    
+                </div> 
+                
+            </div> 
+            
+            <div id="id-userview-content" class="userview-content ff7">
+            
+                <div id="id-userview-options" class="userview-options">
+                
+                    <div class="userview-text">
+                    
+                        <div class="userview-headers ff7 ff7-0">
+                            <div id="id-userview-name" class="userview-text">Name: </div></div>
+                            
+                        <div class="userview-headers ff7 ff7-0">
+                            <div id="id-userview-exp" class="userview-text">Exp: </div></div>
+                        
+                    </div>
+                    
+                    <div class="userview-text">
+                    
+                        <div class="userview-stats ff7 ff7-0">
+                            <div id="id-userview-lvl" lass="userview-text">Lvl </div></div>
+                        
+                        <div class="userview-stats ff7 ff7-0">
+                            <div id="id-userview-str" class="userview-text">Str</div></div>
+                        
+                        <div class="userview-stats ff7 ff7-0">
+                            <div id="id-userview-dex" class="userview-text">Dex</div></div>
+                        
+                        <div class="userview-stats ff7 ff7-0">
+                            <div id="id-userview-con" class="userview-text">Con</div></div>
+                        
+                        <div class="userview-stats ff7 ff7-0">
+                            <div id="id-userview-int" class="userview-text">Int</div></div>
+                        
+                        <div class="userview-stats ff7 ff7-0">
+                            <div id="id-userview-wis" class="userview-text">Wis</div></div>
+                        
+                        <div class="userview-stats ff7 ff7-0">
+                            <div id="id-userview-cha" class="userview-text">Cha</div></div>
+                    </div>
+                    
+                    <div class="userview-text">
+                        <div id="id-userview-description" class="userview-description ff7 ff7-0">
+                            <div class="userview-text">Notes: </div></div>
+
+                        <div class="arrow-wrapper-userinfo">
+                            <div id="id-arrow-userinfo" class="arrow bounce show" onclick="scroll_down('id-userview-description')"></div>
+                        </div>
+                
+                    </div>
+                    
+                    
+                </div> 
+                
+            </div>
+                
+            <div id="id-userview-save" class="userview-save ff7" onclick="userviewSave()"><div>Save</div></div>
+            <div id="id-userview-close" class="userview-cancel ff7" onclick="userviewClose()"><div>Close</div></div>
+        
+            <div id="id-userview-select" class="userview-select ff7" onclick="userviewSelect()"><div>Change Act</div></div>
+            
+        </div> 
         
         <div id="id-settings" class="settings-div ff7">
         
@@ -132,10 +209,24 @@ title: ""
                         <div id="ff7-2" class="setting-selection ff7 ff7-2"></div>
                     </div>
                     
+                    <!--
+                    <div class="settings-text"> </div>
                     <div class="settings-text">Sound:</div>
                     <div class="settings-text">Cursor:</div>
                     <div class="settings-text">Controller:</div>
                     <div class="settings-text">Magic Order:</div>
+                    <div class="settings-text">Battle Speed:</div>
+                    <div class="settings-text">Battle Message:</div>
+                    <div class="settings-text">Camera Angle:</div>
+                    <br>
+                    -->
+                    
+                    <br><br><br><br><br><br>
+                    <div class="settings-text" style="font-style:italic;text-align:center;">Ad Space For Sale(exp)...</div>
+                    <br><br><br><br><br><br><br>
+                    
+                    <div class="settings-text"> </div>
+                    <div class="settings-text">Login: </div>
                     
                     <div style="display:none;">Login with Google:</div>
                     <div style="display:none;">Share on Facebook:</div>
@@ -154,7 +245,7 @@ title: ""
     </div>
     
     <!-- to enable login uncomment below -->
-    <!--script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script-->
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     
     <!-- Functions -->
 	<script type="text/javascript">javascript:getUsers("firebaseusers-div");</script>

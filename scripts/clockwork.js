@@ -16,6 +16,8 @@ var chapterAct = firebase.database().ref('chapters/active');
 var chapterPart = firebase.database().ref('chapters/activepart');
 
 
+var ggName = ""
+var ggId = 0
 
 
 
@@ -38,7 +40,7 @@ function getPing(divID)
 
 function claimExp(userId1, userId2)
 {
-    var userId = userId1.toString().concat( userId2.toString() );
+    var userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
     var exp = firebase.database().ref('users/' + userId + '/exp' );
     var hps = firebase.database().ref('users/' + userId + '/health' );
     
@@ -52,8 +54,78 @@ function claimExp(userId1, userId2)
         }        
         
 	});
-    
 }	
+
+function getUserData(userId) {
+    
+    var userData = firebase.database().ref('/users/' + userId)
+    userData.once('value').then(function(snapshot) {
+        var username = (snapshot.val() && snapshot.val().cname) || '???';
+        var userexp = (snapshot.val() && snapshot.val().exp) || '?';
+        var userlvl = (snapshot.val() && snapshot.val().level) || '?';
+        document.getElementById('id-userview-name').innerHTML = "Name: " + username;
+        document.getElementById('id-userview-exp').innerHTML = "Exp: " + userexp;
+        document.getElementById('id-userview-lvl').innerHTML = "Lvl<br>" + userlvl;
+    });
+    
+    var userStats = firebase.database().ref('/users/' + userId + '/stats/')
+    userStats.once('value').then(function(snapshot) {
+        var userstr = (snapshot.val() && snapshot.val().str) || '?';
+        var userdex = (snapshot.val() && snapshot.val().dex) || '?';
+        var usercon = (snapshot.val() && snapshot.val().con) || '?';
+        var userint = (snapshot.val() && snapshot.val().int) || '?';
+        var userwis = (snapshot.val() && snapshot.val().wis) || '?';
+        var usercha = (snapshot.val() && snapshot.val().cha) || '?';
+        document.getElementById('id-userview-str').innerHTML = "Str<br>" + userstr;
+        document.getElementById('id-userview-dex').innerHTML = "Dex<br>" + userdex;
+        document.getElementById('id-userview-con').innerHTML = "Con<br>" + usercon;
+        document.getElementById('id-userview-int').innerHTML = "Int<br>" + userint;
+        document.getElementById('id-userview-wis').innerHTML = "Wis<br>" + userwis;
+        document.getElementById('id-userview-cha').innerHTML = "Cha<br>" + usercha;
+    });
+    
+    notesScrollListener()
+    
+}
+
+function saveUserData(userId) {
+    
+    var userData = firebase.database().ref('/users/' + userId)
+    var userStats = firebase.database().ref('/users/' + userId + '/stats/')
+    
+}
+
+function userEdit(userId1, userId2)
+{
+    var userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
+    
+    getUserData(userId)
+    
+    ////
+    //  display editable fields...
+    ////
+    
+    document.getElementById("id-userview").classList.toggle("show");
+    document.getElementById("id-description").classList.toggle("noshow");
+    document.getElementById("id-userview-save").classList.remove("noshow");
+    
+    
+}
+
+function userView(userId1, userId2)
+{
+    var userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
+    
+    getUserData(userId)
+    
+    document.getElementById("id-userview").classList.toggle("show");
+    document.getElementById("id-description").classList.toggle("noshow");
+    document.getElementById("id-userview-save").classList.add("noshow");
+    
+    checkArrowBottom()
+}
+
+
 
 function getStoryParts(divId1, divId2, divId3)
 {
@@ -80,7 +152,6 @@ function getStoryParts(divId1, divId2, divId3)
         obj3.innerHTML = snapshot.child("/" + act + "/" + part + "/description").val();
         
     });
-    
 }
 
 function getUsers(divID)
@@ -99,6 +170,7 @@ function getUsers(divID)
         var i = 0;
         var html = "";
         var dropdowns = "";
+        var btnNum = 0;
         
         uid     = [];
         
@@ -112,7 +184,6 @@ function getUsers(divID)
         cls     = [];
     
         html = "<table id='users-table'>"
-        
         html += "<tr class='ff7-header'>"
         html += "<td style='width:150px'>Name</td>"
         html += "<td style='width:100px' align='center'>Lvl</td>"
@@ -136,6 +207,7 @@ function getUsers(divID)
                     chars[i] = attribute.val();
                     //chars[i] = userid.key
                 }
+                
                 if(attribute.key == "exp") {
                     exp[i] = attribute.val();
                 }
@@ -148,22 +220,12 @@ function getUsers(divID)
                 else if(attribute.key == "level") {
                     lvl[i] = attribute.val();
                 }
-                
-                
-                
-                // TODO: 
-                
                 else if(attribute.key == "race") {
                     rc[i] = attribute.val();
                 }
                 else if(attribute.key == "class") {
                     cls[i] = attribute.val();
                 }
-                
-                // END
-                
-                
-                
                 else if( attribute.key == "power" || attribute.key == "magic" ) {
                     // empty for now
                 }
@@ -174,7 +236,6 @@ function getUsers(divID)
             });
             
             if( (typeof chars[i] != 'undefined') && (uid[i] != 108488361739358892865) ) {
-                
                 html += "<tr>"
                 
                 if(typeof lvl[i] == 'undefined'){
@@ -232,17 +293,17 @@ function getUsers(divID)
                 html += "<td align='center'>"
                 html += "<button "
                 html += "type='action-button' "
-                html += "class='ff7 dropbtn-disabled' "
-                // CURRENTLY DISABLED, CHANGE dropbtn-disabled TO dropbtn TO ENABLE
-                //html += "onclick='actionClick("
-                //html += userId1 + "," + userId2
-                // UNCOMMENT ABOVE TO ENABLE
+                html += "class='ff7 dropbtn' "
+                html += "onclick='actionClick("
+                html += userId1 + "," + userId2 + "," + btnNum
+                // CHANGE "dropbtn" TO "dropbtn-disabled" TO DISABLE
+                // COMMENT ABOVE TO DISABLE
                 html += ")' >"
                 html += "Action</button></td></td>"
-                
                 html += "</tr>"   
-                
                 html += "</tr>"
+                
+                btnNum++; 
             }
             i++;   
             
@@ -253,45 +314,94 @@ function getUsers(divID)
     });
 }
 
+function setTheme(themeID){
+
+// ELEMENT CLASS
+    var menus = document.getElementsByClassName("ff7");
+    var i;
+    
+    if(!themeID){
+        themeID = "ff7-0"
+    }
+    
+    for (i = 0; i < menus.length; i++) {
+        var openMenu = menus[i];
+        if ( openMenu.classList.contains('ff7') && 
+            !openMenu.classList.contains('setting-selection') && 
+            !openMenu.classList.contains('settings-close')  && 
+            !openMenu.classList.contains('userview-close')  && 
+            !openMenu.classList.contains('title-user') 
+            ) {
+            
+            openMenu.classList.remove('ff7-0')
+            openMenu.classList.remove('ff7-2')
+            openMenu.classList.remove('ff7-3')
+            openMenu.classList.remove('ff7-4')
+            openMenu.classList.remove('ff7-5')
+            openMenu.classList.remove('ff7-6')
+            openMenu.classList.remove('ff7-7')
+            openMenu.classList.remove('ff7-8')
+            openMenu.classList.remove('ff7-9')
+            openMenu.classList.remove('ff7-10')
+            
+            openMenu.classList.add(themeID);
+        }
+    }
+}
+
+
+function checkArrowBottom()
+{
+    //sh = document.getElementById("id-userview-description").scrollHeight;
+    //st = document.getElementById("id-userview-description").scrollTop;
+    //oh = document.getElementById("id-userview-description").offsetHeight; 
+    //console.log("sh: " + sh + ", st: " + st + ", oh: " + oh)
+
+    var obj = document.getElementById("id-userview-description"); 
+    if( obj.scrollTop >= (obj.scrollHeight - obj.offsetHeight - 2))
+    {
+        document.getElementById("id-arrow-userinfo").classList.add("noshow");
+    }
+}
 function setStoryScrollListener(){
     
-    document.getElementById('story-div').addEventListener('scroll', function () {
-            
-        sh = document.getElementById("story-div").scrollHeight;
-        st = document.getElementById("story-div").scrollTop;
-        oh = document.getElementById("story-div").offsetHeight; 
+    var stLast = -1;
+    document.getElementById('id-story-div').addEventListener('scroll', function () {
         
+        sh = document.getElementById("id-story-div").scrollHeight;
+        st = document.getElementById("id-story-div").scrollTop;
+        oh = document.getElementById("id-story-div").offsetHeight; 
+        
+        if( st == stLast ){
+            document.getElementById("id-arrow-userinfo").classList.add("noshow");
+        }
+        else {
+            stLast = st;
+        }
         if ( sh - st < oh ) {
             document.getElementById("id-arrow").classList.add("noshow");
         }
-            
     }, false);
+}
+function notesScrollListener(){
     
+    document.getElementById("id-arrow-userinfo").classList.remove("noshow");
+    document.getElementById('id-userview-description').addEventListener('scroll', function () {
+        
+        sh = document.getElementById("id-userview-description").scrollHeight;
+        st = document.getElementById("id-userview-description").scrollTop;
+        oh = document.getElementById("id-userview-description").offsetHeight; 
+        
+        if ( sh - st < oh ) {
+            document.getElementById("id-arrow-userinfo").classList.add("noshow");
+        }
+    }, false);
 }
 
-//function scrollDiv(){
-    
-    //mScrollOld = document.getElementById("story-div").scrollTop
-    
-    //mBorder = 7; 
-    //mHeight = document.getElementById("story-div").offsetHeight - mBorder; 
-    //document.getElementById("story-div").scrollTop += mHeight;
-    
-    //mScrollNew = document.getElementById("story-div").scrollTop
-    
-    //if ( mScrollNew == mScrollOld ) {
-    //    document.getElementById("id-arrow").classList.toggle("noshow");
-    //}
-    //else if (mScrollNew - mScrollOld < mHeight ) {
-    //    document.getElementById("id-arrow").classList.toggle("noshow");
-    //}
-    
-//}
-
-
 // http://jsfiddle.net/0uwg96sh/
-function scroll_down() {
-    var el = document.getElementById("story-div");
+function scroll_down( divId ) {
+    //console.log("divId: " + divId)
+    var el = document.getElementById(divId);
     smooth_scroll_to(el, el.scrollTop + 200, 600);
 }
 var smooth_scroll_to = function(element, target, duration) {
@@ -354,28 +464,37 @@ var smooth_scroll_to = function(element, target, duration) {
         // boostrap the animation process
         setTimeout(scroll_frame, 0);
     });
+    
 }
 
-function actionClick(userId1, userId2){
+function actionClick(userId1, userId2, btnId){
+    
+    var viewString = "onclick=userView(" + userId1 + "," + userId2 + ")"
+    document.getElementById("actionmenuView").setAttribute("onclick", viewString);
+    
+    userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
+    
+    // current user matches ggId
+    if( userId == ggId ){
+        var editString = "onclick=userEdit(" + userId1 + "," + userId2 + ")"
+        document.getElementById("actionmenuEdit").setAttribute("onclick", editString);
+        document.getElementById("actionmenuEdit").style.color = "#eff1ff";
+        document.getElementById("actionmenuEdit").classList.remove('disabled-hover');
+    }
+    else {
+        var editString = " "
+        document.getElementById("actionmenuEdit").setAttribute("onclick", editString);
+        document.getElementById("actionmenuEdit").style.color = "#33334d";
+        document.getElementById("actionmenuEdit").className = "disabled-hover";
+    }
+    
+    document.getElementById("id-actionmenu").classList.add("show")
+    document.getElementById("id-actionmenu").style.top = 40 * btnId + "px"
     
     //var expString = "onclick=claimExp(" + userId1 + "," + userId2 + ")"
-    
-    //document.getElementById("actionmenuAttack").setAttribute("onclick", mString);
-    //document.getElementById("actionmenuMagic").setAttribute("onclick", mString);
-    //document.getElementById("actionmenuItem").setAttribute("onclick", mString);
     //document.getElementById("actionmenuExp").setAttribute("onclick", expString);
-    
-    document.getElementById("id-actionmenu").classList.toggle("show");
-    
-    document.getElementById("actionmenuAttack").style.color = "#33334d";
-    document.getElementById("actionmenuMagic").style.color = "#33334d";
-    document.getElementById("actionmenuItem").style.color = "#33334d";
-    document.getElementById("actionmenuExp").style.color = "#33334d";
-    
-    document.getElementById("actionmenuAttack").className = "disabled-hover";
-    document.getElementById("actionmenuMagic").className = "disabled-hover";
-    document.getElementById("actionmenuItem").className = "disabled-hover";
-    document.getElementById("actionmenuExp").className = "disabled-hover";
+    //document.getElementById("actionmenuExp").style.color = "#33334d";
+    //document.getElementById("actionmenuExp").className = "disabled-hover";
     
     //document.getElementById("id-actionmenu").innerHTML = "whatever";
     //document.getElementById("id-actionmenu").setAttribute("id", "div_top");
@@ -390,24 +509,18 @@ window.onclick = function(event) {
     var d = event.target.classList.contains('setting-selection') 
     
     //var b = !event.target.matches('.clickarea-div') 
+    //var e = event.target.matches('.userview-close') 
     
     //console.log(event.target);
     //console.log(event.target.id);
     
-    //console.log("d: " + d);
-    //console.log("c: " + c);
-    //console.log("b: " + b);
-    //console.log("a: " + a);
-    
     if ( a ) {
         removeShow("actionmenu-content"); 
     }
-    
     if ( c ) {
         removeShow("settings-div"); 
         settingsSave() 
     }
-    
     if ( d ) {
         var themeID = event.target.id;
         setTheme(themeID);
@@ -415,20 +528,15 @@ window.onclick = function(event) {
         if (themeID == 'ff7-0') {
             deleteCookie('theme')
         }
-        
     }
-  
-}
-
-function navClick(){
-
-    // ELEMENT ID
-    document.getElementById("id-settings").classList.toggle("show");
-    document.getElementById("id-description").classList.toggle("noshow");
-   
-    //document.getElementById("id-settings-header").classList.toggle("show");
-    //document.getElementById("id-settings-content").classList.toggle("show");
-    
+    //if ( c ) {
+        //
+    //}
+    //if ( e ) {
+        //console.log('userview-close: ' + ggId);
+        //removeShow("userview-div"); 
+        //settingsSave() 
+    //}
 }
 
 function removeShow(className) {
@@ -440,7 +548,6 @@ function removeShow(className) {
             openClass.classList.remove('show');
         }
     }
-    
 }
 function removeNoShow(className) {
     var mClass = document.getElementsByClassName(className);
@@ -451,9 +558,13 @@ function removeNoShow(className) {
             openClass.classList.remove('noshow');
         }
     }
-    
 }
 
+
+function navClick(){
+    document.getElementById("id-settings").classList.toggle("show");
+    document.getElementById("id-description").classList.toggle("noshow");
+}
 function settingsGet() {
     var mTheme = getCookie('theme')
     setTheme(mTheme)
@@ -470,47 +581,24 @@ function settingsCancel() {
     removeShow("settings-div");
     removeNoShow("description-div");
 }
-
-function setTheme(themeID){
-
-// ELEMENT CLASS
-    var menus = document.getElementsByClassName("ff7");
-    var i;
+function userviewClose() {
+    removeShow("userview-div");
+    removeNoShow("description-div");
+}
+function userviewSave() {
     
-    if(!themeID){
-        themeID = "ff7-0"
-    }
-        
-    for (i = 0; i < menus.length; i++) {
-        var openMenu = menus[i];
-        if ( openMenu.classList.contains('ff7') && 
-            !openMenu.classList.contains('setting-selection') && 
-            !openMenu.classList.contains('settings-close')  && 
-            !openMenu.classList.contains('title-user') 
-            ) {
-            
-            openMenu.classList.remove('ff7-0')
-            openMenu.classList.remove('ff7-2')
-            openMenu.classList.remove('ff7-3')
-            openMenu.classList.remove('ff7-4')
-            openMenu.classList.remove('ff7-5')
-            openMenu.classList.remove('ff7-6')
-            openMenu.classList.remove('ff7-7')
-            openMenu.classList.remove('ff7-8')
-            openMenu.classList.remove('ff7-9')
-            openMenu.classList.remove('ff7-10')
-            
-            openMenu.classList.add(themeID);
-        }
-    }
+    ////
+    //  save something...
+    ////
     
+    removeShow("userview-div");
+    removeNoShow("description-div");
 }
 
 function setCookie(name,value,days) {
     var expires = "";
     if (days) {
         var date = new Date();
-        //date.setTime(date.getTime() + (years*365*24*60*60*1000));
         date.setTime(date.getTime() + (days*24*60*60*1000));
         expires = "; expires=" + date.toUTCString();
     }
@@ -540,24 +628,16 @@ function deleteAllCookies() {
     }
 }
 
-
 function onSuccess(googleUser) {
-    mName = googleUser.getBasicProfile().getName()
-    mId = googleUser.getBasicProfile().getId()
-    //console.log('getName: ' + mName);
-    //console.log('getId: ' + mId);
-    
+    ggName = googleUser.getBasicProfile().getName()
+    ggId = googleUser.getBasicProfile().getId()
 	var userMessage = document.getElementById("id-user-welcome");
-    userMessage.innerHTML = "User: " + mName + ", " + mId;
-    //userMessage.innerHTML = "Welcome, " + mName + " : " + mId;
-    
+    userMessage.innerHTML = "Welcome, " + ggName.split(" ")[0];
+    //userMessage.innerHTML = "User: " + ggName + ", " + ggId;
 }
 function onFailure(error) {
-    //console.log(error);
-    
 	var userMessage = document.getElementById("id-user-welcome");
-    userMessage.innerHTML = "";
-    
+    userMessage.innerHTML = "Use Menu to Login > > > > > > > > > > > > > > > > > > > > > > > > > > > ";
 }
 function renderButton() {
     gapi.signin2.render('id-gSign', {
