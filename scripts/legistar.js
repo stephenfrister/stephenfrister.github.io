@@ -47,11 +47,10 @@ function searchSubmit(){
                 mValue = data[key];
                 mLink = "http://webapi.legistar.com/v1/Seattle/matters/" + mValue + "/Texts/" + mKey;
                 
-                
                 mTemp = "<div>MatterId: <b>" + mValue + "</b>, TextId: <b>" + mKey + "</b>:";
                 //mTemp += "&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>";
                 
-                if (parseInt(test) < parseInt(700) ) {
+                if (window.innerWidth < 700 ) {
                     mTemp += "<br>&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>";
                 }
                 else {
