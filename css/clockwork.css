@@ -3,13 +3,13 @@ html, body{
     display: inline-block;
     text-align: center;
     height: 100%;
-    margin: 3px; 
     overflow: hidden;
     height: 1200px; 
 }
 
 .body-div{
     height: 100%;
+    width: 550px; 
 }
 
 .front-div{

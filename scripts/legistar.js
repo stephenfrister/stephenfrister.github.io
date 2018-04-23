@@ -29,11 +29,14 @@ function searchSubmit(){
     var searchTerm = value.toLowerCase();
     var searchIndex = 'index/' +  searchTerm;
     
-    var mTerms =  searthTerm.split(" ")
+    var mTerms =  searchTerm.split(" ")
     
     console.log("searchIndex: " + searchIndex);
+    console.log("mTerms: " + mTerms);
     
-    
+    for ( var item in mTerms ) {
+        console.log("item: " + mTerms[item]);
+    }
     
     document.getElementById('id-results').innerHTML = "";
     
