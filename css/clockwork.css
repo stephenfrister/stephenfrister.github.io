@@ -1,4 +1,11 @@
 
+
+@-webkit-viewport{width:device-width}
+@-moz-viewport{width:device-width}
+@-ms-viewport{width:device-width}
+@-o-viewport{width:device-width}
+@viewport{width:device-width}
+
 html, body{
     display: inline-block;
     text-align: center;
@@ -10,6 +17,7 @@ html, body{
 .body-div{
     height: 100%;
     width: 550px; 
+    margin: 0 auto;
 }
 
 .front-div{
