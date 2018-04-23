@@ -24,12 +24,18 @@ function searchSubmit(){
     value = ""; 
     value = document.getElementById('id-search-field').innerHTML;
     
-    document.getElementById('id-results').innerHTML = "";
     
-    var searchTerm = value;
+    
+    var searchTerm = value.toLowerCase();
     var searchIndex = 'index/' +  searchTerm;
     
+    var mTerms =  searthTerm.split(" ")
+    
     console.log("searchIndex: " + searchIndex);
+    
+    
+    
+    document.getElementById('id-results').innerHTML = "";
     
     var search = firebase.database().ref(searchIndex);
     search.once('value').then(function(snapshot) {
