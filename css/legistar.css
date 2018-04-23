@@ -1,5 +1,11 @@
 
 
+html, body{
+    width: 650px; 
+    -webkit-text-size-adjust:100%;
+}
+
+
 .results-div {
     margin-top: 35px;
     /* padding-top: 125px; */
@@ -48,22 +54,6 @@
     content:attr(data-text);
     font-style: italic;  
 }
-
-
-$('div[contenteditable]').keydown(function(e) {
-    // trap the return key being pressed
-
-        console.log("test2...")
-    if (e.keyCode === 13) {
-
-        console.log("test...")
-
-        // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-        //document.execCommand('insertHTML', false, '<br><br>');
-        // prevent the default behaviour of return key pressed
-        return false;
-    }
-});
 
 
 

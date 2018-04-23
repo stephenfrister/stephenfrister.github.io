@@ -35,7 +35,8 @@ function searchSubmit(){
     var searchIndex = 'index/' +  searchTerm;
     
     console.log("searchIndex: " + searchIndex);
-    
+
+    //console.log("here.. " + window.innerWidth);
     
     var search = firebase.database().ref(searchIndex);
     search.once('value').then(function(snapshot) {
@@ -61,7 +62,29 @@ function searchSubmit(){
                 //rValue += "Link: " + mLink + "<br>";
                 //rValue.push("Link: " + mLink + "<br>");
                 
-                rValue.push("<div>MatterId: <b>" + mValue + "</b>, TextId: <b>" + mKey + "</b>:&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>");
+                mTemp = "<div>MatterId: <b>" + mValue + "</b>, TextId: <b>" + mKey + "</b>:";
+                //mTemp += "&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>";
+                
+                
+
+                var test = window.innerWidth
+                console.log("test.. " + test );
+                
+                //if (true) {
+                if (parseInt(test) < parseInt(700) ) {
+                    console.log("less.. " );
+                    mTemp += "<br>&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>";
+                }
+                else {
+                    console.log("greater.. " );
+                    mTemp += "&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>";
+                }
+                /**/
+                
+                
+                rValue.push( mTemp );
+                
+                //rValue.push("<div>MatterId: <b>" + mValue + "</b>, TextId: <b>" + mKey + "</b>:&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>");
                 
             });
             

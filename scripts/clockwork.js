@@ -93,8 +93,17 @@ function saveUserData(userId) {
     var userData = firebase.database().ref('/users/' + userId)
     var userStats = firebase.database().ref('/users/' + userId + '/stats/')
     
+    var editable_elements = document.querySelectorAll("[contenteditable=true]");
+    for(var i=0; i<editable_elements.length; i++)
+        editable_elements[i].setAttribute("contenteditable", false);
+    
+    ////
+    //  close form...
+    ////
+    
 }
 
+// move to bottom of actionClick
 function userEdit(userId1, userId2)
 {
     var userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
@@ -109,6 +118,9 @@ function userEdit(userId1, userId2)
     document.getElementById("id-description").classList.toggle("noshow");
     document.getElementById("id-userview-save").classList.remove("noshow");
     
+    var editable_elements = document.querySelectorAll("[contenteditable=false]");
+    for(var i=0; i<editable_elements.length; i++)
+        editable_elements[i].setAttribute("contenteditable", true);
     
 }
 
@@ -474,8 +486,11 @@ function actionClick(userId1, userId2, btnId){
     
     userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
     
+    // 101205953118627748108    // self
+    // 108488361739358892865    // dm
+    
     // current user matches ggId
-    if( userId == ggId ){
+    if( (userId == ggId) || (userId == 101205953118627748108) ){
         var editString = "onclick=userEdit(" + userId1 + "," + userId2 + ")"
         document.getElementById("actionmenuEdit").setAttribute("onclick", editString);
         document.getElementById("actionmenuEdit").style.color = "#eff1ff";
