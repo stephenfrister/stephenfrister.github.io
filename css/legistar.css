@@ -6,9 +6,22 @@ html, body{
 }
 
 
+.words-div-top {
+    margin-top: 35px;
+}
+.words-div {
+    margin-top: 10px;
+}
+.words {
+    padding: 5px 0px 0px 10px; 
+    font-style: italic;  
+}
+.results-combined-div {
+    margin-top: 35px;
+    display: none; 
+}
 .results-div {
     margin-top: 35px;
-    /* padding-top: 125px; */
 }
 .results {
     padding: 5px 0px 0px 10px; 
@@ -19,6 +32,8 @@ html, body{
 }
 
 .search-field {
+    white-space: nowrap; 
+    overflow: hidden;
     position: absolute;
     vertical-align: middle;
     margin-top: 5px;

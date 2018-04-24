@@ -15,24 +15,43 @@ html, body{
     height: 1200px; 
 }
 
-.body-div{
+.editable {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    background-color: -moz-field;
+    border: 1px solid darkgray;
+    box-shadow: 1px 1px 1px 0 lightgray inset;  
+    font: -moz-field;
+    font: -webkit-small-control;
+}
+
+
+/*
+    background-color: white;
+    margin-top: 5px;
+    padding: 5px 3px 0px 4px;
+    width: 200px;    
+*/
+
+
+.body-div {
     height: 100%;
     width: 550px; 
     margin: 0 auto;
 }
 
-.front-div{
+.front-div {
     overflow: hidden; 
 }
 
-.title-user{
+.title-user {
 	position: absolute;
     background: transparent !important; 
     box-shadow: none !important;  
     border: none !important; 
 	top: 5px;
 }
-.user-div{ 
+.user-div { 
     font-size: 12px !important; 
 }
 
@@ -43,7 +62,7 @@ html, body{
 	top: 0px;
 }
 
-.menu-clickarea{
+.menu-clickarea {
 	position: absolute;
     float: right; 
     width: 35px; 
@@ -51,7 +70,7 @@ html, body{
     opacity: 0
     
 }
-.clickarea-div{
+.clickarea-div {
     height: 25px; 
 }
 
@@ -130,8 +149,13 @@ html, body{
     min-height: 35px;
     max-width: 230px;
     min-width: 230px;
+    width: 100%;
     float: left; 
     top: 0px; 
+}
+.userview-header-inner {
+    float: left; 
+    min-width: 40px;
 }
 .userview-description {
     margin: 7px 0px 0px 7px !important;
@@ -143,7 +167,11 @@ html, body{
     min-width: 490px;
     float: left; 
 }
-
+.userview-notes {
+    padding: 2px; 
+    height: 100%;
+    min-height: 300px;
+}
 
 
 .gSign{

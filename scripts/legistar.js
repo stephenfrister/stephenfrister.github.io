@@ -12,6 +12,12 @@ firebase.initializeApp(config);
 
 function searchSubmit(){
     
+    document.getElementById('id-results').innerHTML = "";
+    document.getElementById('id-words-found').innerHTML = ": "; 
+    document.getElementById('id-words-not-found').innerHTML = ": "; 
+    document.getElementById('id-words-removed').innerHTML = ": "; 
+    document.getElementById('id-results-combined').innerHTML = "";
+    
     // http://webapi.legistar.com/v1/Seattle/matters/1796/Texts/1897
     // http://webapi.legistar.com/v1/Seattle/matters/<matterId>/Texts/<textId>
     
@@ -22,25 +28,88 @@ function searchSubmit(){
     // http://webapi.legistar.com/v1/Seattle/matters/<value>/Texts/<key>
     
     value = ""; 
-    value = document.getElementById('id-search-field').innerHTML;
+    value = document.getElementById('id-search-field').innerText;
     
+    var searchWords = value.toLowerCase().replace(/\W/g, ' ');
+    var mWords =  searchWords.split(" ")
     
+    ////
+    //  replace "." with ","
+    //  searchWords = searchWords.replace(".", ",")
+    ////
     
-    var searchTerm = value.toLowerCase();
-    var searchIndex = 'index/' +  searchTerm;
+    ////
+    //  remove words not indexed
+    ////
     
-    var mTerms =  searchTerm.split(" ")
-    
-    console.log("searchIndex: " + searchIndex);
-    console.log("mTerms: " + mTerms);
-    
-    for ( var item in mTerms ) {
-        console.log("item: " + mTerms[item]);
+    exList = [  
+            'and', 'for', 'new', 'par', 'the',
+            'who', 'per', 'now', 'not', 'its',
+            'has', 'few', 'day', 'but', 'may',
+            'tab', 'are', 'any', 'was', 'use',
+            'ansi', 'body', 'city', 'open', 'that',
+            'were', 'this', 'them', 'bill', 'more',
+            'less', 'page', 'many', 'each', 'last',
+            'take', 'next', 'with', 'such', 'will',
+            'upon',
+            'times', 'title', 'roman', 'where', 'there',
+            'shall', 'which', 'after', 'these', 'those',
+            'should', 'signed', 'within', 'before',
+            'seattle', 'council', 'through', 'thereof',
+            'whereas',
+            'therefore', 'therewith'         
+            ]
+            
+    var listLength = mWords.length;
+    for ( var item in mWords ) {
+        if ( exList.indexOf(mWords[item]) > -1 ) {
+            console.log("remove item: " + mWords[item]);
+            document.getElementById('id-words-removed').innerHTML += mWords[item] + ", "
+            listLength = listLength - 1; 
+        }
     }
     
-    document.getElementById('id-results').innerHTML = "";
+    // for each item in mWords
+    // get all database entries
+    for ( var item in mWords ) {
+        
+        if ( !(exList.indexOf(mWords[item]) > -1) ) {
+            console.log("item: " + mWords[item]);
+            getSearchResults( mWords[item], listLength );
+        }
+        
+    }
     
+    // add them to a list
+    // document.getElementById('id-results-combined').innerHTML
+    //.. 
+    
+    // remove any entry that doesn't have count == len(mWords)
+    // maybe count instead? 
+    //.. 
+    
+    // return those to the user
+    // set document.getElementById('id-results').innerHTML
+    //.. 
+    //document.getElementById('id-results').innerHTML = "<div>(" + mWords.length + ")</div>"
+    
+}
+
+function update( count ) {
+    var combinedResults = document.getElementById('id-results-combined').innerHTML;
+    mSplit = combinedResults.split('(');
+    for ( var line in mSplit ) {
+        if ( mSplit[line].startsWith(count) ) {
+             document.getElementById('id-results').innerHTML += mSplit[line].split(")")[1];
+        }
+    }
+}
+
+function getSearchResults( word, searchLength ) {
+    
+    var searchIndex = 'index/' +  word;
     var search = firebase.database().ref(searchIndex);
+    
     search.once('value').then(function(snapshot) {
         var data = snapshot.val();
         
@@ -48,36 +117,47 @@ function searchSubmit(){
         
         if(data) { 
         
+            var combinedResults = document.getElementById('id-results-combined').innerHTML
+        
             Object.keys(data).forEach(function(key) {
-                
-                //console.log(key, data[key]);
                 
                 mKey = key;
                 mValue = data[key];
+                
                 mLink = "http://webapi.legistar.com/v1/Seattle/matters/" + mValue + "/Texts/" + mKey;
                 
-                mTemp = "<div>MatterId: <b>" + mValue + "</b>, TextId: <b>" + mKey + "</b>:";
-                //mTemp += "&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>";
+                mTemp  = ""
+                mTemp  = "MatterId: <b>" + mValue
+                mTemp += "</b>, TextId: <b>" + mKey;
+                mTemp += "</b>:";
+                
+                var re = new RegExp(mTemp, 'g');
+                var count = (combinedResults.match(re) || []).length + 1;
+                
+                mTemp = "<div>(" + count + ".) " + mTemp
                 
                 if (window.innerWidth < 700 ) {
-                    mTemp += "<br>&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>";
+                    mTemp += "<br>&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a></div>";
                 }
                 else {
-                    mTemp += "&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>";
+                    mTemp += "&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a></div>";
                 }
-                /**/
-                
                 rValue.push( mTemp );
-                
-                //rValue.push("<div>MatterId: <b>" + mValue + "</b>, TextId: <b>" + mKey + "</b>:&nbsp;&nbsp;<a href=" + mLink + ">" + mLink + "</a><div>");
                 
             });
             
             rValue.reverse(); 
             rValue = rValue.join(" "); 
             
-            document.getElementById('id-results').innerHTML += rValue;
+            document.getElementById('id-results-combined').innerHTML += rValue;
+            
+            document.getElementById('id-words-found').innerHTML += word + ", ";
+            
+            update( searchLength ); 
         
+        }
+        else { 
+            document.getElementById('id-words-not-found').innerHTML += word + ", ";
         }
     });
     
@@ -90,5 +170,16 @@ function keyDownTextField(e) {
         searchSubmit()
     }
 }
+
+document.addEventListener("paste", function(e) {
+    // cancel paste
+    e.preventDefault();
+
+    // get text representation of clipboard
+    var text = e.clipboardData.getData("text/plain");
+
+    // insert text manually
+    document.execCommand("insertHTML", false, text);
+});
 
 

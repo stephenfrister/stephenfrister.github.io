@@ -16,10 +16,10 @@ var chapterAct = firebase.database().ref('chapters/active');
 var chapterPart = firebase.database().ref('chapters/activepart');
 
 
-var ggName = ""
-var ggId = 0
+var ggName = "";
+var ggId = 0;
 
-
+var notesListener = false; 
 
 function pingServer()
 {
@@ -63,9 +63,18 @@ function getUserData(userId) {
         var username = (snapshot.val() && snapshot.val().cname) || '???';
         var userexp = (snapshot.val() && snapshot.val().exp) || '?';
         var userlvl = (snapshot.val() && snapshot.val().level) || '?';
-        document.getElementById('id-userview-name').innerHTML = "Name: " + username;
-        document.getElementById('id-userview-exp').innerHTML = "Exp: " + userexp;
-        document.getElementById('id-userview-lvl').innerHTML = "Lvl<br>" + userlvl;
+        
+        //document.getElementById('id-userview-name').innerHTML = "Name: " + username;
+        //document.getElementById('id-userview-exp').innerHTML = "Exp: " + userexp;
+        //document.getElementById('id-userview-lvl').innerHTML = "Lvl<br>" + userlvl;
+        
+        //document.getElementById('id-userview-name').placeholder = username;
+        //document.getElementById('id-userview-exp').placeholder = userexp;
+        //document.getElementById('id-userview-lvl').placeholder = userlvl;
+        
+        document.getElementById('id-userview-name').innerHTML = username;
+        document.getElementById('id-userview-exp').innerHTML = userexp;
+        document.getElementById('id-userview-lvl').innerHTML = userlvl;
     });
     
     var userStats = firebase.database().ref('/users/' + userId + '/stats/')
@@ -76,12 +85,20 @@ function getUserData(userId) {
         var userint = (snapshot.val() && snapshot.val().int) || '?';
         var userwis = (snapshot.val() && snapshot.val().wis) || '?';
         var usercha = (snapshot.val() && snapshot.val().cha) || '?';
-        document.getElementById('id-userview-str').innerHTML = "Str<br>" + userstr;
-        document.getElementById('id-userview-dex').innerHTML = "Dex<br>" + userdex;
-        document.getElementById('id-userview-con').innerHTML = "Con<br>" + usercon;
-        document.getElementById('id-userview-int').innerHTML = "Int<br>" + userint;
-        document.getElementById('id-userview-wis').innerHTML = "Wis<br>" + userwis;
-        document.getElementById('id-userview-cha').innerHTML = "Cha<br>" + usercha;
+        
+        //document.getElementById('id-userview-str').innerHTML = "Str<br>" + userstr;
+        //document.getElementById('id-userview-dex').innerHTML = "Dex<br>" + userdex;
+        //document.getElementById('id-userview-con').innerHTML = "Con<br>" + usercon;
+        //document.getElementById('id-userview-int').innerHTML = "Int<br>" + userint;
+        //document.getElementById('id-userview-wis').innerHTML = "Wis<br>" + userwis;
+        //document.getElementById('id-userview-cha').innerHTML = "Cha<br>" + usercha;
+        
+        document.getElementById('id-userview-str').innerHTML = userstr;
+        document.getElementById('id-userview-dex').innerHTML = userdex;
+        document.getElementById('id-userview-con').innerHTML = usercon;
+        document.getElementById('id-userview-int').innerHTML = userint;
+        document.getElementById('id-userview-wis').innerHTML = userwis;
+        document.getElementById('id-userview-cha').innerHTML = usercha;
     });
     
     notesScrollListener()
@@ -119,9 +136,21 @@ function userEdit(userId1, userId2)
     document.getElementById("id-userview-save").classList.remove("noshow");
     
     var editable_elements = document.querySelectorAll("[contenteditable=false]");
-    for(var i=0; i<editable_elements.length; i++)
+    for(var i=0; i<editable_elements.length; i++) {
         editable_elements[i].setAttribute("contenteditable", true);
-    
+        editable_elements[i].classList.add("editable");
+    }    
+    checkArrowBottom()
+}
+
+document.addEventListener("keydown", keyDownTextField, false);
+function keyDownTextField(e) {
+    if( document.activeElement.id != "userview-notes" )
+    {
+        if( e.keyCode == 13 ) {
+            e.preventDefault()
+        }
+    }
 }
 
 function userView(userId1, userId2)
@@ -398,16 +427,20 @@ function setStoryScrollListener(){
 function notesScrollListener(){
     
     document.getElementById("id-arrow-userinfo").classList.remove("noshow");
-    document.getElementById('id-userview-description').addEventListener('scroll', function () {
-        
-        sh = document.getElementById("id-userview-description").scrollHeight;
-        st = document.getElementById("id-userview-description").scrollTop;
-        oh = document.getElementById("id-userview-description").offsetHeight; 
-        
-        if ( sh - st < oh ) {
-            document.getElementById("id-arrow-userinfo").classList.add("noshow");
-        }
-    }, false);
+    
+    if(!notesListener){
+        document.getElementById('id-userview-description').addEventListener('scroll', function () {
+            
+            sh = document.getElementById("id-userview-description").scrollHeight;
+            st = document.getElementById("id-userview-description").scrollTop;
+            oh = document.getElementById("id-userview-description").offsetHeight; 
+            
+            if ( sh - st < oh ) {
+                document.getElementById("id-arrow-userinfo").classList.add("noshow");
+            }
+        }, false);
+        notesListener = true;
+    }
 }
 
 // http://jsfiddle.net/0uwg96sh/
@@ -486,11 +519,15 @@ function actionClick(userId1, userId2, btnId){
     
     userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
     
-    // 101205953118627748108    // self
+    // 110094113716589359072    // self1
+    // 108360043117969116770    // self2
     // 108488361739358892865    // dm
     
+    console.log("ggId: " + ggId);
+    console.log("userId: " + userId);
+    
     // current user matches ggId
-    if( (userId == ggId) || (userId == 101205953118627748108) ){
+    if( (userId == ggId) || (ggId == 110094113716589359072) ){
         var editString = "onclick=userEdit(" + userId1 + "," + userId2 + ")"
         document.getElementById("actionmenuEdit").setAttribute("onclick", editString);
         document.getElementById("actionmenuEdit").style.color = "#eff1ff";
@@ -598,7 +635,15 @@ function settingsCancel() {
 }
 function userviewClose() {
     removeShow("userview-div");
-    removeNoShow("description-div");
+    removeNoShow("description-div");    
+    
+    var editable_elements = document.querySelectorAll("[contenteditable=true]");
+    for(var i=0; i<editable_elements.length; i++) {
+        editable_elements[i].setAttribute("contenteditable", false);
+        editable_elements[i].classList.remove("editable");
+        
+    }    
+    
 }
 function userviewSave() {
     
