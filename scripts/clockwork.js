@@ -68,7 +68,7 @@ function saveUserData(userId1, userId2) {
     var userData = firebase.database().ref('/users/' + userId);
         
     var username = document.getElementById('id-userview-name').innerHTML.replace(/\W/g, '');
-    var userrace = document.getElementById('id-userview-race').innerHTML.replace(/\W/g, '');
+    var userrace = document.getElementById('id-userview-race').innerHTML.replace(/\W/g, ' ');
     var userclass = document.getElementById('id-userview-class').innerHTML.replace(/\W/g, '');
     var userother = document.getElementById('id-userview-other').innerHTML.replace(/\W/g, '');
     var userexp = document.getElementById('id-userview-exp').innerHTML.replace(/\W/g, '');
@@ -85,7 +85,7 @@ function saveUserData(userId1, userId2) {
     var notesPath = '/notes/' + notesAct;
     
     username  = username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
-    userrace  = userrace.charAt(0).toUpperCase() + userrace.slice(1).toLowerCase(); 
+    //userrace  = userrace.charAt(0).toUpperCase() + userrace.slice(1).toLowerCase(); 
     userclass = userclass.charAt(0).toUpperCase() + userclass.slice(1).toLowerCase();
     
     // update user data
@@ -215,6 +215,8 @@ function userView(userId1, userId2)
     var userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
     
     getUserData(userId);
+    
+    document.getElementById('id-userview-notes-id').innerHTML = userId;
     
     document.getElementById("id-userview").classList.toggle("show");
     document.getElementById("id-description").classList.toggle("noshow");
