@@ -68,7 +68,7 @@ function saveUserData(userId1, userId2) {
     var userData = firebase.database().ref('/users/' + userId);
         
     var username = document.getElementById('id-userview-name').innerHTML.replace(/\W/g, '');
-    var userrace = document.getElementById('id-userview-race').innerHTML.replace(/\W/g, ' ');
+    var userrace = document.getElementById('id-userview-race').innerHTML.replace(/\W/g, ' ');   // allow spaces
     var userclass = document.getElementById('id-userview-class').innerHTML.replace(/\W/g, '');
     var userother = document.getElementById('id-userview-other').innerHTML.replace(/\W/g, '');
     var userexp = document.getElementById('id-userview-exp').innerHTML.replace(/\W/g, '');
@@ -85,7 +85,7 @@ function saveUserData(userId1, userId2) {
     var notesPath = '/notes/' + notesAct;
     
     username  = username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
-    //userrace  = userrace.charAt(0).toUpperCase() + userrace.slice(1).toLowerCase(); 
+    //userrace  = userrace.charAt(0).toUpperCase() + userrace.slice(1).toLowerCase();   // allow mutiple words
     userclass = userclass.charAt(0).toUpperCase() + userclass.slice(1).toLowerCase();
     
     // update user data
@@ -115,21 +115,23 @@ function saveUserData(userId1, userId2) {
 
 function userviewSelect() { 
     
-    // show the actmenu
-    document.getElementById("id-actmenu").classList.toggle("show")
+    // show the notes-menu
+    document.getElementById("id-notes-menu").classList.toggle("show")
 
     // get act list
     var chapters = firebase.database().ref('/chapters/')
     chapters.once('value').then(function(snapshot) {
         
         var count = (snapshot.val() && snapshot.child('count').val()) || '0';
-        var actMenu = document.getElementById("id-actmenu")
+        var notesMenu = document.getElementById("id-notes-menu")
         
-        actMenu.innerHTML = "";
-        actMenu.innerHTML += "<a href='#' onclick='changeActNotes(0,0)' id='' >Character Story</a>";
-        actMenu.innerHTML += "<a href='#' onclick='changeActNotes(0,1)' id='' >Miscellaneous</a>";
+        notesMenu.innerHTML = "";
+        notesMenu.innerHTML += "<a href='#' onclick='changeActNotes(0,0)' id='' >Character Story</a>";
+        notesMenu.innerHTML += "<a href='#' onclick='changeActNotes(0,1)' id='' >Miscellaneous</a>";
         
         // ignore 0,0 and 0,1
+        // reverse order
+        // the most recent is at the top (#3) of the list
         var titles = []
         for( var i = count ; i > 0 ; i-- ) {
             var partsPath = i + "/parts" 
@@ -139,8 +141,8 @@ function userviewSelect() {
                 var titleValue = (snapshot.val() && snapshot.child(titlePath).val()) || '?'; 
                 var actpart = i + "," + j
                 var clickChange = 'onclick=changeActNotes(' + actpart + ')'
-                actList = '<a href="#" onclick="' + clickChange + '" id="" >' + i + "," + j + ": " + titleValue + '</a>';
-                actMenu.innerHTML += actList;
+                actList = '<a href="#" onclick="' + clickChange + '" >' + i + "," + j + ": " + titleValue + '</a>';
+                notesMenu.innerHTML += actList;
             }
         }
     });
@@ -164,7 +166,6 @@ function saveActNotes(){
     
 }
 
-
 function changeActNotes( act, part ){
     
     saveActNotes();
@@ -172,12 +173,6 @@ function changeActNotes( act, part ){
     // get notes from the act selected from the dropdown
     var actpart = act + "," + part
     document.getElementById('id-userview-notes-act').innerHTML = actpart;
-    
-    var userData = firebase.database().ref('/users/' + userId + '/notes/' + actpart)
-    userData.once('value').then(function(snapshot) {
-        var actnotes = snapshot.val() || '...';
-        document.getElementById('id-userview-notes').innerHTML = actnotes ;
-    });
     
     var actTitle = firebase.database().ref('/chapters/' + act + '/' + part + '/title')
     actTitle.once('value').then(function(snapshot) {
@@ -195,7 +190,19 @@ function changeActNotes( act, part ){
         }
         document.getElementById('id-userview-notes-title').innerHTML = notesTitle ;
     });
-    document.getElementById("id-actmenu").classList.toggle("show");
+    
+    var userData = firebase.database().ref('/users/' + userId + '/notes/' + actpart)
+    userData.once('value').then(function(snapshot) {
+        var actnotes = snapshot.val() || '...';
+        document.getElementById('id-userview-notes').innerHTML = actnotes ;
+    });
+    
+    document.getElementById("id-notes-menu").classList.toggle("show");
+    
+    
+    document.getElementById("id-userview-description").scrollTop = 0;
+    document.getElementById("id-arrow-userinfo").classList.remove("noshow");
+    
 }
 
 function userviewClose() { 
@@ -206,19 +213,21 @@ function userviewClose() {
     }   
     removeShow("userview-div");
     removeNoShow("description-div");  
-    document.getElementById("id-actmenu").classList.remove("show");    
+    document.getElementById("id-notes-menu").classList.remove("show");   
+    document.getElementById("id-story-div").classList.toggle("noshow");    
     saveActNotes();
 }
 
 function userView(userId1, userId2)
 {
     var userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
-    
     getUserData(userId);
     
     document.getElementById('id-userview-notes-id').innerHTML = userId;
     
     document.getElementById("id-userview").classList.toggle("show");
+    
+    document.getElementById("id-story-div").classList.toggle("noshow");
     document.getElementById("id-description").classList.toggle("noshow");
     document.getElementById("id-userview-save").classList.add("noshow");
 }
@@ -226,13 +235,15 @@ function userView(userId1, userId2)
 function userEdit(userId1, userId2)
 {
     var userId = userId1.toString().concat( userId2.toString().padStart(11,"0") );
-    
     getUserData(userId);
     
     document.getElementById('id-userview-notes-id').innerHTML = userId;
+    
     document.getElementById("id-userview-save").setAttribute( 'onclick','saveUserData(' + userId1 + ',' + userId2 + ')' );
     
     document.getElementById("id-userview").classList.toggle("show");
+    
+    document.getElementById("id-story-div").classList.toggle("noshow");
     document.getElementById("id-description").classList.toggle("noshow");
     document.getElementById("id-userview-save").classList.remove("noshow");
     
@@ -274,6 +285,57 @@ function actionClick(userId1, userId2, btnId){
     document.getElementById("id-actionmenu").style.top = 40 * btnId + "px"
 }	
 
+function storySelectClick() {
+    
+    // get act list
+    // populate selection menu
+    var chapters = firebase.database().ref('/chapters/')
+    chapters.once('value').then(function(snapshot) {
+        
+        var count = (snapshot.val() && snapshot.child('count').val()) || '0';
+        var storyMenu = document.getElementById("id-story-menu")
+        storyMenu.innerHTML = "";
+        
+        var titles = []
+        for( var i = 0 ; i < count ; i++ ) {
+            
+            var partsPath = i + "/parts" 
+            var partsValue = (snapshot.val() && snapshot.child(partsPath).val()) || '?'; 
+            
+            for( var j = 0 ; j <= partsValue ; j++ ) { 
+            
+                // part 0 does not exist
+                // 0,0 is a special case
+                if ( !(j == 0 && i > 0) ){
+                    
+                    var actTitlePath = i + "/title" 
+                    var actTitle = (snapshot.val() && snapshot.child(actTitlePath).val()) || '?'; 
+                    var partTitlePath = i + "/" + j + "/title" 
+                    var partTitle = (snapshot.val() && snapshot.child(partTitlePath).val()) || '?'; 
+                    var actpart = i + "," + j
+                    var clickChange = 'onclick=storyChange(' + actpart + ')'
+                    var displayActPart = "Act " + i + ": " + actTitle + ", Part " + j + ": " + partTitle;
+                    
+                    storyList = '<a href="#" onclick="' + clickChange + '" >' + displayActPart + '</a>';
+                    storyMenu.innerHTML += storyList;
+                }
+            }
+        }
+        
+    });
+    
+    // show selection menu
+    document.getElementById("id-story-menu").classList.add("show")
+    
+}
+
+function storyChange( act, part ) {
+    // change displayed story
+    changeStoryParts( "id-ctitle-div", "id-ptitle-div", "id-description", act, part );
+    document.getElementById("id-story-div").scrollTop = 0;
+    document.getElementById("id-arrow").classList.remove("noshow");
+}
+
 function getStoryParts(divId1, divId2, divId3)
 {
     var obj1 = document.getElementById(divId1);  
@@ -299,8 +361,19 @@ function getStoryParts(divId1, divId2, divId3)
         obj3.innerHTML = snapshot.child("/" + act + "/" + part + "/description").val();
         
     });
-    //checkStoryArrowBottom();
-    //setStoryScrollListener();
+}
+
+function changeStoryParts(divId1, divId2, divId3, act, part)
+{
+    var obj1 = document.getElementById(divId1);  
+    var obj2 = document.getElementById(divId2); 
+    var obj3 = document.getElementById(divId3); 
+    
+    chapters.once("value", function(snapshot) {
+        obj1.innerHTML = "Act " + act + ": " + snapshot.child("/" + act + "/title").val();
+        obj2.innerHTML = "Part " + part + ": " + snapshot.child("/" + act + "/" + part + "/title").val();
+        obj3.innerHTML = snapshot.child("/" + act + "/" + part + "/description").val();
+    });
 }
 
 function getUsers(divID)
@@ -660,12 +733,6 @@ function settingsCancel() {
     removeShow("settings-div");
     removeNoShow("description-div");
 }
-
-
-/* ... */
-
-
-
 function setCookie(name,value,days) {
     var expires = "";
     if (days) {
@@ -725,12 +792,14 @@ function renderButton() {
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
     
-    var a = !event.target.matches('.dropbtn')
-    var c = event.target.matches('.settings-close') 
-    var d = event.target.classList.contains('setting-selection') 
+    var a = !event.target.matches('.dropbtn');
+    var c = event.target.matches('.settings-close');
+    var d = event.target.classList.contains('setting-selection');
+    var f = !event.target.classList.contains('ctitle-div');
+    var g = !event.target.classList.contains('ptitle-div');
     
-    //var b = !event.target.matches('.clickarea-div') 
-    //var e = event.target.matches('.userview-close') 
+    //var b = !event.target.matches('.clickarea-div');
+    //var e = event.target.matches('.userview-close');
     
     //console.log(event.target);
     //console.log(event.target.id);
@@ -750,6 +819,11 @@ window.onclick = function(event) {
             deleteCookie('theme')
         }
     }
+    if ( f && g ) {
+        removeShow("story-menu-content"); 
+    }
+    
+    
     //if ( c ) {
         //
     //}

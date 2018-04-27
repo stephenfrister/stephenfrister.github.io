@@ -89,11 +89,28 @@ title: ""
                 <div id="title-div" class="story-title">
                 
                     <div class="story-ctitle ff7" >
-                        <div id="ctitle-div" >Act Title</div>
+                        <div id="id-ctitle-div" class="ctitle-div" onclick="storySelectClick()" >Act Title</div>
                     </div>
                     <div class="story-ptitle ff7" >
-                        <div id="ptitle-div" >Part Title</div>
+                        <div id="id-ptitle-div" class="ptitle-div" onclick="storySelectClick()" >Part Title</div>
                     </div>
+                    
+                    <div class="story-menu" >
+                        <div id="id-story-menu" class="story-menu-content ff7" >
+                            <div id="" class="story-select-div" >Act 1: Terra Nova, Part 3: Glass Staff</div> 
+                            <div id="" class="story-select-div" >Act 2: Terra Nova, Part 4: Glass Staff</div> 
+                            <div id="" class="story-select-div" >Act 3: Terra Nova, Part 5: Glass Staff</div> 
+                        </div> 
+                    </div> 
+                    
+                    
+                    <!--div class="notes-menu">
+                        <div id="id-notes-menu" class="notes-menu-content ff7">
+                            <a href="#" onclick="" id="" >0,0: Character Story</a>
+                            <a href="#" onclick="" id="" >0,1: Miscellaneous</a>
+                        </div>
+                    </div-->
+            
                     
                 </div>
                 
@@ -124,8 +141,8 @@ title: ""
             
             <div id="id-userview-content" class="userview-content ff7">
                 
-                <div class="actmenu">
-                    <div id="id-actmenu" class="actmenu-content ff7">
+                <div class="notes-menu">
+                    <div id="id-notes-menu" class="notes-menu-content ff7">
                         <a href="#" onclick="" id="" >0,0: Character Story</a>
                         <a href="#" onclick="" id="" >0,1: Miscellaneous</a>
                     </div>
@@ -297,7 +314,7 @@ title: ""
     
     <!-- Functions -->
 	<script type="text/javascript">javascript:getUsers("firebaseusers-div");</script>
-    <script type="text/javascript">javascript:getStoryParts("ctitle-div","ptitle-div","id-description");</script>
+    <script type="text/javascript">javascript:getStoryParts("id-ctitle-div","id-ptitle-div","id-description");</script>
 	<script type="text/javascript">javascript:setStoryScrollListener();</script>
     
 	<!--script type="text/javascript">javascript:getSettings();</script-->
