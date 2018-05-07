@@ -11,7 +11,7 @@ html, body{
     background-color: #eee;
 }
 .table-header-rotated th.rotate-315 {
-  height: 160px;
+  height: 170px;
   width: 40px;
   min-width: 40px;
   max-width: 40px;
@@ -163,24 +163,42 @@ html, body{
     display: none; 
 }
 
-
+.search-time {
+    position: absolute; 
+    font-size: 14px; 
+    font-style: italic; 
+    margin: 10px 0 0 5px;
+    left: 400px;
+    top: 27px;
+}
+/*
+    float: left;
+*/
 .search-div {
     margin: 0 0 0 45px;
     width: 280px; 
 }
 .search-field {
+    font-size: 1em !important; 
     white-space: nowrap; 
     overflow: hidden;
     position: absolute;
     vertical-align: middle;
     margin-top: 5px;
-    height: 19px;
+    height: 1.3em;
+    
     width: 200px;
 }
+/*
+    height: 12px;
+    height: 16px;
+    height: 19px;
+    height: 24px;
+*/
 .search-button {
     width: 60px;
-    height: 24px;
-    margin: 1px 0px 0px 0px; 
+    height: 2.1em;
+    margin: 0px 0px 0px 0px; 
 }
 .search-button-div {
     float: right;

@@ -18,9 +18,14 @@ function searchSubmit(){
     
     search = document.getElementById('id-search-field').innerText;
     
+    //CB 119123
     //CB 119215
     //CB 119130
     //CF 312905
+    
+    // cb -> CB
+    // cf -> CF
+    // appt -> Appt
     
     searchMatterFile( search )
     getVoteTypes()
