@@ -12,9 +12,24 @@ title: "Scorecard"
 <body>	
     
     <br>
-        
+    
     <div id="id-search" class ="search-div"> 
-        <div id="id-search-field" class ="search-field" contenteditable="true" data-text="Search..."></div>
+    
+        <div >
+            <select id="id-search-select" class="search-select">
+                <option value="Appt">Appt</option>
+                <option value="CB" selected="selected">CB</option>
+                <option value="CF">CF</option>
+                <option value="GS">GS</option>
+                <option value="Inf">Inf</option>
+                <option value="IRC">IRC</option>
+                <option value="Min">Min</option>
+                <option value="Res">Res</option>
+                <option value="SLI">SLI</option>
+            </select>
+        </div>
+        
+        <div id="id-search-field" class ="search-field numOnly" contenteditable="true" data-text="Search..."></div>
         <div id="id-search-button" class ="search-button-div">
             <button id="id-search-button" class ="search-button" onclick="searchSubmit()">Submit</button></div>
         <div id="id-search-time" class="search-time">Last Index Time: 5/3/2018 @ 18.13</div>

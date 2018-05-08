@@ -16,16 +16,11 @@ function searchSubmit(){
      
     sendZero()
     
-    search = document.getElementById('id-search-field').innerText;
+    searchValue = document.getElementById('id-search-field').innerText;
+    searchType = document.getElementById('id-search-select').value;
+    search = searchType + " " + searchValue.trim().replace(/ /g,'');
     
-    //CB 119123
-    //CB 119215
-    //CB 119130
-    //CF 312905
-    
-    // cb -> CB
-    // cf -> CF
-    // appt -> Appt
+    // console.log( "searchType: " + search )
     
     searchMatterFile( search )
     getVoteTypes()
@@ -114,7 +109,8 @@ function searchMatterFile( search ) {
     // clear data on new search
     voteData = {}
     
-    console.log( "search: " + search )
+    //console.log( "search: " + search )
+    
     document.getElementById('id-results').innerHTML = "";
     document.getElementById('id-summary').innerHTML = "";
     document.getElementById('id-info').innerHTML = "";
@@ -282,11 +278,29 @@ function sendZero()
 	});
 }	
 
+var ctrlDown = false; 
 document.addEventListener("keydown", keyDownTextField, false);
 function keyDownTextField(e) {
     if( e.keyCode == 13 ) {
         e.preventDefault()
         searchSubmit()
+    }
+    if( e.keyCode == 17 ) {
+        ctrlDown = true; 
+    }
+    if( document.activeElement.className.split(" ").indexOf("numOnly") > -1 )
+    {
+        if( (!ctrlDown) ) {
+            if( (e.keyCode >= 65) && (e.keyCode <= 90) ){
+                e.preventDefault()
+            }
+        }
+    }
+}
+document.addEventListener("keyup", keyUpTextField, false);
+function keyUpTextField(e) {
+    if( e.keyCode == 17 ) {
+        ctrlDown = false; 
     }
 }
 
