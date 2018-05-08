@@ -89,7 +89,7 @@ html, body{
 */
 .search-div {
     margin: 0 0 0 45px;
-    width: 325px; 
+    width: 324px; 
 }
 .search-select {
     font-size: 1em !important;
@@ -106,7 +106,7 @@ html, body{
     margin-top: 5px;
     height: 1.3em;
     width: 200px;
-    margin: 0px 0px 0px 57px; 
+    margin: 0px 0px 0px 56px; 
 }
 .search-button {
     width: 60px;

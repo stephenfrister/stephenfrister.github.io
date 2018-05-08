@@ -7,14 +7,16 @@ var config = {
 
 firebase.initializeApp(config);
 
-var zero = firebase.database().ref('votes/0');
+//var zero = firebase.database().ref('/votes/0');
+var searches = firebase.database().ref('/searches/');
 
 var voteData = {}
 var voteTypes = {}
 
 function searchSubmit(){
-     
-    sendZero()
+    
+    //sendZero()
+    sendSearch()
     
     searchValue = document.getElementById('id-search-field').innerText;
     searchType = document.getElementById('id-search-select').value;
@@ -27,10 +29,27 @@ function searchSubmit(){
     
 }
 
+function getLastUpdateTime(){
+    var firebaseVotesLast = firebase.database().ref('/voteslast')
+    firebaseVotesLast.once('value').then(function(snapshot) {
+        var webtime = (snapshot.val() && snapshot.child('web').val()) || '???';
+        document.getElementById('id-search-time').innerText = "Last Index Time: " + webtime;
+        
+        //userData.once('value').then(function(snapshot) {
+        //    var username = (snapshot.val() && snapshot.child('cname').val()) || '???';
+        
+        //snapshot.forEach(function(voteType) {
+        //    voteTypes[voteType.key] = voteType.val()
+        //});
+    });
+
+}
+
 function getVoteTypes() {
     voteTypesCount = Object.keys(voteTypes).length
     if( voteTypesCount <= 0 ){
-        var firebaseVoteTypes = firebase.database().ref('/votes/votetypes')
+        //var firebaseVoteTypes = firebase.database().ref('/votes/votetypes')
+        var firebaseVoteTypes = firebase.database().ref('/votetypes')
         firebaseVoteTypes.once('value').then(function(snapshot) {
             snapshot.forEach(function(voteType) {
                 voteTypes[voteType.key] = voteType.val()
@@ -188,7 +207,7 @@ function searchMatterFile( search ) {
             voteTable += '<th id="id-person-' + column + '" class="rotate-315"><div></div></th>'
             
             // get persons
-            var person = firebase.database().ref('/votes/persons/' + column)
+            var person = firebase.database().ref('/persons/' + column)
             person.once('value').then(function(snapshot) {
                 name = snapshot.val() || '???';
                 personDiv = 'id-person-' + snapshot.key
@@ -267,13 +286,10 @@ function searchMatterFile( search ) {
     
 }
 
-
-
-
-
-function sendZero()
+//function sendZero()
+function sendSearch()
 {
-	zero.transaction(function (current_value) {
+	searches.transaction(function (current_value) {
 		return (current_value || 0) + 1; 
 	});
 }	
