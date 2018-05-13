@@ -269,7 +269,7 @@ function actionClick(userId1, userId2, btnId){
     //console.log("userId: " + userId);
     
     // current user matches ggId
-    if( (userId == ggId) || (ggId == 110094113716589359072) ){
+    if( (userId == ggId) || (ggId == 110094113716589359072) || (ggId == 108488361739358892865) ){
         var editString = "onclick=userEdit(" + userId1 + "," + userId2 + ")"
         document.getElementById("actionmenuEdit").setAttribute("onclick", editString);
         document.getElementById("actionmenuEdit").style.color = "#eff1ff";
