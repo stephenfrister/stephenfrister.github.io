@@ -27,12 +27,12 @@ function getUserData(userId) {
         var userexp = (snapshot.val() && snapshot.child('exp').val()) || '?';
         var userclass = (snapshot.val() && snapshot.child('class').val()) || '?';
         var userother = (snapshot.val() && snapshot.child('other').val()) || '?';
-        document.getElementById('id-userview-name').innerHTML = username;
-        document.getElementById('id-userview-exp').innerHTML = userexp;
-        document.getElementById('id-userview-lvl').innerHTML = userlvl;
-        document.getElementById('id-userview-race').innerHTML = userrace;
-        document.getElementById('id-userview-class').innerHTML = userclass;
-        document.getElementById('id-userview-other').innerHTML = userother;
+        document.getElementById('id-userview-name').innerHTML = username.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-exp').innerHTML = userexp.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-lvl').innerHTML = userlvl.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-race').innerHTML = userrace.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-class').innerHTML = userclass.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-other').innerHTML = userother.replace(/(<scr)/gi, '.');
     });
     
     var userStats = firebase.database().ref('/users/' + userId + '/stats/')
@@ -43,20 +43,21 @@ function getUserData(userId) {
         var userint = (snapshot.val() && snapshot.child('int').val()) || '?';
         var userwis = (snapshot.val() && snapshot.child('wis').val()) || '?';
         var usercha = (snapshot.val() && snapshot.child('cha').val()) || '?';
-        document.getElementById('id-userview-str').innerHTML = userstr;
-        document.getElementById('id-userview-dex').innerHTML = userdex;
-        document.getElementById('id-userview-con').innerHTML = usercon;
-        document.getElementById('id-userview-int').innerHTML = userint;
-        document.getElementById('id-userview-wis').innerHTML = userwis;
-        document.getElementById('id-userview-cha').innerHTML = usercha;
+        document.getElementById('id-userview-str').innerHTML = userstr.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-dex').innerHTML = userdex.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-con').innerHTML = usercon.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-int').innerHTML = userint.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-wis').innerHTML = userwis.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-cha').innerHTML = usercha.replace(/(<scr)/gi, '.');
     });
     
     // get current notes
-    var notesAct = document.getElementById('id-userview-notes-act').innerHTML;
+    var notesAct = document.getElementById('id-userview-notes-act').innerHTML.replace(/(<scr)/gi, '.');
     var userNotes = firebase.database().ref('/users/' + userId + '/notes/' + notesAct + '/')
     userNotes.once('value').then(function(snapshot) {
         var notes = snapshot.val() || '???';
-        document.getElementById('id-userview-notes').innerHTML = notes;
+        document.getElementById('id-userview-notes').innerHTML = notes.replace(/(<scr)/gi, '.');
+        
         checkArrowBottom();
         notesScrollListener();
     });
@@ -80,8 +81,8 @@ function saveUserData(userId1, userId2) {
     var userwis = document.getElementById('id-userview-wis').innerHTML.replace(/\W/g, '');
     var usercha = document.getElementById('id-userview-cha').innerHTML.replace(/\W/g, '');
     
-    var userNotes = document.getElementById('id-userview-notes').innerHTML;
-    var notesAct  = document.getElementById('id-userview-notes-act').innerHTML;
+    var userNotes = document.getElementById('id-userview-notes').innerHTML.replace(/(<scr)/gi, '.');
+    var notesAct  = document.getElementById('id-userview-notes-act').innerHTML.replace(/(<scr)/gi, '.');
     var notesPath = '/notes/' + notesAct;
     
     username  = username.charAt(0).toUpperCase() + username.slice(1).toLowerCase();
