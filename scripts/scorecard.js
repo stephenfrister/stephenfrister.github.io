@@ -13,19 +13,39 @@ var searches = firebase.database().ref('/searches/');
 var voteData = {}
 var voteTypes = {}
 
-function searchSubmit(){
+
+function checkURL() {
     
-    //sendZero()
+    var query = window.location.search.substring(1).split("&");
+    
+    if( query.length > 1 ){
+    
+        var type    = query[0]
+        var search  = query[0] + " " + query[1]
+        
+        document.getElementById('id-search-select').value = query[0];
+        document.getElementById('id-search-field').innerText = query[1];
+        
+        searchMatterFile( search )
+        getVoteTypes()
+        
+    }
+    
     sendSearch()
+}
+
+function searchSubmit(){
     
     searchValue = document.getElementById('id-search-field').innerText;
     searchType = document.getElementById('id-search-select').value;
-    search = searchType + " " + searchValue.trim().replace(/ /g,'');
+    search = searchType + "&" + searchValue.trim().replace(/ /g,'');
+    //search = searchType + " " + searchValue.trim().replace(/ /g,'');
     
-    // console.log( "searchType: " + search )
+    window.location.search = search
     
-    searchMatterFile( search )
-    getVoteTypes()
+    //searchMatterFile( search )
+    //getVoteTypes()
+    //sendSearch()
     
 }
 
@@ -34,15 +54,7 @@ function getLastUpdateTime(){
     firebaseVotesLast.once('value').then(function(snapshot) {
         var webtime = (snapshot.val() && snapshot.child('web').val()) || '???';
         document.getElementById('id-search-time').innerText = "Last Index Time: " + webtime;
-        
-        //userData.once('value').then(function(snapshot) {
-        //    var username = (snapshot.val() && snapshot.child('cname').val()) || '???';
-        
-        //snapshot.forEach(function(voteType) {
-        //    voteTypes[voteType.key] = voteType.val()
-        //});
     });
-
 }
 
 function getVoteTypes() {
@@ -60,9 +72,18 @@ function getVoteTypes() {
 
 function displayInfo( row ) {
     
-    document.getElementById('id-info').innerHTML = "";
+    var query = window.location.search.substring(1).split("&");
     
+    // append info link to the url
+    // if it is not currently present
+    if( query[2] != row ){
+        newpage = "scorecard?" + query[0] + "&" + query[1] + "&" + row
+        window.history.pushState(row, newpage, newpage);
+    }
+    
+    document.getElementById('id-info').innerHTML = "";
     document.getElementById('id-info').innerHTML += "Body Name: " + voteData[row]["MatterHistoryActionBodyName"] + "<br>";
+    
     voteTime = voteData[row]["MatterHistoryActionDate"].split("T")[0] + " @ " + voteData[row]["MatterHistoryActionDate"].split("T")[1]
     document.getElementById('id-info').innerHTML += "Date/Time: " + voteTime + "<br><br>";
     
@@ -112,12 +133,11 @@ function displayInfo( row ) {
     
     
     /*
-    
     img : Person 1 : In Favor
     img : Person 2 : In Favor
     img : Person 3 : Abstain
     img : Person 4 : Oppose
-    
+     etc...
     */
     
     
@@ -135,7 +155,10 @@ function searchMatterFile( search ) {
     document.getElementById('id-info').innerHTML = "";
     
     var matter = firebase.database().ref('/votes').orderByChild('MatterFile').equalTo(search)
-    matter.once('value').then(function(snapshot) {
+    
+    var promise = ""
+    
+    matter.once('value').then( function(snapshot) {
         
         voteTable = "";
         voteHeader = ""
@@ -147,11 +170,11 @@ function searchMatterFile( search ) {
         matterStatus = ""
         matterEnact = ""
         
-        snapshot.forEach(function(matterId) {
+        snapshot.forEach( function(matterId) {
             
             voteHeader = matterId.child('MatterFile').val();
                     
-            matterId.forEach(function(voteId) {
+            matterId.forEach( function(voteId) {
                     
                 if(voteId.key == 'MatterEnactmentNumber'){
                     matterEnact = voteId.val()
@@ -166,7 +189,7 @@ function searchMatterFile( search ) {
                         
                     voteRows.push( voteId.child('MatterHistoryActionDate').val().split("T")[0] )
                     
-                    voteId.forEach(function(voteInfo) {
+                    voteId.forEach( function(voteInfo) {
                         
                         voteData[voteDataCount][voteInfo.key] = voteInfo.val()
                         
@@ -185,8 +208,9 @@ function searchMatterFile( search ) {
                                 count = Object.keys(voteBody).length
                                 voteBody[count] = voteInfo.val()
                             }
+                            
                         }
-                        
+        
                     });
                     
                 }
@@ -281,15 +305,25 @@ function searchMatterFile( search ) {
         
         document.getElementById('id-summary').innerHTML += "Status: " + matterStatus + "<br>";
         document.getElementById('id-summary').innerHTML += "Enactment: " + matterEnact;
-        
+     
     });
+    
+    setTimeout( function(){ waitDisplay(promise) }, 700 );
     
 }
 
-//function sendZero()
+async function waitDisplay(promise) {
+    
+    let mywait = await promise
+    var query = window.location.search.substring(1).split("&");
+    if( query.length > 2 ){
+        displayInfo( query[2] )
+    } 
+}
+
 function sendSearch()
 {
-	searches.transaction(function (current_value) {
+	searches.transaction( function (current_value) {
 		return (current_value || 0) + 1; 
 	});
 }	
