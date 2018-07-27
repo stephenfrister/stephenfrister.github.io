@@ -9,13 +9,7 @@ title: "Devons and Dragons"
 title: "Dungeons and Devons"
 title: ""
 -->  
-    
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
 
-<!-- Local Scripts -->
-<script type="text/javascript" src="/scripts/clockwork.js"></script>
-	
 <body>	
     
     <div class="body-div">
@@ -24,19 +18,25 @@ title: ""
         
         <div class="front-div">
         
+        
             <div class="menu-div">
-            
-                <div class="title-user ff7">
-                    <div id="id-gguser-welcome" class="gguser-div"> 
-                    "Use Menu to Login > > > > > > > > > > > > > > > > > > > > > > > "
-                    </div> 
+                
+                <div class="title-ggbutton">
+                
+                    <div id="id-gguser-div" class="gguser-div noshow ff7">
+                        <div id="id-ggwelcome-div" class="ggwelcome-div"></div>
+                    </div>
+                    
+                    <div id="id-gSign" class="g-signin2"></div> 
+                    
                 </div> 
                 
                 <nav id="id-title-nav" class="title-nav">
                 
                     <div class="nav-div ff7">
                     
-                        <a href="#" class="menu-icon">
+                        <!--a href="#" class="menu-icon"-->
+                        <a class="menu-icon">
                             <svg viewBox="0 0 18 15">
                                 <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
                                 <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
@@ -47,7 +47,7 @@ title: ""
                     </div>
                     
                     <div class="menu-clickarea">
-                        <div class="clickarea-div ff7" onclick="navClick()"></div>
+                        <div class="clickarea-div ff7" onclick="menuClick()"></div>
                     </div>
                     
                 </nav>
@@ -68,25 +68,106 @@ title: ""
             <div class="users-div" align="center">
                 <div class="actionmenu">
                     <div id="id-actionmenu" class="actionmenu-content ff7">
-                        <a href="#" onclick="#" id="actionmenuView" >View</a>
-                        <a href="#" onclick="#" id="actionmenuEdit" >Edit</a>
-                        
-                        <!--a href="#" onclick="#" id="actionmenuAttack" >Attack</a-->
-                        <!--a href="#" onclick="#" id="actionmenuMagic" >Magic</a-->
-                        <!--a href="#" onclick="#" id="actionmenuItem" >Items</a-->
-                        <!--a href="#" onclick="#" id="actionmenuExp" >Explore</a-->
-                        
+                        <a id="actionmenuView" >View</a>
+                        <a id="actionmenuEdit" >Edit</a>                      
                     </div>
+                </div>
+                
+                <div id="id-tab-div" class="tab-div">
+                
+                    <div class="users-ctab ff7" >
+                        <div id="id-ctab-div" class="ctab-div" onclick="charsClick()" >Characters</div>
+                    </div>
+                    <div class="users-qtab ff7" >
+                        <div id="id-qtab-div" class="qtab-div" onclick="questsClick()" >Quests</div>
+                    </div>
+                    
                 </div>
             
                 <div id="firebaseusers-div" class="ff7" >
+                </div>
+                
+                <div id="firebasequests-div" class="ff7" >
+                
+                    <div id="id-quests-div" class="quests-div ff7">
+                    
+                        <div class="qtype-div">
+                        
+                            <label for='1' class="qtype-selector" onclick="questFilter('All')" >All | </label>
+                            <label for='2' class="qtype-selector" onclick="questFilter('Active')" >Active | </label>
+                            <label for='3' class="qtype-selector" onclick="questFilter('Complete')" >Complete | </label>
+                            <label for='4' class="qtype-selector" onclick="questFilter('Deleted')" >Deleted</label>
+                            
+                        </div>
+                        
+                        <div id="id-qtop-div" class="qtop-div ff7">
+                            <!-- 
+                            1: Confront Glass Staff (in progress)<br>
+                            2: Find Missing Family (in progress)<br>
+                            3: Rescue Silas (complete)<br>
+                            4: Return Stolen Weapons/Armor (complete)<br>
+                            5: Find Silver Comb, Return to Spirit (not started)<br>
+                            6: Search for a Druid far to the North (not started)<br>
+                            7: Confront the Cragmaw King (not started)<br>
+                            8: Deliver Mining Equipment (completed)<br>
+                            -->
+                        </div>
+                        
+                        <div id="id-qbot-div" class="qbot-div ff7">
+                            
+                            <div> 
+                                <i>Use 
+                                <svg id="id-quest-info" class="icon-grey icon-small" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg> to select quest.<br></i>
+                            </div>
+                            
+                        </div>
+                        
+                        <div id="id-qbot-new" class="qbot-new-div ff7">
+                        
+                            <div id='' class='quest-new ff7'>
+                                <div id='' class='quest-new-inner'>Title:&nbsp </div>
+                                <div id='id-title-edit' class='quest-title-edit editable' contenteditable='true'>....</div>
+                            </div>
+
+                            <div id='' class='quest-status-edit ff7'>
+                                <div id='' class='quest-new-inner'>Status:&nbsp </div>
+                                    <select id='id-status-edit' class="ff7">
+                                        <!--option value="notstarted" class='ff7' selected>Not Started</option-->
+                                        <option value="notstarted" class='ff7' >Not Started</option>
+                                        <option value="inprogress" class='ff7' >In Progress</option>
+                                        <option value="complete" class='ff7' >Completed</option>
+                                        <option value="removed" class='ff7' >Removed</option>
+                                    </select>
+                            </div>
+                            <div id='' class='quest-new ff7'>
+                                <div id='' class='quest-new-inner'>Description: </div>
+                                <div id='id-description-edit' class='quest-description-edit editable' contenteditable='true'>...... </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div id="id-qopts-new" class="qopts-new ff7" onclick="questNew()">
+                            <div>New</div>
+                        </div>
+                        <div id="id-qopts-edit" class="qopts-edit ff7 noshow" onclick="questEdit()">
+                            <div>Edit</div>
+                        </div>
+                        <div id="id-qopts-save" class="qopts-save ff7 noshow" onclick="questSave()">
+                            <div>Save</div>
+                        </div>
+                        <div id="id-qopts-cancel" class="qopts-cancel ff7 noshow" onclick="questCancel()">
+                            <div>Cancel</div>
+                        </div>
+                    
+                    </div>
+                    
                 </div>
                 
             </div>
             
             <div class="story">
                 
-                <div id="title-div" class="story-title">
+                <div id="id-title-div" class="story-title">
                 
                     <div class="story-ctitle ff7" >
                         <div id="id-ctitle-div" class="ctitle-div" onclick="storySelectClick()" >Act Title</div>
@@ -97,21 +178,12 @@ title: ""
                     
                     <div class="story-menu" >
                         <div id="id-story-menu" class="story-menu-content ff7" >
-                            <div id="" class="story-select-div" >Act 1: Terra Nova, Part 3: Glass Staff</div> 
-                            <div id="" class="story-select-div" >Act 2: Terra Nova, Part 4: Glass Staff</div> 
-                            <div id="" class="story-select-div" >Act 3: Terra Nova, Part 5: Glass Staff</div> 
+                            <div id="" class="story-select-div" >Act A: Act, Part X: Part</div> 
+                            <div id="" class="story-select-div" >Act B: Act, Part Y: Part</div> 
+                            <div id="" class="story-select-div" >Act C: Act, Part Z: Part</div> 
                         </div> 
                     </div> 
-                    
-                    
-                    <!--div class="notes-menu">
-                        <div id="id-notes-menu" class="notes-menu-content ff7">
-                            <a href="#" onclick="" id="" >0,0: Character Story</a>
-                            <a href="#" onclick="" id="" >0,1: Miscellaneous</a>
-                        </div>
-                    </div-->
             
-                    
                 </div>
                 
                 <div id="id-story-div" class="story-description ff7" >
@@ -120,7 +192,6 @@ title: ""
                         <div id="id-arrow" class="arrow bounce show" onclick="scroll_down('id-story-div')"></div>
                     </div>
                 </div>
-                
                 
             </div>
             
@@ -182,9 +253,6 @@ title: ""
                         </div>
                         
                     </div>
-                    
-                    
-                    
                     
                     <div class="userview-text">
                     
@@ -274,6 +342,7 @@ title: ""
                         <div id="ff7-2" class="setting-selection ff7 ff7-2"></div>
                     </div>
                     
+                    
                     <!--
                     <div class="settings-text"> </div>
                     <div class="settings-text">Sound:</div>
@@ -283,9 +352,9 @@ title: ""
                     <div class="settings-text">Battle Speed:</div>
                     <div class="settings-text">Battle Message:</div>
                     <div class="settings-text">Camera Angle:</div>
-                    <br>
                     -->
                     
+                    <!--
                     <br><br><br><br><br><br>
                     <div class="settings-text" style="font-style:italic;text-align:center;">Ad Space For Sale(exp)...</div>
                     <br><br><br><br><br><br><br>
@@ -296,12 +365,16 @@ title: ""
                     <div style="display:none;">Login with Google:</div>
                     <div style="display:none;">Share on Facebook:</div>
                     <div style="display:none;">Share on Twitter:</div>
+                    -->
+                    
                     
                 </div> 
                 
             </div>
-
+            
+            <!--
             <div id="id-gSign" class="gSign"></div>
+            -->
             <div class="settings-save ff7" onclick="settingsSave()"><div>Save</div></div>
             <div class="settings-cancel ff7" onclick="settingsCancel()"><div>Cancel</div></div>
         
@@ -318,6 +391,22 @@ title: ""
 	<script type="text/javascript">javascript:setStoryScrollListener();</script>
     
 	<!--script type="text/javascript">javascript:getSettings();</script-->
+    
+
+    <svg id="id-quest-info" class="icon-info icon-grey icon-small icon-hide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z" /></svg>
+    
+    
+    <svg id="id-quest-complete" class="icon-comp icon-green icon-small icon-hide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>
+    
+    <svg id="id-quest-inprogress" class="icon-inpr icon-yellow icon-small icon-hide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M11,18H13V16H11V18M12,6A4,4 0 0,0 8,10H10A2,2 0 0,1 12,8A2,2 0 0,1 14,10C14,12 11,11.75 11,15H13C13,12.75 16,12.5 16,10A4,4 0 0,0 12,6M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3Z" /></svg>
+
+    <svg id="id-quest-notstarted" class="icon-nots icon-grey icon-small icon-hide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M13,13V7H11V13H13M13,17V15H11V17H13Z" /></svg>
+
+    <svg id="id-quest-removed" class="icon-remo icon-red icon-small icon-hide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M19,3H16.3H7.7H5A2,2 0 0,0 3,5V7.7V16.4V19A2,2 0 0,0 5,21H7.7H16.4H19A2,2 0 0,0 21,19V16.3V7.7V5A2,2 0 0,0 19,3M15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4L13.4,12L17,15.6L15.6,17Z" /></svg>
+
+    
+    <svg id="id-quest-minus" class="icon-minu icon-grey icon-small icon-hide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,13H7V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>
+    
     
 </body>
 

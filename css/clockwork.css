@@ -10,9 +10,13 @@
 html, body{
     display: inline-block;
     text-align: center;
-    height: 100%;
     overflow: hidden;
+    
+    height: 100%;
     height: 1200px; 
+    
+    width: 100%; 
+    min-width: 550px; 
 }
 
 .editable {
@@ -33,18 +37,72 @@ html, body{
 
 .front-div {
     overflow: hidden; 
+    padding: 7px 0px 0px 0px;
 }
 
-.title-user {
+.title-user{
 	position: absolute;
     background: transparent !important; 
     box-shadow: none !important;  
     border: none !important; 
 	top: 5px;
 }
-.gguser-div { 
-    font-size: 12px !important; 
+
+.title-ggbutton {
+    /*
+	position: relative;
+    margin: auto 0;
+	top: 20px;
+    left: 10px; 
+    padding: 0px 0px 5px 0px; 
+    margin: 0px 0px 115px 0px; 
+    */
+	position: absolute;
+    background: transparent !important; 
+    box-shadow: none !important;  
+    border: none !important; 
+    width: 20%;
 }
+
+.gguser-div { 
+	position: absolute; 
+    float: right; 
+    z-index: 1; 
+    /*
+    height: 32px !important;
+    left: -225px; 
+    top: 12px;
+    */
+}
+.ggwelcome-div { 
+    font-size: 12px !important; 
+    white-space: nowrap;
+}
+
+.abcRioButton{
+    background: transparent !important; 
+    margin: -1px 0px 5px 0px !important;  
+    height: 32px !important; 
+    top: -4px; 
+}
+/*
+.gSign{
+    position: absolute; 
+    padding: 0px 0px 0px 5px;
+    margin: 2px 0px 0px 1px !important;  
+}
+.abcRioButtonIcon{
+    opacity: 1 !important; 
+    margin: -8px 0px 0px 1px !important; 
+}
+.abcRioButtonContents{
+    display: none; 
+}
+.abcRioButtonContentWrapper{
+    display: none; 
+}
+*/
+
 .users-div{
     position: relative;
     max-width: 550px;
@@ -71,8 +129,183 @@ html, body{
     height: 25px; 
 }
 
+/**/
+.quests-div {
+    display: none;
+    position: absolute; 
+    margin: 0px 0px 0px 0px; 
+    padding: 0px 0px 0px 0px !important;
+    max-height: 642px; 
+    min-height: 642px; 
+    max-width: 548px;
+    min-width: 548px; 
+    width: 100%; 
+    height: 100%; 
+    top: 38px; 
+    left: 0px; 
+    text-align: left; 
+    z-index: 2; 
+}
+
+
+.qtype-div {
+width: 100%;
+position: relative;
+height: 30px;
+margin: -3px 0px 10px 0px !important; 
+text-align: center;
+}
+
+.qtype-selector {
+display: inline-block;
+}
+
+.qopts-new, .qopts-edit, .qopts-save, .qopts-cancel {
+    float: right; 
+    margin: -6px 1px 0px 3px !important; 
+}
+
+.qtop-div {
+    position: relative; 
+    max-height: 268px; 
+    min-height: 268px; 
+    overflow-y: scroll;
+    top: -6px; 
+    margin: -5px; 
+}
+.qbot-div, .qbot-new-div  {
+    display: none; 
+    position: relative; 
+    max-height: 291px; 
+    min-height: 291px; 
+    overflow-y: scroll;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    top: -6px; 
+}
+.qact-div {
+    float: left; 
+    height: 24px;
+    width: 24px;
+}
+
+.quest-new, .quest-new-inner, .quest-title-edit, .quest-status-edit {
+    float: left; 
+}
+.quest-new {
+    max-width: 496px; 
+    min-width: 496px; 
+}
+.quest-title-edit {
+    max-width: 434px; 
+    min-width: 434px; 
+    word-wrap: break-word;
+    overflow: hidden;  
+}
+.quest-status-edit {
+    max-width: 220px; 
+    min-width: 220px; 
+    white-space: nowrap;
+    /* white-space: normal; */
+    word-wrap: break-word;
+}
+.quest-description-edit {
+    padding: 2px; 
+    max-width: 500px; 
+    min-width: 500px; 
+    max-height: 125px; 
+    min-height: 125px; 
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+    white-space: normal;
+    word-wrap: break-word;
+}
+.quest-gone {
+    display: none;
+    visibility: hidden;
+}
+
+.qtd-info {
+    width: 31px;
+}
+.qtd-stat {
+    width: 48px;
+}
+.qtd-title {
+    width: 315px;
+}
+.qtd-acts {
+    width: 107px;
+}
+
+.quest-tbody { 
+    display:flex; 
+    flex-direction:column;
+}
+.quest-row-header {
+    order: 1; 
+}
+.quest-row-complete {
+    order: 4; 
+}
+.quest-row-inprogress {
+    order: 2; 
+}
+.quest-row-notstarted {
+    order: 3; 
+}
+.quest-row-removed {
+    order: 5; 
+}
+
+.quest-table,
+.quest-tbody,
+.quest-row-header,
+.quest-row-complete,
+.quest-row-inprogress,
+.quest-row-notstarted, 
+.quest-row-removed {
+    margin: -10px 0px 0px 0px !important; 
+}
+
+
+.icon-hide {
+    display: none;
+}
+.icon-hidden {
+    visibility: hidden;
+}
+.icon-small {
+    width: 24px;
+    height: 24px; 
+    vertical-align: middle; 
+    margin: 0px !important; 
+}
+.icon-mid {
+    width: 36px;
+    height: 36px; 
+}
+.icon-large {
+    width: 48px;
+    height: 48px; 
+    margin: -5px -5px -7px -5px; 
+}
+.icon-green {
+    fill: #00C853;
+}
+.icon-red {
+    fill: #D50000;
+}
+.icon-grey {
+    fill: #B0BEC5;
+}
+.icon-yellow {
+    fill: #FFD700;
+}
+
+
 .settings-div, .userview-div {
-    /* display: block; */
     display: none;
     position: absolute; 
     margin: 5px 0px 0px 0px;
@@ -83,34 +316,35 @@ html, body{
     min-width: 550px; 
     width: 100%; 
     height: 100%; 
-    top: 0; 
+    top: 10px; 
+    z-index: 2; 
 }
-.settings-header, .userview-header {
-    text-align: center; 
-    margin: -1px 1px 0px -1px !important;
-}
-.settings-content, .userview-content {
+.settings-content, .userview-content, .quests-content {
     position: relative;
     text-align: left; 
     min-height: 442px; 
     padding: 5px 0px 5px 10px;
     margin: 3px 1px 0px -1px !important;
 }
-.settings-text, .userview-header {
+.settings-header, .userview-header, .quests-header {
+    text-align: center; 
+    margin: -1px 1px 0px -1px !important;
+}
+.settings-text, .userview-header, .quests-header {
     font-size: 17px !important;  
     padding: 5px 0px 3px 0px;
     color: #00CDCD !important;
     text-shadow: 2px 2px #0032af,
                1px 1px #0032af !important;
 }
-.settings-save, .userview-save {
+.settings-save, .userview-save, .quests-save {
     float: right; 
     margin: 5px 1px 0px 5px !important; 
 }
-.settings-cancel, .userview-cancel {
+.settings-cancel, .userview-cancel, .quests-cancel {
     float: right; 
 }
-.settings-close, .userview-close {
+.settings-close, .userview-close, .quests-close {
     float: right; 
     margin: -4px -10px 0px 0px !important; 
     padding: 1px 2px 7px 2px !important; 
@@ -201,25 +435,6 @@ html, body{
     white-space: nowrap; 
 }
 
-
-.gSign{
-    position: absolute; 
-    padding: 0px 0px 0px 5px;
-    margin: 2px 0px 0px 1px !important;  
-}
-.abcRioButton{
-    background: transparent !important; 
-}
-.abcRioButtonIcon{
-    opacity: 1 !important; 
-    margin: -8px 0px 0px 1px !important; 
-}
-.abcRioButtonContents{
-    display: none; 
-}
-.abcRioButtonContentWrapper{
-}
-
 .title-nav .menu-icon {
 	display: block;
 	width: 15px;
@@ -255,13 +470,38 @@ html, body{
 }
 
 .title-div{
-    padding-top: 33px;
+    padding-top: 36px;
     padding-bottom: 0px; 
 }
 .title-img{
     min-width: 550px; 
     max-width: 550px; 
 }
+
+
+
+.tab-div{
+    display: table;
+    position: relative;
+    margin: 1px 0px 1px 0px; 
+    min-height: 25px; 
+    width: 100%;  
+    border-spacing: 3px;
+}
+
+.users-ctab {
+    position: relative;
+    display: table-cell;
+    min-width: 245px; 
+    max-width: 245px; 
+}
+.users-qtab {
+    position: relative;
+    display: table-cell;
+    min-width: 246px; 
+    max-width: 246px; 
+}
+
 
 .subtitle-div{
     margin: -50px 0px 30px -50px; 
@@ -400,14 +640,14 @@ html, body{
     position: absolute;
     top: 46px;     
     left: 5px; 
-    z-index: 1; 
+    z-index: 2; 
     width: 95%; 
 }
 .notes-menu {
     position: absolute;
     display: inline-block;
     padding: 10px 20px 0px 0px;
-    z-index: 1; 
+    z-index: 2; 
     bottom: -10px;
     left: 0px;
 }
@@ -437,7 +677,7 @@ html, body{
     position: absolute;
     display: inline-block;
     padding: 10px 20px 0px 0px;
-    z-index: 1; 
+    z-index: 2; 
     right: 0px;
     top: 0px;
 }
@@ -479,7 +719,7 @@ html, body{
 }
 
 .background-div{
-    z-index: 1;
+    z-index: 2;
 }
 
 .background-div:before{
@@ -508,49 +748,72 @@ html, body{
 
 
 
-div.ff7-0, button.ff7-0{ /*Default*/
+select.ff7-0 option.ff7-0 { background-color: #06004d !important; }
+div.ff7-0, button.ff7-0, select.ff7-0 { /*Default*/
     background: linear-gradient(to bottom, #04009d 0%,#06004d 100%) !important;
 }
 
-div.ff7-2, button.ff7-2{ /*Clash of the Elements*/
+select.ff7-2 option.ff7-2 { background-color: #2d2d2d !important; }
+div.ff7-2, button.ff7-2, select.ff7-2 { /*Clash of the Elements*/
     background: linear-gradient(to bottom right, #690c25, #2d2d2d, #250c69) !important;
 }
 
-div.ff7-3, button.ff7-3{ /*Catastrophe*/
+select.ff7-3 option.ff7-3 { background-color: #5f0000 !important; }
+div.ff7-3, button.ff7-3, select.ff7-3 { /*Catastrophe*/
     background: linear-gradient(to bottom right, #230000, #5f0000, #010020) !important;
 }
 
-div.ff7-4, button.ff7-4{ /*Chocobo Plains*/
+select.ff7-4 option.ff7-4 { background-color: #323900 !important; }
+div.ff7-4, button.ff7-4, select.ff7-4 { /*Chocobo Plains*/
     background: linear-gradient(to bottom right, #646a00, #323900, #000000) !important;
 }
 
-div.ff7-5, button.ff7-5{ /*Blue Moon*/
+select.ff7-5 option.ff7-5 { background-color: #2458ff !important; }
+div.ff7-5, button.ff7-5, select.ff7-5 { /*Blue Moon*/
     background: linear-gradient(to bottom right, #000000, #2458ff, #44ffff) !important;
 }
 
-div.ff7-6, button.ff7-6{ /*Beam of Darkness*/
+select.ff7-6 option.ff7-6 { background-color: #002100 !important; }
+div.ff7-6, button.ff7-6, select.ff7-6 { /*Beam of Darkness*/
     background: linear-gradient(to bottom right, #1b871e, #002100, #1b871e) !important;
 }
 
-div.ff7-7, button.ff7-7{ /*Aurora Borealis*/
+select.ff7-7 option.ff7-7 { background-color: #ff6f6f !important; }
+div.ff7-7, button.ff7-7, select.ff7-7 { /*Aurora Borealis*/
     background: linear-gradient(to bottom right, #5100ff, #ff6f6f, #adc500) !important;
 }
 
-div.ff7-8, button.ff7-8{ /*Auron's Robe*/
+select.ff7-8 option.ff7-8 { background-color: #500000 !important; }
+div.ff7-8, button.ff7-8, select.ff7-8 { /*Auron's Robe*/
     background: linear-gradient(to bottom right, #780000, #500000, #969600) !important;
 }
 
-div.ff7-9, button.ff7-9{ /*Aqualung*/
+select.ff7-9 option.ff7-9 { background-color: #00c8ff !important; }
+div.ff7-9, button.ff7-9, select.ff7-9 { /*Aqualung*/
     background: linear-gradient(to bottom right, #0032af, #00c8ff, #0032af) !important;
 }
 
-div.ff7-10, button.ff7-10{ /*Aeris' Flowers*/
+select.ff7-10 option.ff7-10 { background-color: #ffb058 !important; }
+div.ff7-10, button.ff7-10, select.ff7-10 { /*Aeris' Flowers*/
     background: linear-gradient(to bottom right, #ffff00, #ffb058, #ffb000) !important;
 }
 
+/*
+
+select.ff7 option.ff7
+{
+    background-color: #007700 !important;
+    background: linear-gradient(to bottom, #04009d 0%,#06004d 100%) !important;
+}
+
+select.ff7 option.ff7 { background-color: #06004d !important; }
+
+select, s7.ff7, 
+*/
 
 
-div.ff7{
+
+div.ff7 {
     border: solid 1px #424542;
     box-shadow: 1px 1px #e7dfe7,
               -1px -1px #e7dfe7,
@@ -617,3 +880,21 @@ tr.ff7-header *{
   font-size: 16px;
   font-weight: bold;
 }
+
+
+
+/*
+input, select, option {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;  
+}
+input, select, option {
+    width: 140px;
+    height: 28px;
+    border: 1px #ccc solid;
+    vertical-align:top;
+}
+*/
+
+
