@@ -470,12 +470,42 @@ display: inline-block;
 }
 
 .title-div{
-    padding-top: 36px;
+    padding-top: 0px;
     padding-bottom: 0px; 
+    margin-top: -0px; 
+    margin-bottom: -8px; 
+    z-index: 0; 
 }
 .title-img{
+    position: relative;
+    min-width: 520px; 
+    max-width: 520px; 
+    z-index: 0; 
+}
+
+.subtitle-div{
+    margin: -100px 0px 0px 0px; 
+    padding-top: 0px;
+    padding-bottom: 0px; 
+    z-index: 1; 
+}
+.subtitle-img{
+    position: relative;
     min-width: 550px; 
     max-width: 550px; 
+    z-index: 1; 
+}
+
+
+
+.backtitle-div{
+    position: absolute;
+    margin: -160px 0px 0px 140px;
+    z-index: 0; 
+}
+.backtitle-img{
+    min-width: 270px; 
+    max-width: 270px; 
 }
 
 
@@ -500,16 +530,6 @@ display: inline-block;
     display: table-cell;
     min-width: 246px; 
     max-width: 246px; 
-}
-
-
-.subtitle-div{
-    margin: -50px 0px 30px -50px; 
-    padding-top: 0px;
-    padding-bottom: 0px; 
-}
-.subtitle-img{
-    max-width: 30px; 
 }
 
 .story{
