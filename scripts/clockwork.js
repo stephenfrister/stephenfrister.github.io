@@ -337,6 +337,38 @@ function getUserData(userId) {
         document.getElementById('id-userview-cha').innerHTML = usercha.replace(/(<scr)/gi, '.');
     });
     
+    var userCoins = firebase.database().ref('/users/' + userId + '/coins/')
+    userCoins.once('value').then(function(snapshot) {
+        var usercp = (snapshot.val() && snapshot.child('cp').val()) || '0';
+        var usersp = (snapshot.val() && snapshot.child('sp').val()) || '0';
+        var userep = (snapshot.val() && snapshot.child('ep').val()) || '0';
+        var usergp = (snapshot.val() && snapshot.child('gp').val()) || '0';
+        var userpp = (snapshot.val() && snapshot.child('pp').val()) || '0';
+        var usergm = (snapshot.val() && snapshot.child('gm').val()) || '0';
+        document.getElementById('id-userview-cp').innerHTML = usercp.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-sp').innerHTML = usersp.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-ep').innerHTML = userep.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-gp').innerHTML = usergp.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-pp').innerHTML = userpp.replace(/(<scr)/gi, '.');
+        document.getElementById('id-userview-gm').innerHTML = usergm.replace(/(<scr)/gi, '.');
+        
+        
+        /* 
+        Coin	        CP	    SP	    EP	    GP	    PP
+        Copper (cp)	    1	    1/10	1/50	1/100	1/1,000
+        Silver (sp)	    10	    1	    1/5	    1/10	1/100
+        Electrum (ep)	50	    5	    1	    1/2	    1/20
+        Gold (gp)	    100	    10	    2	    1	    1/10
+        Platinum (pp)	1,000	100	    20	    10	    1
+        Source: https://roll20.net/compendium/dnd5e/Treasure
+        */
+        
+        var mTotal = 0.01 * parseInt(usercp) + 0.1 * parseInt(usersp) + 0.5 * parseInt(userep) + 1.0 * parseInt(usergp) + 10 * parseInt(userpp); 
+        
+        document.getElementById('id-userview-total').innerHTML = mTotal;
+        
+    });
+    
     // get current notes
     var notesAct = document.getElementById('id-userview-notes-act').innerHTML.replace(/(<scr)/gi, '.');
     var userNotes = firebase.database().ref('/users/' + userId + '/notes/' + notesAct + '/')
@@ -367,6 +399,13 @@ function saveUserData(userId1, userId2) {
     var userwis = document.getElementById('id-userview-wis').innerHTML.replace(/\W/g, '');
     var usercha = document.getElementById('id-userview-cha').innerHTML.replace(/\W/g, '');
     
+    var userpp = document.getElementById('id-userview-pp').innerHTML.replace(/\W/g, '');
+    var usergp = document.getElementById('id-userview-gp').innerHTML.replace(/\W/g, '');
+    var userep = document.getElementById('id-userview-ep').innerHTML.replace(/\W/g, '');
+    var usersp = document.getElementById('id-userview-sp').innerHTML.replace(/\W/g, '');
+    var usercp = document.getElementById('id-userview-cp').innerHTML.replace(/\W/g, '');
+    var usergm = document.getElementById('id-userview-gm').innerHTML.replace(/\W/g, '');
+    
     var userNotes = document.getElementById('id-userview-notes').innerHTML.replace(/(<scr)/gi, '.');
     var notesAct  = document.getElementById('id-userview-notes-act').innerHTML.replace(/(<scr)/gi, '.');
     var notesPath = '/notes/' + notesAct;
@@ -389,6 +428,12 @@ function saveUserData(userId1, userId2) {
         '/stats/int'    : userint,
         '/stats/wis'    : userwis,
         '/stats/cha'    : usercha,
+        '/coins/pp'    : userpp,
+        '/coins/gp'    : usergp,
+        '/coins/ep'    : userep,
+        '/coins/sp'    : usersp,
+        '/coins/cp'    : usercp,
+        '/coins/gm'    : usergm,
         [notesPath]     : userNotes     // not working in IE11
     })
     .catch(function (err) {

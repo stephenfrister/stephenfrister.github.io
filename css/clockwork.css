@@ -310,8 +310,8 @@ display: inline-block;
     position: absolute; 
     margin: 5px 0px 0px 0px;
     padding: 0px 0px 0px 0px !important;
-    max-height: 525px; 
-    min-height: 525px; 
+    max-height: 593px; 
+    min-height: 593px; 
     max-width: 550px;
     min-width: 550px; 
     width: 100%; 
@@ -326,6 +326,16 @@ display: inline-block;
     padding: 5px 0px 5px 10px;
     margin: 3px 1px 0px -1px !important;
 }
+.userview-treasure {
+    position: relative;
+    text-align: left; 
+    min-height: 63px; 
+    padding: 5px 0px 5px 0px !important;
+    margin: 46px 1px 0px -1px !important;
+}
+
+/* min-height: 442px;  */
+
 .settings-header, .userview-header, .quests-header {
     text-align: center; 
     margin: -1px 1px 0px -1px !important;
@@ -374,6 +384,30 @@ display: inline-block;
     min-width: 45px;
     float: left; 
     top: 40px; 
+}
+.userview-coins {
+    margin: 0px 2px 0px 2px !important; 
+    text-align: center;
+    max-height: 60px;
+    min-height: 60px;
+    max-width: 45px;
+    min-width: 45px;
+    float: left; 
+    top: 40px; 
+}
+.userview-coins-total {
+    margin: 0px 2px 0px 2px !important; 
+    text-align: center;
+    max-height: 60px;
+    min-height: 60px;
+    max-width: 96px;
+    min-width: 96px;
+    float: left; 
+    top: 40px; 
+}
+.userview-stat, .userview-coins-total {    
+    overflow: hidden; 
+    white-space: nowrap; 
 }
 .userview-headers, .userview-headers-r2, .userview-headers-r3 {
     margin: 0px 0px 7px 7px !important; 
@@ -429,10 +463,6 @@ display: inline-block;
 }
 .userview-notes-act, .userview-notes-id {
     display: none; 
-}
-.userview-stat {    
-    overflow: hidden; 
-    white-space: nowrap; 
 }
 
 .title-nav .menu-icon {
