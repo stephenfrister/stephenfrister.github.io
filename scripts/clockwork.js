@@ -1367,10 +1367,14 @@ function menuClick(){
 
 function charsClick(){
     
-    document.getElementById("id-quests-div").classList.toggle("show");
+    if( document.getElementById("id-quests-div").classList.contains("show") ){
+        document.getElementById("id-quests-div").classList.toggle("show");
+    }
     
     removeNoShow("qbot-div"); 
     removeShow("qbot-new-div"); 
+    
+    getQuests("id-qtop-div");
     
     questOptionsLoginCheck();
     
@@ -1408,7 +1412,8 @@ function setTheme(themeID){
     var i;
     
     if(!themeID){
-        themeID = "ff7-0"
+        // themeID = "ff7-0"
+        themeID = "ff7-ios"
     }
     
     for (i = 0; i < menus.length; i++) {
@@ -1431,6 +1436,7 @@ function setTheme(themeID){
             openMenu.classList.remove('ff7-8')
             openMenu.classList.remove('ff7-9')
             openMenu.classList.remove('ff7-10')
+            openMenu.classList.remove('ff7-ios')
             
             openMenu.classList.add(themeID);
         }

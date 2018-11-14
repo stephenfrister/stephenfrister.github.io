@@ -135,8 +135,8 @@ html, body{
     position: absolute; 
     margin: 0px 0px 0px 0px; 
     padding: 0px 0px 0px 0px !important;
-    max-height: 642px; 
-    min-height: 642px; 
+    max-height: 667px; 
+    min-height: 667px; 
     max-width: 548px;
     min-width: 548px; 
     width: 100%; 
@@ -152,9 +152,12 @@ html, body{
 width: 100%;
 position: relative;
 height: 30px;
-margin: -3px 0px 10px 0px !important; 
+margin: 0px 0px 13px 0px !important; 
 text-align: center;
 }
+/*
+margin: -3px 0px 10px 0px !important; 
+*/
 
 .qtype-selector {
 display: inline-block;
@@ -176,8 +179,8 @@ display: inline-block;
 .qbot-div, .qbot-new-div  {
     display: none; 
     position: relative; 
-    max-height: 291px; 
-    min-height: 291px; 
+    max-height: 280px; 
+    min-height: 280px; 
     overflow-y: scroll;
     word-wrap: break-word;
     overflow-x: hidden;
@@ -368,7 +371,7 @@ display: inline-block;
     float: left; 
 }
 .setting-selection {
-    margin: 0px 0px 0px 15px !important; 
+    margin: 0px 0px 0px 10px !important; 
     max-height: 20px;
     min-height: 20px;
     max-width: 5px;
@@ -569,9 +572,10 @@ display: inline-block;
     display: table;
     position: relative;
     margin: 1px 0px 1px 0px; 
+    padding: 0px !important; 
     min-height: 25px; 
-    width: 100%;  
-    border-spacing: 5px;
+    width: 99%;  
+    border-spacing: 3px !important;
 }
 .story-ctitle {
     position: relative;
@@ -652,10 +656,11 @@ display: inline-block;
   /* right: 20px; */
   width: 30px;
   height: 30px;
-  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=);
-  background-size: contain;
+  
+  background-size: contain; 
+  background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3C!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='512px' height='512px' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve'%3E%3Cpath fill='%23CCCCCC' d='M293.751,455.868c-20.181,20.179-53.165,19.913-73.673-0.595l0,0c-20.508-20.508-20.773-53.493-0.594-73.672 l189.999-190c20.178-20.178,53.164-19.913,73.672,0.595l0,0c20.508,20.509,20.772,53.492,0.595,73.671L293.751,455.868z'/%3E%3Cpath fill='%23CCCCCC' d='M220.249,455.868c20.18,20.179,53.164,19.913,73.672-0.595l0,0c20.509-20.508,20.774-53.493,0.596-73.672 l-190-190c-20.178-20.178-53.164-19.913-73.671,0.595l0,0c-20.508,20.509-20.772,53.492-0.595,73.671L220.249,455.868z'/%3E%3C/svg%3E");
+  
 }
-
 
 /* Dropdown Button */
 .dropbtn {
@@ -717,6 +722,12 @@ display: inline-block;
     text-align: left; 
 }
 .notes-menu-content a:hover , .story-menu-content a:hover {
+    background-color: #ddd;
+    color: #000;
+    opacity: 0.5; 
+}
+
+.ctab-div:hover, .qtab-div:hover, .ctitle-div:hover, .ptitle-div:hover, .qtype-selector:hover, .userview-select:hover {
     background-color: #ddd;
     color: #000;
     opacity: 0.5; 
@@ -848,6 +859,63 @@ div.ff7-10, button.ff7-10, select.ff7-10 { /*Aeris' Flowers*/
     background: linear-gradient(to bottom right, #ffff00, #ffb058, #ffb000) !important;
 }
 
+
+
+
+select.ff7-ios option.ff7-ios { background-color: #ffffff !important; }
+
+
+/*
+div.ff7-ios>div>ctitle-div *, 
+div.ff7-ios *,
+div.ff7-ios>*,
+div.ff7-ios>div, 
+div.ff7-ios>div *, 
+div.ff7-ios>div>div, 
+div.ff7-ios>div>div>div, 
+div.ff7-ios>div>div>div>div, 
+div.ff7-ios>div>div>div>div>div, 
+div.ff7-ios>table>tbody>tr>td,
+div.ff7-ios>ctab-div *, 
+
+div.ff7-ios>div, 
+div.ff7-ios>div>div, 
+div.ff7-ios>div>div>div,
+div.ff7-ios>div>div>div>div, 
+div.ff7-ios>div>div>div>div>div, 
+
+*/
+div.ff7-ios>a, 
+div.ff7-ios>div *:not(.setting-selection):not(.arrow), 
+div.ff7-ios>table *,
+div.ff7-ios>div.ctab-div, 
+div.ff7-ios>div.qtab-div, 
+div.ff7-ios>div.ctitle-div, 
+div.ff7-ios>div.ptitle-div, 
+div.ff7-ios>div.description-div, 
+div.ff7-ios>div.description-div b, 
+div.ff7-ios>div.ggwelcome-div, 
+div.ff7-ios, button.ff7-ios, select.ff7-ios { /*ios Font and Colors*/
+    background: linear-gradient(to bottom right, #ffffff, #ffffff, #ffffff) !important;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu !important;
+
+    color: #333333 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    border-spacing: 5px;
+}
+/*    
+    margin: 0px 0px 0px 0px !important; 
+    border-spacing: 1px !important; 
+    border-spacing: 5px !important; 
+*/
+
+#ff7-ios {
+    font-size: 12px; 
+    padding: 2px 16px 0px 5px; 
+}
+
+
 /*
 
 select.ff7 option.ff7
@@ -897,7 +965,7 @@ div.ff7 *{
     margin: 5px 0;
 }
 
-button.ff7{
+button.ff7 {
     border: solid 1px #424542;
     box-shadow: 1px 1px #e7dfe7,
               -1px -1px #e7dfe7,
