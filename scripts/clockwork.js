@@ -239,8 +239,14 @@ function userEdit(userId1, userId2)
 function userviewClose() { 
     var editable_elements = document.querySelectorAll("[contenteditable=true]");
     for( var i = 0 ; i < editable_elements.length ; i++ ) {
-        editable_elements[i].classList.remove("editable");
-        editable_elements[i].setAttribute("contenteditable", false);
+        
+        var ee1 = editable_elements[i].id === "id-title-edit"; 
+        var ee2 = editable_elements[i].id === "id-description-edit"; 
+        
+        if ( !ee1 && !ee2 ) {
+            editable_elements[i].classList.remove("editable");
+            editable_elements[i].setAttribute("contenteditable", false);
+        }
     }   
     removeShow("userview-div");
     removeNoShow("description-div");  
@@ -1592,7 +1598,7 @@ function removeClassFromDiv( elementName, className ) {
 document.addEventListener("keydown", keyDownTextField, false);
 function keyDownTextField(e) {
     
-    console.log(document.activeElement.id)
+    //console.log(document.activeElement.id)
     
     if( 
         document.activeElement.id != "id-userview-notes" &&
