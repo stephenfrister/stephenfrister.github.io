@@ -1447,6 +1447,9 @@ function setTheme(themeID){
             openMenu.classList.add(themeID);
         }
     }
+    
+    document.getElementById("id-loading-div").classList.add("noshow");
+    
 }
 
 function settingsGet() {

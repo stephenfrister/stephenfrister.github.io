@@ -19,6 +19,26 @@ html, body{
     min-width: 550px; 
 }
 
+.loading-div {
+    background: white;
+    height: 100vh; 
+    width: 100vw;
+    z-index: 100;
+    
+    display: inline-block;
+    width: 550px; 
+    text-align: center;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
+
+.loading-img {
+    margin-top: 150px; 
+    height: 200px;
+    width: 250px; 
+}
+
 .editable {
     -moz-appearance: textfield;
     -webkit-appearance: textfield;
