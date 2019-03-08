@@ -21,9 +21,8 @@ html, body{
 
 .loading-div {
     background: white;
-    height: 100vh; 
+    height: 2000px; 
     width: 100vw;
-    min-height: 100%;
     z-index: 100;
     
     display: inline-block;
