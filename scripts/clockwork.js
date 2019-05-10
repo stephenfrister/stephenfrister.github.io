@@ -24,6 +24,117 @@ var isQuestEdit = false;
 var notesListener = false; 
 
 
+
+$( document ).ready( function () 
+{
+    $( "#id-maps-div-img" ).draggable({
+        handle: "img",
+        containment : [ -600, -600, 200, 200 ]
+    });
+    
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+
+    var pMap = url.searchParams.get("map");
+    var pQuests = url.searchParams.get("quests");
+    var pTop = url.searchParams.get("top");
+    var pMiddle = url.searchParams.get("middle");
+
+
+    /*
+    http://127.0.0.1:4000/clockwork.html
+    http://127.0.0.1:4000/clockwork.html?map=1
+    http://127.0.0.1:4000/clockwork.html?quests=1
+    http://127.0.0.1:4000/clockwork.html?top=0
+    http://127.0.0.1:4000/clockwork.html?middle=0
+    */
+    
+    // need to add to url
+    // and ALSO remove
+
+    console.log(pTop);
+    console.log(pMiddle);
+    
+    
+    detectUrlState();
+    
+    /*
+    if( pMap == "1" ){
+        mapsClick();
+    }
+    if( pQuests == "1" ){
+        questsClick();
+    }
+    */
+    
+    if( pTop == "1" ){
+        console.log("close top...");
+    
+    }
+    if( pMiddle == "1" ){
+        console.log("close middle...");
+        
+    }
+
+});
+
+
+//$( document ).ready( function() 
+jQuery( document ).ready(function( $ ) {
+
+    $(window).on('popstate', function() {
+        detectUrlState();
+    });
+    
+});
+
+function detectUrlState() 
+{
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+
+    var pMap = url.searchParams.get("map");
+    var pQuests = url.searchParams.get("quests");
+
+
+    if( pMap == "1" ){
+        mapsClick();
+    }
+    if( pQuests == "1" ){
+        questsClick();
+    }
+    if( !pMap=="1" && !pQuests=="1" ){
+        charsClick();
+    }
+}
+
+
+function addParam(url, param, value) 
+{
+    
+    var base_url = window.location.origin;
+    url = base_url + "/clockwork.html"; 
+    //var host = window.location.host;
+    //var pathArray = window.location.pathname.split( '/' );
+    
+    var a = document.createElement('a'), regex = /(?:\?|&amp;|&)+([^=]+)(?:=([^&]*))*/g;
+    var match, str = []; a.href = url; param = encodeURIComponent(param);
+    
+    while (match = regex.exec(a.search))
+       if (param != match[1]) str.push(match[1]+(match[2]?"="+match[2]:""));
+    str.push(param+(value?"="+ encodeURIComponent(value):""));
+    a.search = str.join("&");
+    
+    return a.href;
+}
+
+function positionMap()
+{
+	var oMap = document.getElementById("id-maps-div-img");
+    oMap.style.top = "-580px";
+    oMap.style.left = "-720px";
+}
+
 function getUsers(divID)
 {
 	var obj = document.getElementById(divID);
@@ -1371,10 +1482,88 @@ function menuClick(){
     
 }
 
+var md1 = 0; 
+var mMenuRotate = 0;
+function menuUpClick(){
+    
+    md1 += 180;
+    mMenuRotate += 180;
+    
+    document.getElementById("id-title-div").classList.toggle("noshow");
+    document.getElementById("id-subtitle-div").classList.toggle("noshow");
+    
+    // rotate the arrows
+    document.getElementById("id-svg-min").setAttribute("transform", "rotate(" + mMenuRotate + ")");
+
+    document.getElementById("id-svg-double1").setAttribute("transform", "rotate(" + md1 + ")");
+    
+    clearSelection(); 
+    
+}
+
+function menuUpClickDouble(){
+    
+    console.log("double do menuDoubleUpClick...")
+    
+    
+    // minimize header and the character+quest field
+    menuUpClick();
+    tabsMinimizeClick(); 
+    
+    
+}
+
+var md2 = 0; 
+var mTabsRotate = 0;
+function tabsMinimizeClick(){
+    
+    md2 += 180;
+    mTabsRotate += 180;
+    
+    document.getElementById("id-tab-div").classList.toggle("noshow");
+    
+    document.getElementById("firebaseusers-div").classList.toggle("noshow");
+    document.getElementById("firebasequests-div").classList.toggle("noshow");
+    
+    // remove maps if displayed 
+    if( !document.getElementById("id-maps-div").classList.contains("noshow") ){
+        document.getElementById("id-maps-div").classList.toggle("noshow");
+    }
+    
+    // rotate the arrows
+    document.getElementById("id-svg-otab-up").setAttribute("transform", "rotate(" + mTabsRotate + ")");
+    document.getElementById("id-svg-double2").setAttribute("transform", "rotate(" + md2 + ")");
+    
+    clearSelection(); 
+    
+}
+function tabsVerticalClick(){
+    
+    console.log("do tabsVerticalClick...")
+    
+    
+}
+function tabsHorizontalClick(){
+    
+    console.log("do tabsHorizontalClick...")
+    
+    
+}
+
+
+
+
+
+
 function charsClick(){
     
+    // remove quests log if displayed
     if( document.getElementById("id-quests-div").classList.contains("show") ){
         document.getElementById("id-quests-div").classList.toggle("show");
+    }
+    // remove maps if displayed 
+    if( !document.getElementById("id-maps-div").classList.contains("noshow") ){
+        document.getElementById("id-maps-div").classList.toggle("noshow");
     }
     
     removeNoShow("qbot-div"); 
@@ -1384,6 +1573,13 @@ function charsClick(){
     
     questOptionsLoginCheck();
     
+    // remove maps or quest variables from url if present
+    if ( document.location.href.includes("map=1") || 
+         document.location.href.includes("quests=1")
+        ) {
+        window.history.pushState('Characters', 'Title', addParam('', '', '') );
+    }
+    
 }
 
 function questsClick(){
@@ -1391,12 +1587,51 @@ function questsClick(){
     document.getElementById("id-quests-div").classList.toggle("show");
     document.getElementById("id-qbot-div").classList.add("show");
     
+    // remove maps if displayed 
+    if( !document.getElementById("id-maps-div").classList.contains("noshow") ){
+        document.getElementById("id-maps-div").classList.toggle("noshow");
+    }
+    
     removeNoShow("qbot-div"); 
     removeShow("qbot-new-div"); 
     
     getQuests("id-qtop-div");
     
     // questOptionsLoginCheck();
+    
+    // if not contain quests
+    if ( !document.location.href.includes("quests=1") ) {
+        window.history.pushState('Quests', 'Title', addParam('', 'quests', '1') );
+    }
+    
+}
+
+function mapsClick(){
+    
+    // display map
+    document.getElementById("id-maps-div").classList.toggle("noshow");
+    
+    // remove quests log if displayed
+    if( document.getElementById("id-quests-div").classList.contains("show") ){
+        document.getElementById("id-quests-div").classList.toggle("show");
+    }
+    
+    
+    //var url = new URL("http://foo.bar/?x=1&y=2");
+    //url.searchParams.set('map', 1);
+    //document.location.search = addParam('foobar', 'map', '2')
+    
+    //var foobar = document.location
+    //console.log( foobar.includes("map=1") );
+    
+    //var foobar = document.location.href ;
+    //console.log( foobar );
+    
+    // if not contain map
+    if ( !document.location.href.includes("map=1") ) {
+        window.history.pushState('Map', 'Title', addParam('', 'map', '1') );
+    }
+    
     
 }
 
@@ -1566,6 +1801,12 @@ function onFailure(error) {
 ///
 ///     MISC FUNCTIONS
 ///
+
+function clearSelection()
+{
+    if (window.getSelection) {window.getSelection().removeAllRanges();}
+    else if (document.selection) {document.selection.empty();}
+}
 
 function removeShow(elementName) {
     var mClass = document.getElementsByClassName(elementName);

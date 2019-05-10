@@ -20,13 +20,20 @@ html, body{
 }
 
 .loading-div {
+    
+    position: absolute; 
+    top: 10px; 
+    left: 0;
+    right: 0;
+    margin: auto;
+    
     background: white;
     height: 2000px; 
     width: 100vw;
     z-index: 100;
     
     display: inline-block;
-    width: 550px; 
+    width: 565px; 
     text-align: center;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
@@ -105,6 +112,7 @@ html, body{
     height: 32px !important; 
     top: -4px; 
 }
+
 /*
 .gSign{
     position: absolute; 
@@ -123,11 +131,17 @@ html, body{
 }
 */
 
-.users-div{
+.menu-div {
+    position: relative; 
+    padding: 0 0 30px 0; 
+}
+
+.users-div {
     position: relative;
     max-width: 550px;
 }
-.users-table{
+.users-table {
+    
 }
 
 .title-nav {
@@ -135,7 +149,66 @@ html, body{
     float: right; 
     width: 35px; 
 	top: 0px;
+    z-index: 2; 
 }
+.title-action {
+    margin: 0 2px 0 0; 
+}
+.nav-div {
+    
+}
+.svg-hmb {
+    fill: #D0D0D0; 
+}
+.svg-min,
+.svg-dminup,
+.svg-dmindo {
+    width: 24px;
+    height: 24px; 
+    margin: 0 0 -3px -5px !important;
+    fill: #D0D0D0; 
+}
+.svg-dminup {
+    margin: -3px 0 0px -5px !important;
+}
+.svg-dmindo {
+    position: absolute; 
+    top: 5px;
+    left: 11px; 
+    /*  margin: -5px 0 -5px -5px !important; */
+}
+
+.svg-otab,
+.svg-otab-90,
+.svg-otab-up {
+    position: absolute; 
+    width: 24px;
+    height: 24px; 
+    fill: #D0D0D0; 
+}
+div.ff7 .svg-otab,
+div.ff7 .svg-otab-up,
+div.ff7 .svg-otab-90 {
+    margin: 7px 0 5px 0; 
+    right: 7px; 
+}
+.svg-otab-90 {
+    transform: rotate(90deg);
+}
+/*
+    margin: -7px 0px -5px 1px !important;
+    padding: 0 5px 2px 4px; 
+
+*/
+.users-otab {
+    position: relative;
+    display: table-cell;
+    min-width: 18px; 
+    max-width: 18px; 
+    width: 18px; 
+    height: 37px; 
+}
+
 
 .menu-clickarea {
 	position: absolute;
@@ -149,7 +222,100 @@ html, body{
     height: 25px; 
 }
 
-/**/
+.maps-div {
+    position: absolute; 
+    top: 45px; 
+    max-height: 661px; 
+    min-height: 661px; 
+    max-width: 528px;
+    min-width: 528px; 
+    z-index: 2; 
+    
+}
+.maps-img { 
+
+}
+.maps-img-div { 
+    position: absolute; 
+    display: flex;
+    height: 98%; 
+    width: 92%; 
+    overflow: hidden; 
+    
+}
+
+.button-map {
+    background-color: rgba(255,255,255,1);
+    border: none;
+    border-radius: 2px;
+    outline: none;
+    position: absolute; 
+    cursor: pointer;
+    height: 29px;
+    width: 29px; 
+    right: 30px; 
+    
+    display: table-cell; 
+    vertical-align: middle;
+}
+.button-map.zoom-in,
+.button-map.zoom-out {
+    font-weight: bold;
+    font-size: 20px; 
+    text-shadow: none;
+    color: #505050; 
+}
+.zoom-in {
+    padding: 0 0 4px 0; 
+    bottom: 48px; 
+    z-index: 1; 
+}
+.zoom-out {
+    padding: 0 0 4px 0; 
+    bottom: 19px;
+    z-index: 0;  
+}
+.zoom-hr {
+    position: absolute; 
+    bottom: 42px; 
+    right: 35px; 
+    width: 19px;
+    z-index: 2; 
+}
+.button-locate {
+    bottom: 80px; 
+    box-shadow: 0 0 2px #999;
+}
+
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+    background: rgba(255,255,255,1) radial-gradient(circle, transparent 1%, rgba(255,255,255,1) 1%) center/15000%;
+}
+.ripple:active {
+    background-color: #A0A0A0;
+    background-size: 100%;
+    transition: background 0s;
+}
+
+.icon-map {
+    width: 20px;
+    height: 20px; 
+    margin: 4px 0px 0px -2px !important; 
+}
+
+#id-maps-div-img {
+    top: -580px; 
+    left: -720px; 
+}
+
+#id-maps-div-img:active {
+    cursor: move; 
+}
+
 .quests-div {
     display: none;
     position: absolute; 
@@ -161,7 +327,7 @@ html, body{
     min-width: 548px; 
     width: 100%; 
     height: 100%; 
-    top: 38px; 
+    top: 41px; 
     left: 0px; 
     text-align: left; 
     z-index: 2; 
@@ -190,8 +356,8 @@ display: inline-block;
 
 .qtop-div {
     position: relative; 
-    max-height: 268px; 
-    min-height: 268px; 
+    max-height: 270px; 
+    min-height: 270px; 
     overflow-y: scroll;
     top: -6px; 
     margin: -5px; 
@@ -199,12 +365,12 @@ display: inline-block;
 .qbot-div, .qbot-new-div  {
     display: none; 
     position: relative; 
-    max-height: 280px; 
-    min-height: 280px; 
+    max-height: 349px; 
+    min-height: 349px; 
     overflow-y: scroll;
     word-wrap: break-word;
     overflow-x: hidden;
-    top: -6px; 
+    top: -10px; 
 }
 .qact-div {
     float: left; 
@@ -266,6 +432,9 @@ display: inline-block;
     display:flex; 
     flex-direction:column;
 }
+.quest-row {
+    min-height: 44px; 
+}
 .quest-row-header {
     order: 1; 
 }
@@ -322,6 +491,9 @@ display: inline-block;
 }
 .icon-grey {
     fill: #B0BEC5;
+}
+.icon-darkgrey {
+    fill: #505050;
 }
 .icon-yellow {
     fill: #FFD700;
@@ -497,13 +669,15 @@ display: inline-block;
 	text-align: center; 
 }
 .title-nav .menu-icon > svg  {
-	width: 18px;
-	height: 15px; 
-	margin: -5px 0px 0px -2px;
+	width: 16px;
+	height: 13px; 
+	margin: -4px 0px 0px -1px;
 }
 .title-nav .menu-icon > svg path {
 	/* fill: #424242; */
-	fill: #eff1ff; 
+	/* fill: #eff1ff; */
+	fill: #D0D0D0;
+	 
 }
 .title-nav .nav-menu {
 	clear: both;
@@ -522,27 +696,27 @@ display: inline-block;
 	margin-right: 0; 	
 }
 
-.title-div{
+.title-div {
     padding-top: 0px;
     padding-bottom: 0px; 
     margin-top: -0px; 
     margin-bottom: -8px; 
     z-index: 0; 
 }
-.title-img{
+.title-img {
     position: relative;
     min-width: 520px; 
     max-width: 520px; 
     z-index: 0; 
 }
 
-.subtitle-div{
+.subtitle-div {
     margin: -100px 0px 0px 0px; 
     padding-top: 0px;
     padding-bottom: 0px; 
     z-index: 1; 
 }
-.subtitle-img{
+.subtitle-img {
     position: relative;
     min-width: 550px; 
     max-width: 550px; 
@@ -562,28 +736,44 @@ display: inline-block;
 }
 
 
-
-.tab-div{
+.options-div {
     display: table;
     position: relative;
     margin: 1px 0px 1px 0px; 
-    min-height: 25px; 
-    width: 100%;  
     border-spacing: 3px;
+    min-height: 25px; 
+    width: 20%;  
+    float: right; 
+    
+}
+.tab-div {
+    display: table;
+    position: relative;
+    margin: 1px 0px 1px 0px; 
+    border-spacing: 3px;
+    min-height: 25px; 
+    height: 25px; 
+    width: 70%;  
+    float: left; 
+}
+.users-ctab,
+.users-qtab,
+.users-mtab {
+    position: relative;
+    display: table-cell;
+}
+.users-ctab,
+.users-qtab {
+    min-width: 145px; 
+    max-width: 145px; 
+    width: 145px; 
+}
+.users-mtab {
+    min-width: 40px; 
+    max-width: 40px; 
+    width: 40px; 
 }
 
-.users-ctab {
-    position: relative;
-    display: table-cell;
-    min-width: 245px; 
-    max-width: 245px; 
-}
-.users-qtab {
-    position: relative;
-    display: table-cell;
-    min-width: 246px; 
-    max-width: 246px; 
-}
 
 .story{
     max-width: 550px;
@@ -706,7 +896,9 @@ display: inline-block;
 }
 
 /* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus, .dropbtn:active{
+.dropbtn:hover, 
+.dropbtn:focus, 
+.dropbtn:active{
     -webkit-tap-highlight-color: transparent;
     outline: none;
 }
@@ -726,7 +918,8 @@ display: inline-block;
     bottom: -10px;
     left: 0px;
 }
-.notes-menu-content, .story-menu-content {
+.notes-menu-content, 
+.story-menu-content {
     display: none;
     position: relative;
     min-width: 60px;
@@ -735,19 +928,28 @@ display: inline-block;
     overflow-y: auto;
     
 }
-.notes-menu-content a , .story-menu-content a {
+.notes-menu-content a , 
+.story-menu-content a {
     display: block;
     padding: 5px 0px 5px 0px;
     text-decoration: none;
     text-align: left; 
 }
-.notes-menu-content a:hover , .story-menu-content a:hover {
+.notes-menu-content a:hover , 
+.story-menu-content a:hover {
     background-color: #ddd;
     color: #000;
     opacity: 0.5; 
 }
 
-.ctab-div:hover, .qtab-div:hover, .ctitle-div:hover, .ptitle-div:hover, .qtype-selector:hover, .userview-select:hover {
+.ctab-div:hover, 
+.qtab-div:hover, 
+.mtab-div:hover, 
+.otab-div:hover, 
+.ctitle-div:hover, 
+.ptitle-div:hover, 
+.qtype-selector:hover, 
+.userview-select:hover {
     background-color: #ddd;
     color: #000;
     opacity: 0.5; 
@@ -910,6 +1112,8 @@ div.ff7-ios>div *:not(.setting-selection):not(.arrow),
 div.ff7-ios>table *,
 div.ff7-ios>div.ctab-div, 
 div.ff7-ios>div.qtab-div, 
+div.ff7-ios>div.mtab-div, 
+div.ff7-ios>div.otab-div,
 div.ff7-ios>div.ctitle-div, 
 div.ff7-ios>div.ptitle-div, 
 div.ff7-ios>div.description-div, 

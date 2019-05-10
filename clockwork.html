@@ -12,17 +12,11 @@ title: ""
 
 <body>	
     
-    <div id="id-loading-div" class="loading-div">
-        <div><img src="../images/loading-gif.jpg" class="loading-img" ></img></div>
-        <div><img src="../images/loading.png" class="" ></img></div>
-    </div>
-    
     <div class="body-div">
     
         <div class="background-div"></div>
         
         <div class="front-div">
-        
         
             <div class="menu-div">
                 
@@ -37,50 +31,55 @@ title: ""
                 </div> 
                 
                 <nav id="id-title-nav" class="title-nav">
-                
                     <div class="nav-div ff7">
-                    
                         <!--a href="#" class="menu-icon"-->
                         <a class="menu-icon">
-                            <svg viewBox="0 0 18 15">
+                            <svg class="svg-hmb" viewBox="0 0 18 15">
                                 <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
                                 <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
                                 <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
                             </svg>
                         </a>
-
                     </div>
-                    
                     <div class="menu-clickarea">
                         <div class="clickarea-div ff7" onclick="menuClick()"></div>
                     </div>
-                    
                 </nav>
-            
+                
+                <div id="id-title-dminup" class="title-nav title-action">
+                    <div class="nav-div ff7">
+                        <svg id="id-svg-double1"  class="svg-dminup" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/>
+                        </svg>
+                        <svg id="id-svg-double2"  class="svg-dmindo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/>
+                        </svg>
+                    </div>
+                    <div class="menu-clickarea">
+                        <div class="clickarea-div ff7" onclick="menuUpClickDouble()"></div>
+                    </div>
+                </div>
+                
+                <div id="id-title-min" class="title-nav title-action">
+                    <div class="nav-div ff7">
+                        <svg id="id-svg-min" class="svg-min" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/>
+                        </svg>
+                    </div>
+                    <div class="menu-clickarea">
+                        <div class="clickarea-div ff7" onclick="menuUpClick()"></div>
+                    </div>
+                </div>
+                
             </div> 
             
-            <div class="title-div">
-                <!--img src="../images/clockwork-title-blue.png" class="title-img" ></img-->
-                <!--img src="../images/dungeon-title-blue.png" class="title-img" ></img-->
-                <!--img src="../images/dungeon-title-blue-group.png" class="title-img" ></img-->
+            <div id="id-title-div" class="title-div ">
                 <img src="../images/heroes-title-line.png" class="title-img" ></img>
             </div> 
             
-            <div class="subtitle-div">
+            <div id="id-subtitle-div" class="subtitle-div ">
                 <img src="../images/dragons-title-all.png" class="title-img" ></img>
-                <!--img src="../images/dungeon-subtitle-blue.png" class="subtitle-img" ></img-->
-                <!--img src="../images/and-subtitle-blue.png" class="subtitle-img" ></img-->
             </div> 
             
-            
-            <!--div class="backtitle-div">
-                <!--img src="../images/group-backtitle-grey.png" class="backtitle-img" ></img>
-                <!--img src="../images/group-backtitle-grey.png" class="backtitle-img" ></img>
-            </div-->
-            
-            
-            
             <div class="users-div" align="center">
+            
                 <div class="actionmenu">
                     <div id="id-actionmenu" class="actionmenu-content ff7">
                         <a id="actionmenuView" >View</a>
@@ -96,9 +95,63 @@ title: ""
                     <div class="users-qtab ff7" >
                         <div id="id-qtab-div" class="qtab-div" onclick="questsClick()" >Quests</div>
                     </div>
+                    <div class="users-mtab ff7" >
+                        <div id="id-mtab-div" class="mtab-div" onclick="mapsClick()" >Map</div>
+                    </div>
                     
                 </div>
-            
+                
+                
+                <div id="id-tab-options" class="options-div">
+                    
+                    <div class="users-otab ff7" >
+                        <svg class="svg-otab" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 13H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm0-10H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="users-otab ff7" >
+                        <svg class="svg-otab-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 13H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm0-10H3c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1z"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="users-otab ff7" >
+                        <svg id="id-svg-otab-up"  class="svg-otab-up" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M11.29 8.71L6.7 13.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L12 10.83l3.88 3.88c.39.39 1.02.39 1.41 0 .39-.39.39-1.02 0-1.41L12.7 8.71c-.38-.39-1.02-.39-1.41 0z"/>
+                        </svg>
+                        <div class="menu-clickarea">
+                            <div class="clickarea-div ff7" onclick="tabsMinimizeClick()"></div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                
+                <div id="id-maps-div" class="maps-div ff7 noshow">
+                
+                    <div class="maps-img-div ff7" >
+                        <div id="id-maps-div-img" >
+                            <img src="../images/dnd-map-cloud.png" class="maps-img" ></img>
+                        </div>
+                    </div> 
+                    
+                    <button id="id-button-zoom-in" class="button-map zoom-in ripple" onclick="positionMap()">
+                        +
+                    </button>
+                    
+                    <div class="zoom-hr">
+                        <hr class="" />
+                    </div>
+                    
+                    <button id="id-button-zoom-out" class="button-map zoom-out ripple" onclick="positionMap()">
+                        -
+                    </button>
+                    
+                    <button id="id-button-location" class="button-map button-locate ripple" onclick="positionMap()">
+                        <svg id="id-map-location" class="icon-darkgrey icon-map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+                    </button>
+                    
+                </div>
+                
+                
                 <div id="firebaseusers-div" class="ff7" >
                 </div>
                 
@@ -119,12 +172,6 @@ title: ""
                             <!-- 
                             1: Confront Glass Staff (in progress)<br>
                             2: Find Missing Family (in progress)<br>
-                            3: Rescue Silas (complete)<br>
-                            4: Return Stolen Weapons/Armor (complete)<br>
-                            5: Find Silver Comb, Return to Spirit (not started)<br>
-                            6: Search for a Druid far to the North (not started)<br>
-                            7: Confront the Cragmaw King (not started)<br>
-                            8: Deliver Mining Equipment (completed)<br>
                             -->
                         </div>
                         
@@ -364,23 +411,8 @@ title: ""
                 
             </div>
             
-            
-            <!--div>
-            
-                <div class="userview-text">
-                
-                    
-                </div>
-                
-            </div-->
-            
         </div> 
             
-            
-            
-            
-            
-        
         <div id="id-settings" class="settings-div ff7">
         
             <div id="id-settings-header" class="settings-header ff7">
@@ -452,6 +484,11 @@ title: ""
         
         </div>
         
+        <div id="id-loading-div" class="loading-div">
+            <div><img src="../images/loading-gif.jpg" class="loading-img" ></img></div>
+            <div><img src="../images/loading.png" class="" ></img></div>
+        </div>
+        
     </div>
     
     <!-- to enable login uncomment below -->
@@ -479,7 +516,13 @@ title: ""
     
     <svg id="id-quest-minus" class="icon-minu icon-grey icon-small icon-hide" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,13H7V11H17M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" /></svg>
     
+        
+        
+    
     
 </body>
 
+                
+<script>
+</script>
 
