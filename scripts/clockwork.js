@@ -29,8 +29,13 @@ $( document ).ready( function ()
 {
     $( "#id-maps-div-img" ).draggable({
         handle: "img",
-        containment : [ -600, -600, 200, 200 ]
+        containment : [ -700, -700, 100, 100 ]
     });
+        //containment : [ -600, -600, 200, 200 ]
+        //containment : [ -600, -600, 200, 200 ]
+        //containment : "parent"
+        //containment : "document"
+        //containment : "window"
     
     var url_string = window.location.href;
     var url = new URL(url_string);
@@ -87,6 +92,37 @@ jQuery( document ).ready(function( $ ) {
     });
     
 });
+
+function mapZoomIn() {
+    console.log("zoom in...");
+    
+    //var myMap = document.getElementById("id-maps-img");
+    //var mapTop = myMap.clientWidth;
+    //var mapLeft = myMap.clientWidth;
+    //var mapWidth = myMap.clientWidth;
+    
+    //var x = Math.abs( myMap.position().left ) + myMap.width() / 2
+    //var y = Math.abs( myMap.position().top ) + myMap.height() / 2
+    
+    //myMap.style.top = (mapTop * 1.2) + "px";
+    //myMap.style.left = (mapLeft * 1.2) + "px";
+    //myMap.style.width = (mapWidth * 1.2) + "px";
+    
+}
+
+function mapZoomOut(){
+    console.log("zoom out...");
+    
+    //var myMap = document.getElementById("id-maps-img");
+    //var mapTop = myMap.clientWidth;
+    //var mapLeft = myMap.clientWidth;
+    //var mapWidth = myMap.clientWidth;
+    
+    //myMap.style.top = (mapTop * 0.8) + "px";
+    //myMap.style.left = (mapLeft * 0.8) + "px";
+    //myMap.style.width = (mapWidth * 0.8) + "px";
+    
+}
 
 function detectUrlState() 
 {
