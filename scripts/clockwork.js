@@ -29,7 +29,8 @@ $( document ).ready( function ()
 {
     $( "#id-maps-div-img" ).draggable({
         handle: "img",
-        containment : [ -700, -700, 100, 100 ]
+        containment : [ -700, -700, 100, 100 ],
+        scroll: false 
     });
         //containment : [ -600, -600, 200, 200 ]
         //containment : [ -600, -600, 200, 200 ]

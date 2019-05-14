@@ -12,55 +12,81 @@ html, body{
     text-align: center;
     overflow: hidden;
     
-    height: 100%;
+    background-image: url("../images/white-waves.png"); 
+    
+    /*
+    
     height: 1200px; 
     
     width: 100%; 
     min-width: 550px; 
+    
+    height: 100%;
+    height: 100vh; 
+    
+    */
+    
 }
 
-.loading-div {
-    
-    position: absolute; 
-    top: 10px; 
-    left: 0;
-    right: 0;
-    margin: auto;
-    
-    background: white;
-    height: 2000px; 
-    width: 100vw;
-    z-index: 100;
-    
-    display: inline-block;
-    width: 565px; 
-    text-align: center;
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    border-radius: 7px;
-}
 
-.loading-img {
-    margin-top: 150px; 
-    height: 200px;
-    width: 250px; 
-}
-
-.editable {
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-    background-color: -moz-field;
-    border: 1px solid darkgray;
-    box-shadow: 1px 1px 1px 0 lightgray inset;  
-    font: -moz-field;
-    font: -webkit-small-control;
-}
 
 .body-div {
     height: 100%;
     width: 550px; 
     margin: 0 auto;
 }
+
+/*
+    
+.background-div {
+    z-index: -1;  
+}
+
+.background-img {
+    opacity: 0.3;
+    
+}
+
+.background-div:before {
+    min-width: 567px; 
+    
+    content: "";
+    position: absolute;
+    display:inline-block;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    
+    opacity: 0.3;
+    
+    /*
+    
+    background-image: url("../images/stone.png"); 
+    background-repeat: no-repeat;
+    
+    
+    background-size: auto 100%;
+    background-size: cover;
+    width: 100%; 
+    
+    background-image: url("../images/stone.png"); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    
+    background-size: 100% auto;
+    background-size: auto 100%;
+    
+    height: 100%;   
+    height: 100vh;     
+    min-width: 570px; 
+    min-height: 1500px;  
+    
+}
+
+*/
 
 .front-div {
     overflow: hidden; 
@@ -130,6 +156,32 @@ html, body{
     display: none; 
 }
 */
+
+.loading-img {
+    margin-top: 150px; 
+    height: 200px;
+    width: 250px; 
+}
+.loading-div {
+    
+    position: absolute; 
+    top: -10px; 
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+    background: white;
+    height: 2000px; 
+    width: 100vw;
+    z-index: 100;
+    
+    display: inline-block;
+    width: 565px; 
+    text-align: center;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+}
 
 .menu-div {
     position: relative; 
@@ -462,6 +514,16 @@ display: inline-block;
 .quest-row-notstarted, 
 .quest-row-removed {
     margin: -10px 0px 0px 0px !important; 
+}
+
+.editable {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    background-color: -moz-field;
+    border: 1px solid darkgray;
+    box-shadow: 1px 1px 1px 0 lightgray inset;  
+    font: -moz-field;
+    font: -webkit-small-control;
 }
 
 
@@ -1003,36 +1065,9 @@ display: inline-block;
     display:none !important;
 }
 
-.disabled-hover{
+.disabled-hover {
     background-color: transparent !important;
     opacity: 1 !important; 
-}
-
-.background-div{
-    z-index: 2;
-}
-
-.background-div:before{
-    content: "";
-    position: absolute;
-    display:inline-block;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    background-image: url("../images/stone.png"); 
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    
-    opacity: 0.3;
-    
-    width: 100%; 
-    height: 100%;     
-    min-width: 570px; 
-    min-height: 1500px; 
 }
 
 
