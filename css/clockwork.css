@@ -8,13 +8,12 @@
 
 
 html, body{
-    display: inline-block;
-    text-align: center;
-    overflow: hidden;
-    
     background-image: url("../images/white-waves.png"); 
     
     /*
+    
+    display: inline-block;
+    text-align: center;
     
     height: 1200px; 
     
@@ -22,7 +21,9 @@ html, body{
     min-width: 550px; 
     
     height: 100%;
-    height: 100vh; 
+    height: 100vh;
+    
+    overflow: hidden;
     
     */
     
@@ -31,8 +32,8 @@ html, body{
 
 
 .body-div {
-    height: 100%;
     width: 550px; 
+    height: 100%; 
     margin: 0 auto;
 }
 
@@ -89,8 +90,8 @@ html, body{
 */
 
 .front-div {
-    overflow: hidden; 
     padding: 7px 0px 0px 0px;
+    height: 100%; 
 }
 
 .title-user{
@@ -390,10 +391,11 @@ div.ff7 .svg-otab-90 {
 
 
 .qtype-div {
-width: 100%;
+width: 98%;
 position: relative;
 height: 30px;
-margin: 0px 0px 13px 0px !important; 
+margin: 0px 10px 0px 5px !important; 
+padding: 0px 0px 10px 0px !important; 
 text-align: center;
 }
 /*
@@ -565,6 +567,9 @@ display: inline-block;
 }
 
 
+
+
+
 .settings-div, .userview-div {
     display: none;
     position: absolute; 
@@ -586,15 +591,6 @@ display: inline-block;
     padding: 5px 0px 5px 10px;
     margin: 3px 1px 0px -1px !important;
 }
-.userview-treasure {
-    position: relative;
-    text-align: left; 
-    min-height: 63px; 
-    padding: 5px 0px 5px 0px !important;
-    margin: 46px 1px 0px -1px !important;
-}
-
-/* min-height: 442px;  */
 
 .settings-header, .userview-header, .quests-header {
     text-align: center; 
@@ -624,6 +620,7 @@ display: inline-block;
     max-width: 25px;
     min-width: 25px;
 }
+
 .userview-select {
     float: left; 
 }
@@ -635,6 +632,26 @@ display: inline-block;
     min-width: 5px;
     float: right; 
 }
+.setting-background {
+    overflow: hidden; 
+}
+#id-wave-img {
+    margin: -10px; 
+}
+
+/*
+    content:  url("../images/white-waves.png"); 
+    background-image: url("../images/white-waves.png"); 
+    margin: 10px; 
+    padding: 0 !important; 
+    width: 100%; 
+    
+    background-image: url("../images/white-waves.png"); 
+
+*/
+
+
+
 .userview-stats {
     margin: 0px 0px 0px 7px !important; 
     text-align: center;
@@ -664,6 +681,13 @@ display: inline-block;
     min-width: 96px;
     float: left; 
     top: 40px; 
+}
+.userview-treasure {
+    position: relative;
+    text-align: left; 
+    min-height: 63px; 
+    padding: 5px 0px 5px 0px !important;
+    margin: 46px 1px 0px -1px !important;
 }
 .userview-stat, .userview-coins-total {    
     overflow: hidden; 

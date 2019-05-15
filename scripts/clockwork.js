@@ -29,14 +29,16 @@ $( document ).ready( function ()
 {
     $( "#id-maps-div-img" ).draggable({
         handle: "img",
-        containment : [ -700, -700, 100, 100 ],
-        scroll: false 
+        containment : [ -700, -700, 0, 100 ]
     });
+        //containment : [ x-right, y-down, x-left, y-up ]
+        
         //containment : [ -600, -600, 200, 200 ]
         //containment : [ -600, -600, 200, 200 ]
         //containment : "parent"
         //containment : "document"
         //containment : "window"
+        //scroll: false 
     
     var url_string = window.location.href;
     var url = new URL(url_string);
@@ -60,7 +62,6 @@ $( document ).ready( function ()
 
     console.log(pTop);
     console.log(pMiddle);
-    
     
     detectUrlState();
     
