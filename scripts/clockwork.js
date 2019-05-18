@@ -29,7 +29,7 @@ $( document ).ready( function ()
 {
     $( "#id-maps-div-img" ).draggable({
         handle: "img",
-        containment : [ -700, -700, 0, 100 ]
+        containment : [ -900, -900, -100, -10 ]
     });
         //containment : [ x-right, y-down, x-left, y-up ]
         
@@ -1920,6 +1920,10 @@ window.onclick = function(event) {
     var h = !event.target.classList.contains('qtab-div');
     var i = !event.target.classList.contains('quests-div');
     
+    
+    var j = event.target.matches('.maps-close');
+    var k = event.target.matches('.quests-close');
+    
     //var b = !event.target.matches('.clickarea-div');
     //var e = event.target.matches('.userview-close');
     
@@ -1932,18 +1936,21 @@ window.onclick = function(event) {
     }
     if ( c ) {
         removeShow("settings-div"); 
-        settingsSave() 
+        settingsSave(); 
     }
     if ( d ) {
         var themeID = event.target.id;
         setTheme(themeID);
         setCookie('theme',themeID,365);
         if (themeID == 'ff7-0') {
-            deleteCookie('theme')
+            deleteCookie('theme');
         }
     }
     if ( f && g ) {
         removeShow("story-menu-content"); 
+    }
+    if ( j || k ) {
+        charsClick();
     }
     
     /*

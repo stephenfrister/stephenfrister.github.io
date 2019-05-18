@@ -9,89 +9,90 @@
 
 html, body{
     background-image: url("../images/white-waves.png"); 
-    
-    /*
-    
-    display: inline-block;
-    text-align: center;
-    
-    height: 1200px; 
-    
-    width: 100%; 
-    min-width: 550px; 
-    
-    height: 100%;
-    height: 100vh;
-    
-    overflow: hidden;
-    
-    */
-    
+
 }
+
 
 
 
 .body-div {
     width: 550px; 
-    height: 100%; 
     margin: 0 auto;
+    margin-bottom: 20px;  
 }
-
-/*
-    
-.background-div {
-    z-index: -1;  
-}
-
-.background-img {
-    opacity: 0.3;
-    
-}
-
-.background-div:before {
-    min-width: 567px; 
-    
-    content: "";
-    position: absolute;
-    display:inline-block;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
-    opacity: 0.3;
-    
-    /*
-    
-    background-image: url("../images/stone.png"); 
-    background-repeat: no-repeat;
-    
-    
-    background-size: auto 100%;
-    background-size: cover;
-    width: 100%; 
-    
-    background-image: url("../images/stone.png"); 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    
-    background-size: 100% auto;
-    background-size: auto 100%;
-    
-    height: 100%;   
-    height: 100vh;     
-    min-width: 570px; 
-    min-height: 1500px;  
-    
-}
-
-*/
 
 .front-div {
-    padding: 7px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    height: 95vh;
+    max-height: 95vh;
+    flex: 1; 
+}
+
+.users-div {
+    position: relative;
+    max-width: 550px;
+    padding: 0 0 0 0 ; 
+}
+
+.firebaseusers-div {
+    height: 100%;
+}
+.firebasequests-div {
+    height: 100%;
+    min-height: 100%;
+}
+
+.story {
+    max-width: 550px;
+    padding-bottom: 5px; 
+    flex: 1; 
+}
+
+.story-div {
     height: 100%; 
+    padding-bottom: 32px !important; 
+}
+.story-table {
+    height: 100%; 
+    margin: -14px -11px 0 -11px !important; 
+    padding-bottom: 0px !important; 
+    z-index: 1;
+}
+
+.story-title {
+    display: table;
+    position: relative;
+    margin: -1px 0px -6px -13px !important; 
+    padding: 1px !important; 
+    min-height: 25px; 
+    width: 99%;  
+    border-spacing: 4px !important; 
+    z-index: 1;
+}
+.story-ctitle,
+.story-ptitle {
+    display: table-cell; 
+    min-width: 250px; 
+    max-width: 250px; 
+    text-align: center; 
+    border-width: 0px !important; 
+    z-index: 1;
+}
+.story-ctitle {
+}
+
+.story-description {
+    height: 95%;  
+    overflow-y: scroll; 
+    margin: 0px !important; 
+    
+    text-align: justify;
+    font-style: italic;
+    overflow-y: scroll;
+    line-height: 30px;
+    z-index: 0;
 }
 
 .title-user{
@@ -103,14 +104,6 @@ html, body{
 }
 
 .title-ggbutton {
-    /*
-	position: relative;
-    margin: auto 0;
-	top: 20px;
-    left: 10px; 
-    padding: 0px 0px 5px 0px; 
-    margin: 0px 0px 115px 0px; 
-    */
 	position: absolute;
     background: transparent !important; 
     box-shadow: none !important;  
@@ -122,11 +115,6 @@ html, body{
 	position: absolute; 
     float: right; 
     z-index: 1; 
-    /*
-    height: 32px !important;
-    left: -225px; 
-    top: 12px;
-    */
 }
 .ggwelcome-div { 
     font-size: 12px !important; 
@@ -139,24 +127,6 @@ html, body{
     height: 32px !important; 
     top: -4px; 
 }
-
-/*
-.gSign{
-    position: absolute; 
-    padding: 0px 0px 0px 5px;
-    margin: 2px 0px 0px 1px !important;  
-}
-.abcRioButtonIcon{
-    opacity: 1 !important; 
-    margin: -8px 0px 0px 1px !important; 
-}
-.abcRioButtonContents{
-    display: none; 
-}
-.abcRioButtonContentWrapper{
-    display: none; 
-}
-*/
 
 .loading-img {
     margin-top: 150px; 
@@ -177,7 +147,7 @@ html, body{
     z-index: 100;
     
     display: inline-block;
-    width: 565px; 
+    width: 580px; 
     text-align: center;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
@@ -186,15 +156,7 @@ html, body{
 
 .menu-div {
     position: relative; 
-    padding: 0 0 30px 0; 
-}
-
-.users-div {
-    position: relative;
-    max-width: 550px;
-}
-.users-table {
-    
+    padding: 0 0 5px 0; 
 }
 
 .title-nav {
@@ -268,8 +230,7 @@ div.ff7 .svg-otab-90 {
     float: right; 
     width: 35px; 
 	top: 0px;
-    opacity: 0
-    
+    opacity: 0;
 }
 .clickarea-div {
     height: 25px; 
@@ -277,18 +238,25 @@ div.ff7 .svg-otab-90 {
 
 .maps-div {
     position: absolute; 
-    top: 45px; 
-    max-height: 661px; 
-    min-height: 661px; 
+    max-height: 99%; 
+    min-height: 99%; 
     max-width: 528px;
     min-width: 528px; 
     z-index: 2; 
+    top: 0px; 
     
 }
+
+/*
+    top: 45px; 
+    max-height: 661px; 
+    min-height: 661px; 
+
+*/
 .maps-div-div {
     position: absolute; 
 }
-.maps-img { 
+.maps-img {   
 
 }
 .maps-img-div { 
@@ -296,7 +264,7 @@ div.ff7 .svg-otab-90 {
     display: flex;
     height: 98%; 
     width: 92%; 
-    overflow: hidden;     
+    overflow: hidden;  
 }
 
 .button-map {
@@ -372,79 +340,129 @@ div.ff7 .svg-otab-90 {
     cursor: move; 
 }
 
-.quests-div {
-    display: none;
-    position: absolute; 
-    margin: 0px 0px 0px 0px; 
-    padding: 0px 0px 0px 0px !important;
-    max-height: 667px; 
-    min-height: 667px; 
-    max-width: 548px;
-    min-width: 548px; 
-    width: 100%; 
-    height: 100%; 
-    top: 41px; 
-    left: 0px; 
-    text-align: left; 
-    z-index: 2; 
-}
-
-
 .qtype-div {
-width: 98%;
-position: relative;
-height: 30px;
-margin: 0px 10px 0px 5px !important; 
-padding: 0px 0px 10px 0px !important; 
-text-align: center;
+    width: 98%;
+    position: relative;
+    height: 30px;
+    margin: 0px 10px 0px 5px !important; 
+    padding: 0px 0px 10px 0px !important; 
+    text-align: center;
 }
-/*
-margin: -3px 0px 10px 0px !important; 
-*/
-
 .qtype-selector {
-display: inline-block;
+    display: inline-block;
 }
 
-.qopts-new, .qopts-edit, .qopts-save, .qopts-cancel {
-    float: right; 
-    margin: -6px 1px 0px 3px !important; 
+.qopts-new, 
+.qopts-edit, 
+.qopts-save, 
+.qopts-cancel {
+    position: absolute; 
+    width: 60px;
+    height: 40px; 
+    right: 20px; 
+    z-index: 2; 
+    margin: -4px 0 0 0 !important; 
+    text-align: center; 
 }
-
+.qopts-edit,  
+.qopts-cancel {
+    margin: 39px 0 0 0 !important; 
+}
+.qopts-save {
+    margin: 39px 83px 0 0 !important; 
+}
 .qtop-div {
     position: relative; 
-    max-height: 270px; 
-    min-height: 270px; 
     overflow-y: scroll;
     top: -6px; 
     margin: -5px; 
+    width: 548px; 
+    height: 45%; 
 }
-.qbot-div, .qbot-new-div  {
-    display: none; 
+.qbot-div, 
+.qbot-new-div  {
+    display: none;
     position: relative; 
-    max-height: 349px; 
-    min-height: 349px; 
     overflow-y: scroll;
     word-wrap: break-word;
     overflow-x: hidden;
     top: -10px; 
+    width: 548px; 
+    
+    height: 45%; 
 }
+/*
+    height: 47%; 
+
+*/
+
 .qact-div {
     float: left; 
     height: 24px;
     width: 24px;
 }
 
-.quest-new, .quest-new-inner, .quest-title-edit, .quest-status-edit {
+
+.quests-div {
+    position: absolute; 
+    display: none;
+    height: 99%;
+    top: 0px; 
+    z-index: 2; 
+    flex: 1; 
+    
+    margin: 0px 0px 0px -20px !important; 
+    padding: 0px 0px 0px 0px !important;
+    
+    
+}
+
+
+.quest-new {
+}
+/*
+    max-width: 525px; 
+    min-width: 525px;
+    flex: 1; 
+*/
+.quest-new-inner {
+    
+}
+.quest-new,
+.quest-table {
+    
+    max-width: 525px; 
+    min-width: 525px;
+    
+    flex: 1; 
+    
+    
+    margin: -215px 0 0 -10px !important; 
+    
+}
+/*
+    height: 100%; 
+    
+    margin: -215px 0 0 -10px !important; 
+    height: 100%;  
+
+    height: 57%; 
+
+*/
+.quest-new, 
+.quest-new-inner, 
+.quest-title-edit, 
+.quest-status-edit,
+.quest-new-title {
     float: left; 
 }
-.quest-new {
-    max-width: 496px; 
-    min-width: 496px; 
-}
-.quest-title-edit {
+.quest-new-title {
     max-width: 434px; 
     min-width: 434px; 
+}
+.quest-title-edit {
+    max-width: 300px; 
+    min-width: 300px; 
     word-wrap: break-word;
     overflow: hidden;  
 }
@@ -459,14 +477,25 @@ display: inline-block;
     padding: 2px; 
     max-width: 500px; 
     min-width: 500px; 
-    max-height: 125px; 
-    min-height: 125px; 
-    overflow-y: scroll;
+    
+    overflow-y: hidden;
     overflow-x: hidden;
     
     white-space: normal;
     word-wrap: break-word;
+    
+    
 }
+/*
+    margin-top: 100px !important; 
+    
+    flex: 1; 
+    height: 100%; 
+    
+    max-height: 125px; 
+    min-height: 125px; 
+
+*/
 .quest-gone {
     display: none;
     visibility: hidden;
@@ -570,47 +599,79 @@ display: inline-block;
 
 
 
-.settings-div, .userview-div {
+.settings-div, 
+.userview-div {
     display: none;
     position: absolute; 
-    margin: 5px 0px 0px 0px;
+    margin: -10px 0px 0px 0px;
     padding: 0px 0px 0px 0px !important;
-    max-height: 593px; 
-    min-height: 593px; 
-    max-width: 550px;
-    min-width: 550px; 
+    max-height: 100%; 
+    min-height: 100%;
+    max-width: 548px;
+    min-width: 548px; 
     width: 100%; 
     height: 100%; 
     top: 10px; 
     z-index: 2; 
 }
-.settings-content, .userview-content, .quests-content {
+/*
+    max-height: 593px; 
+    min-height: 593px; 
+*/
+.settings-content,  
+.quests-content {
     position: relative;
     text-align: left; 
+    max-height: 80px; 
+    min-height: 80px; 
+    padding: 5px 0px 5px 10px;
+    margin: 3px 1px 0px -1px !important;
+}
+.userview-content {
+    position: relative;
+    text-align: left; 
+    max-height: 442px; 
     min-height: 442px; 
     padding: 5px 0px 5px 10px;
     margin: 3px 1px 0px -1px !important;
 }
 
-.settings-header, .userview-header, .quests-header {
+/*
+    min-height: 70%;
+    min-height: 442px; 
+*/
+
+.settings-header, 
+.userview-header, 
+.quests-header {
     text-align: center; 
     margin: -1px 1px 0px -1px !important;
 }
-.settings-text, .userview-header, .quests-header {
+.settings-text, 
+.userview-header, 
+.quests-header {
     font-size: 17px !important;  
     padding: 5px 0px 3px 0px;
     color: #00CDCD !important;
     text-shadow: 2px 2px #0032af,
                1px 1px #0032af !important;
 }
-.settings-save, .userview-save, .quests-save {
+.settings-save, 
+.userview-save, 
+.quests-save {
     float: right; 
     margin: 5px 1px 0px 5px !important; 
 }
-.settings-cancel, .userview-cancel, .quests-cancel {
+.settings-cancel, 
+.userview-cancel, 
+.quests-cancel {
     float: right; 
 }
-.settings-close, .userview-close, .quests-close {
+.settings-close, 
+.userview-close, 
+.quests-close, 
+.maps-close, 
+.quests-close {
     float: right; 
     margin: -4px -10px 0px 0px !important; 
     padding: 1px 2px 7px 2px !important; 
@@ -619,6 +680,18 @@ display: inline-block;
     min-height: 22px;
     max-width: 25px;
     min-width: 25px;
+    z-index: 2; 
+}
+.maps-close {
+    position: relative; 
+    left: 480px; 
+    top: 10px;
+    text-align: center; 
+}
+.quests-close {
+    position: relative; 
+    left: -7px; 
+    top: 8px;
 }
 
 .userview-select {
@@ -677,8 +750,8 @@ display: inline-block;
     text-align: center;
     max-height: 60px;
     min-height: 60px;
-    max-width: 96px;
-    min-width: 96px;
+    max-width: 86px;
+    min-width: 86px;
     float: left; 
     top: 40px; 
 }
@@ -790,26 +863,22 @@ display: inline-block;
     padding-bottom: 0px; 
     margin-top: -0px; 
     margin-bottom: -8px; 
-    z-index: 0; 
 }
 .title-img {
     position: relative;
     min-width: 520px; 
     max-width: 520px; 
-    z-index: 0; 
 }
 
 .subtitle-div {
     margin: -100px 0px 0px 0px; 
     padding-top: 0px;
     padding-bottom: 0px; 
-    z-index: 1; 
 }
 .subtitle-img {
     position: relative;
     min-width: 550px; 
     max-width: 550px; 
-    z-index: 1; 
 }
 
 
@@ -817,7 +886,6 @@ display: inline-block;
 .backtitle-div{
     position: absolute;
     margin: -160px 0px 0px 140px;
-    z-index: 0; 
 }
 .backtitle-img{
     min-width: 270px; 
@@ -867,54 +935,29 @@ display: inline-block;
     width: 40px; 
 }
 
-
-.story{
-    max-width: 550px;
-}
-.story-title{
-    display: table;
-    position: relative;
-    margin: 1px 0px 1px 0px; 
-    padding: 0px !important; 
-    min-height: 25px; 
-    width: 99%;  
-    border-spacing: 3px !important;
-}
-.story-ctitle {
-    position: relative;
-    display: table-cell;
-    min-width: 245px; 
-    max-width: 245px; 
-}
-.story-ptitle {
-    position: relative;
-    display: table-cell;
-    min-width: 246px; 
-    max-width: 246px; 
-}
-.story-description {
-    padding: 0px 15px 5px 15px !important; 
-    position: relative;
-    text-align: justify;
-    font-style: italic;
-    overflow-y: scroll;
-    line-height: 30px;
-    max-height: 300px;
-    min-height: 300px;
-}
-
 .arrow-wrapper {
-  position: absolute;
-  bottom: 35px;
-  right: 40px;
-    
+    position: relative;
+    bottom: 60px;
+    left: 260px; 
+  
 }
 .arrow-wrapper-userinfo {
-  position: absolute;
-  bottom: 35px;
-  right: 75px;
-    
+    position: absolute;
+    bottom: 35px;
+    right: 75px;
 }
+
+/* 
+    position: absolute;
+    bottom: 35px;
+    right: 40px;
+
+    bottom: 35px;
+    right: 75px;
+
+
+ */
+
 
 /* width */
 ::-webkit-scrollbar {
@@ -955,8 +998,6 @@ display: inline-block;
 }
 .arrow {
   position: fixed;
-  /* bottom: 0; */
-  /* right: 20px; */
   width: 30px;
   height: 30px;
   
