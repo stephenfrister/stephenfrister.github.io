@@ -1596,8 +1596,8 @@ function tabsHorizontalClick(){
 function charsClick(){
     
     // show story-div     
-    if( document.getElementById("id-story-div").classList.contains("noshow") ){
-        document.getElementById("id-story-div").classList.toggle("noshow");
+    if( document.getElementById("id-story").classList.contains("noshow") ){
+        document.getElementById("id-story").classList.toggle("noshow");
     }
     
     // remove quests log if displayed
@@ -1628,7 +1628,7 @@ function charsClick(){
 function questsClick(){
     
     // hide story-div     
-    document.getElementById("id-story-div").classList.toggle("noshow");
+    document.getElementById("id-story").classList.toggle("noshow");
     
     document.getElementById("id-quests-div").classList.toggle("show");
     document.getElementById("id-qbot-div").classList.add("show");
@@ -1655,9 +1655,8 @@ function questsClick(){
 function mapsClick(){
     
     // hide story-div     
-    document.getElementById("id-story-div").classList.toggle("noshow");
+    document.getElementById("id-story").classList.toggle("noshow");
 
-    
     // display map
     document.getElementById("id-maps-div").classList.toggle("noshow");
     
