@@ -1,6 +1,11 @@
-_site
+.gitignore
 .sass-cache
 .jekyll-metadata
+_site
 _ignore
+_includes
+_layouts
+_sass
+_site
 gemfile
 gemfile.lock
