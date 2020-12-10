@@ -8,5 +8,6 @@ _includes
 _layouts
 _sass
 _site
+_config.yml
 gemfile
 gemfile.lock
