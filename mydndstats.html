@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href=".\css\mydndstats.css">
+
+<html>
+  
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+  
+  <body>  
+		
+    <div class="page-content">
+      <div class="wrapper">
+        <script type="text/javascript" src="/scripts/mydndstats.js"></script>
+<script type="text/javascript" src="/scripts/FileSaver.js"></script>
+
+<body>	
+ 
+    <div class="divStats">
+        <hr style="height:1px; visibility:hidden;" />
+        
+        <div class="tr"><label for="Cls" class="statClassLabel" >Class&nbsp</label></div>
+        <select name="Cls" class="statVal statClassSelect" id="stat-Cls">
+            <option value="Paladin">Paladin</option>
+            <option value="Fighter">Fighter</option>
+            <option value="Ranger">Ranger</option>
+            <option value="Cleric">Cleric</option>
+            <option value="Wizard">Wizard</option>
+            <option value="Sorcerer">Sorcerer</option>
+            <option value="Druid">Druid</option>
+            <option value="Rogue">Rogue</option>
+            <option value="Bard">Bard</option>
+            <option value="Monk">Monk</option>
+            <option value="Warlock">Warlock</option>
+            <option value="Barbarian">Barbarian</option>
+            <option value="Artificer">Artificer</option>
+        </select>
+        <br>
+        
+        <hr style="height:2pt; visibility:hidden;" />
+        
+        <div class="tr">Name:
+        <input name="Name" class="statVal statNameInput" type="text" data-type="name" id="stat-Name" onfocus="" >
+        </div>
+        
+        <hr style="height:3pt; visibility:hidden;" />
+        
+        <div class="tr">Exp:
+        <input name="Exp" class="statVal statExpInput" type="text" data-type="exp" id="stat-Exp" onfocus="this.select();" >
+        </div>
+        
+        <hr style="height:3pt; visibility:hidden;" />
+        
+        <div class="tr">Lvl:
+        <input name="Lvl" class="statVal statInput" type="text" data-type="1t30" id="stat-Lvl" onfocus="this.select();" >
+        </div>
+        
+        <hr style="height:3pt; visibility:hidden;" />
+        
+        <div class="tr">Str:
+            <input name="Str" class="statVal statInput" type="text" data-type="1t30" id="stat-Str" onfocus="this.select();" >
+        </div>
+        <div class="tr">Dex:
+            <input name="Dex" class="statVal statInput" type="text" data-type="1t30" id="stat-Dex" onfocus="this.select();" >
+        </div>
+        <div class="tr">Con:
+            <input name="Con" class="statVal statInput" type="text" data-type="1t30" id="stat-Con" onfocus="this.select();" >
+        </div>
+        <div class="tr">Int:
+            <input name="Int" class="statVal statInput" type="text" data-type="1t30" id="stat-Int" onfocus="this.select();" >
+        </div>
+        <div class="tr">Wis:
+            <input name="Wis" class="statVal statInput" type="text" data-type="1t30" id="stat-Wis" onfocus="this.select();" >
+        </div>
+        <div class="tr">Cha:
+            <input name="Cha" class="statVal statInput" type="text" data-type="1t30" id="stat-Cha" onfocus="this.select();" >
+        </div>
+        
+        <hr style="height:3pt; visibility:hidden;" />
+        
+        <div class="tr">Ac:&nbsp
+            <input name="Ac" class="statVal statInput" type="text" data-type="1t30" id="stat-Ac" onfocus="this.select();" >
+        </div>
+        <div class="tr">Hp:&nbsp
+            <input name="Hp" class="statVal statHpInput" type="text" data-type="1t500" id="stat-Hp" onfocus="this.select();" >
+        </div>
+        
+        <div class="versionText">v<span style="opacity: 0">:</span></div>
+        <hr style="height:0pt; visibility:hidden;" />
+        <div class="versionNum">0</div>
+        
+        
+            <div style="">
+                <a class="buttonStyle noselect button-save" title="Save File">
+                    <i class="material-icons" onclick="saveStatsNew()">save</i>
+                </a>
+            </div>
+            <div style="">
+                <a class="buttonStyle noselect button-delete_current" title="Clear Stats">
+                    <i class="material-icons" onclick="deleteStatsCurrent()">delete</i>
+                </a>
+            </div>
+            <div style="">
+                <a class="buttonStyle noselect button-save_alt" title="Load File">
+                    <i class="material-icons" onclick="importFile()">save_alt</i>
+                </a>
+            </div>
+            
+            <div class="divDrop" id="drop-area">
+                <form class="drop-form"> Drop File To Load</form>
+            </div>
+        
+    </div>
+        
+    <div class="divFunctions noselect">
+        <div class="divUpdated divButtonInOutTitle" >Saved:<div class="divUpdatedTime" id="idUpdated" >no data</div></div>
+    </div>
+        
+    <div class="divFunctions noselect">
+        
+        <div class="divButtonInOutTitle">Export:</div>
+        <div class="divButtonInOut">
+            <a class="aButtonInOut" onclick="exportLink()" title="Create Link"> Link </a>
+        </div>
+        <div class="divButtonInOut">
+            <a class="aButtonInOut" onclick="exportFile()" title="Create File"> File </a>
+        </div>
+        <!--div class="divButtonInOut">
+            <a class="aButtonInOut" onclick="exportCode()"> Code </a>
+        </div-->
+        
+        <br>
+        <hr style="height:3pt; visibility:hidden;" />
+        
+    </div>
+    
+    <div class="divFunctions noselect">
+        
+        <div class="divButtonInOutTitle">Import:</div>
+        <div class="divButtonInOut">
+            <a class="aButtonInOut" onclick="importLink()"  title="Load Link"> Link </a>
+        </div>
+        <div class="divButtonInOut">
+            <a class="aButtonInOut" onclick="importFile()"  title="Load File"> File </a>
+        </div>
+        <!--div class="divButtonInOut">
+            <a class="aButtonInOut" onclick="test()"> Code </a>
+        </div-->
+        
+    </div>
+
+    <div class="divHistoryCollection" id="idHistoryCollection" >
+
+        <div class="divHistory">
+            Saved Files:
+        </div><br>
+        
+    </div>
+    
+    
+<!-- 
+
+    Temporary
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-analytics.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    
+-->
+
+<!--
+
+    <script src="/__/firebase/8.1.2/firebase-app.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-analytics.js"></script>
+    <script src="/__/firebase/init.js"></script>
+     
+-->
+ 
+</body>
+
+<script type="text/javascript" >javascript:loadStatsCurrent();</script>
+<script type="text/javascript" >javascript:readStatsUrl();</script>
+<script type="text/javascript" >javascript:refreshSavedFiles();</script>
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+		
+  </body> 
+  
+  <footer>	
+  </footer>
+
+</html>

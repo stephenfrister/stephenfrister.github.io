@@ -1,0 +1,340 @@
+
+
+@viewport{width:device-width}
+@-o-viewport{width:device-width}
+@-ms-viewport{width:device-width}
+@-moz-viewport{width:device-width}
+@-webkit-viewport{width:device-width}
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html, body{
+    width: auto 0; 
+    height: 95%; 
+    padding: 3px; 
+    
+    font-family: 'Roboto Mono', monospace;
+    font-weight: none; 
+    font-style: none; 
+    
+    background-color: #FFFAF0; 
+}
+
+.versionText,
+.versionNum { 
+    position: absolute; 
+    color: #D3D3D3;
+    font-size: 8pt; 
+    top: -1px; 
+    right: 6px; 
+    
+}
+
+.divStats,
+.divCurrent,
+.divHistory,
+.divFunctions, 
+.divHistoryItem, 
+.divHistoryItemNone {
+    position: relative; 
+    float: left; 
+    display: table; 
+    
+    width: 100%; 
+    box-sizing: border-box;
+    padding: 8px; 
+    margin: 0 15px 2px 0; 
+    
+    border: 1px solid black; 
+    border-radius: 10px; 
+    background-color: #fff; 
+    
+    font-size: 18pt;
+    overflow: hidden; 
+}
+.divCurrent,
+.divHistory, 
+.divHistoryItem, 
+.divHistoryItemNone {
+    clear: both; 
+    float: left; 
+    width: 0%; 
+    font-family: 'Open Sans', sans-serif;
+}
+.divHistoryItem {
+    white-space: nowrap; 
+    width: 100%; 
+    font-size: 14pt; 
+    font-family: 'Google Sans Medium', sans-serif;
+    padding: 8px 0 4px 10px; 
+}
+.divHistoryDate {
+    font-family: Roboto, monospace; 
+    font-size: 11pt; 
+    font-weight: 500; 
+    line-height: 30px; 
+    letter-spacing: 0.8px; 
+    color: #5f6368; 
+    
+}
+.divHistoryItemNone { 
+    width: 147px;
+    text-align: center; 
+    
+    font-family: Roboto, monospace; 
+    font-size: 14pt; 
+    font-weight: 500; 
+    line-height: 30px; 
+    letter-spacing: 0.8px; 
+    color: #5f6368; 
+}
+.divHistoryCurrent,
+.divHistoryCollection {
+    position: relative; 
+    float: left; 
+    display: table; 
+    width: 358px;
+}
+.divUpdatedTime {
+    float: right; 
+    margin: 0 0 0 5px; 
+    
+    font-family: Roboto, monospace; 
+    font-size: 14pt; 
+    font-weight: 500; 
+    line-height: 30px; 
+    letter-spacing: 0.8px; 
+    color: #5f6368; 
+}
+
+.divStats tr {
+    float: left; 
+}
+.divStats input,
+.divStats label,
+.divStats select {
+    position: absolute; 
+    height: 29px;
+    font-family: 'Roboto Mono', monospace;
+    padding-left: 5px; 
+    padding-right: 5px; 
+}
+
+.statClassLabel {
+    margin: 0 0 0 -5px; 
+}
+
+.statClassSelect {
+    position: relative;
+    font-size: 16pt;
+    margin: 0 0 0 80px; 
+}
+
+.statInput {
+    width: 53px; 
+    margin: 1px 0 0 13px; 
+    font-size: 18pt;
+    text-align: center; 
+}
+.statNameInput {
+    font-size: 16pt;
+    margin: 1px 0 0 0px; 
+    padding-bottom: 2px; 
+    width: 154px; 
+}
+.statExpInput {
+    width: 154px; 
+    margin: 1px 0 0 13px; 
+    font-size: 16pt;
+    padding-bottom: 2px; 
+}
+.statHpInput {
+    width: 53px; 
+    margin: 1px 0 0 13px; 
+    font-size: 18pt;
+    text-align: center;
+}
+.statHpInput input {
+}
+
+.buttonStyle {
+    
+    position: absolute; 
+    display: block;
+    
+    width: 30px;
+    height: 29px;
+    margin: 0 5px 3px 0; 
+    
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    
+    color: #f5f5f5;
+    text-align: center;
+    text-decoration: none;
+    background: #555777;
+    box-shadow: 0 0 3px gray;
+    font-family: Arial Unicode MS;
+    
+    z-index: 1; 
+    
+}
+
+.buttonStyle:hover {
+    color: #3CB371; 
+    border: 2px solid #3CB371;
+    cursor: pointer; 
+}
+
+i.material-icons {
+    font-size: 20px; 
+}
+.buttonStyle.button-save {
+    bottom: 3px;
+    right: 2px; 
+    line-height: 27px;
+}
+.buttonStyle.button-save_alt {
+    bottom: 3px;
+    right: 72px; 
+    line-height: 26px;
+}
+.buttonStyle.button-delete_current {
+    bottom: 3px;
+    right: 37px; 
+    line-height: 26px;
+}
+.buttonStyle.button-launch {
+    bottom: 3px;
+    right: 2px; 
+    line-height: 31px;
+}
+.buttonStyle.button-delete {
+    bottom: 3px;
+    right: 37px; 
+    line-height: 31px;
+}
+
+.aButtonInOut {
+    height: 28px; 
+    
+    font-family: Roboto, monospace; 
+    font-size: 14pt; 
+    font-weight: 500; 
+    line-height: 18px; 
+    letter-spacing: 0.8px; 
+    color: rbg(95, 99, 104); 
+    
+    border: 1px solid #dadce0; 
+    border-radius: 16px;
+    margin: 0px 8px 0 2px;
+    padding: 3px 10px;
+    display: inline-flex;
+    
+}
+.divButtonInOut {
+    height: 28px; 
+    float: left; 
+    color: #5f6368; 
+}
+.aButtonInOut:hover {
+    background-color: #F8F8F8; 
+}
+.divButtonInOutTitle {
+    margin: 2px 6px 0 0; 
+    height: 28px; 
+    float: left; 
+}
+
+.divExportLink,
+.divExportCode {
+    display: block;
+    line-height:0;
+    height: 0;
+    overflow: hidden;
+}
+
+.drop-form {
+    position: absolute; 
+    font-size: 9pt; 
+    top: 5px; 
+    left: 14px; 
+    color: #5f6368; 
+    padding-bottom: 10px;
+}
+#drop-area {
+    position: absolute; 
+    bottom: 3px;
+    right: 75px; 
+    line-height: 20px;
+
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 180px;
+    margin: 0px auto;
+    padding: 15px; 
+}
+#drop-area.highlight {
+    border-color: #3CB371;
+}
+
+@media (max-width: 450px) {
+    .drop-form, 
+    #drop-area {
+        display: none;
+    }
+    
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
