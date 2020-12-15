@@ -109,56 +109,63 @@ function refreshSavedFiles(){
     var cookies = getAllCookies()
     cookies.reverse().forEach( function(cookie){
         
-        // cookie is empty, or current is the only state
-        if ( !cookie || ( cookies.length == 1 && cookie.trim().startsWith("current") ) ) {
-            mHistory.innerHTML += "<div class='divHistoryItemNone'>None</div>"
-        }     
-        else if( !cookie.trim().startsWith("current") ){ // skips "current"
+        if( cookie.trim().startsWith("mydndstats") ){ // skips cookies not starting with "mydndstats"
             
-            var cookieId = parseInt( cookie.substring( 0, cookie.indexOf("=") ) );
-            var cookieVals = cookie.substring( cookie.indexOf("=") + 1, cookie.length );
+            // remove filter flag
+            cookie = cookie.replace("mydndstats.","")
             
-            var url = new URL("http://www.example.com/t.html?" + cookieVals);
-            var Lvl = url.searchParams.get("Lvl");
-            var Name = url.searchParams.get("Name");
-            var Cls = url.searchParams.get("Cls");
-            
-            if(Cls == 0){
-                Cls = "Unknown"
+            // cookie is empty, or current is the only state
+            if ( !cookie || ( cookies.length == 1 && cookie.trim().startsWith("current") ) ) {
+                mHistory.innerHTML += "<div class='divHistoryItemNone'>None</div>"
+            }     
+            else if( !cookie.trim().startsWith("current") ){ // skips "current"
+                
+                var cookieId = parseInt( cookie.substring( 0, cookie.indexOf("=") ) );
+                var cookieVals = cookie.substring( cookie.indexOf("=") + 1, cookie.length );
+                
+                var url = new URL("http://www.example.com/t.html?" + cookieVals);
+                var Lvl = url.searchParams.get("Lvl");
+                var Name = url.searchParams.get("Name");
+                var Cls = url.searchParams.get("Cls");
+                
+                if(Cls == 0){
+                    Cls = "Unknown"
+                }
+                if(Name == 0){
+                    Name = "???"
+                }
+                
+                var cookTime = new Date(cookieId);
+                var year = cookTime.getFullYear();
+                var month = convertMonth( cookTime.getMonth() )
+                var day = cookTime.getDate()
+                var nth = getNth(day)
+                var time = formatAMPM(cookTime)
+                
+                var historyString = ""
+                historyString += "<div class='divHistoryItem'>"
+                historyString += "Level " + Lvl + " " + Cls + ", " + Name + "<br>" 
+                //historyString += "<hr style='height:5pt; visibility:hidden;' />"
+                
+                historyString += "<div class='divHistoryDate'>" + year + ", " + month + " " + day + nth + " @ " + time + "</div>"
+                
+                historyString += "<div>"
+                historyString += "<a class='buttonStyle noselect button-delete' title='Delete File'>"
+                historyString += "<i class='material-icons' onclick='deleteSaveFile(" + cookieId + ")'>delete</i>"
+                historyString += "</a>"
+                historyString += "</div>"    
+                
+                historyString += "<div>"
+                historyString += "<a class='buttonStyle noselect button-launch' title='Open File'>"
+                historyString += "<i class='material-icons' onclick='loadSaveFile(" + cookieId + ")'>launch</i>"
+                historyString += "</a>"
+                historyString += "</div>"
+                
+                historyString += "</div>"
+                
+                mHistory.innerHTML += historyString
             }
-            if(Name == 0){
-                Name = "???"
-            }
-            
-            var cookTime = new Date(cookieId);
-            var year = cookTime.getFullYear();
-            var month = convertMonth( cookTime.getMonth() )
-            var day = cookTime.getDate()
-            var nth = getNth(day)
-            var time = formatAMPM(cookTime)
-            
-            var historyString = ""
-            historyString += "<div class='divHistoryItem'>"
-            historyString += "Level " + Lvl + " " + Cls + ", " + Name + "<br>" 
-            //historyString += "<hr style='height:5pt; visibility:hidden;' />"
-            
-            historyString += "<div class='divHistoryDate'>" + year + ", " + month + " " + day + nth + " @ " + time + "</div>"
-            
-            historyString += "<div>"
-            historyString += "<a class='buttonStyle noselect button-delete' title='Delete File'>"
-            historyString += "<i class='material-icons' onclick='deleteSaveFile(" + cookieId + ")'>delete</i>"
-            historyString += "</a>"
-            historyString += "</div>"    
-            
-            historyString += "<div>"
-            historyString += "<a class='buttonStyle noselect button-launch' title='Open File'>"
-            historyString += "<i class='material-icons' onclick='loadSaveFile(" + cookieId + ")'>launch</i>"
-            historyString += "</a>"
-            historyString += "</div>"
-            
-            historyString += "</div>"
-            
-            mHistory.innerHTML += historyString
+
         }
     })
     
@@ -193,6 +200,7 @@ function deleteSaveFile( cookieId ) {
 function saveStatsCurrent() {
     
     var stats = generateStatString()
+    //setCookie("current", stats, 1111)
     setCookie("current", stats, 1111)
     
     var d = new Date();
@@ -262,6 +270,9 @@ function checkIfDuplicate() {
     saves.forEach( function(save){
         var saveId = parseInt( save.substring( 0, save.indexOf("=") ) );
         var saveVals = save.substring( save.indexOf("=") + 1, save.length );
+        
+        console.log("stats: " + stats)
+        console.log("saveVals: " + saveVals)
         
         if( stats === saveVals ){
             isDuplicate = saveId
@@ -357,7 +368,7 @@ function importLink() {
     var userEntry = prompt("Enter Link:", "");    
     // check if the user selected cancel
     if ( userEntry != null ) {        
-        console.log( "userEntry: " + userEntry )        
+        //console.log( "userEntry: " + userEntry )        
         updateStatsWithUrl( userEntry )         
     }    
 }
@@ -517,6 +528,10 @@ function convertMonth(month) {
 //////////////////////
 
 function setCookie(name,value,days) {
+    ///////////////////////////
+    name = "mydndstats." + name
+    //console.log("setCookie: " + name)
+    ///////////////////////////
     var expires = "";
     if (days) {
         var date = new Date();
@@ -527,17 +542,26 @@ function setCookie(name,value,days) {
 }
 
 function getCookie(name) {
+    ///////////////////////////
+    name = "mydndstats." + name
+    //console.log("getCookie: " + name)
+    ///////////////////////////
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for(var i=0;i < ca.length;i++) {
         var c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        //if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length).replace("mydndstats.", "");
     }
     return null;
 }
 
 function deleteCookie(name) {   
+    ///////////////////////////
+    name = "mydndstats." + name
+    //console.log("deleteCookie: " + name)
+    ///////////////////////////
     document.cookie = name+'=; Max-Age=-99999999;';  
 }
 
