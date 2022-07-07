@@ -315,9 +315,16 @@ body {
 
 .monthchange {
     float: right; 
-    margin: -7px 0 -10px 0; 
     width: 70px; 
+    height: 28px; 
+    margin: -7px 0 -10px 0; 
 }
+/*
+    position: absolute; 
+    margin: -40px 0 -50px 0; 
+    left: 340px;
+    top: 30px; 
+*/
 
 .userinvites {
     width: 300px; 
