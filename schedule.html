@@ -1,0 +1,232 @@
+---
+layout: schedule
+title: "Schedule"
+---
+
+    <link rel="stylesheet" href="./css/schedule.css">
+    
+    <body>	
+
+        <div id="tabList" class="tab">
+            
+            <div id="signin_div" class="" >
+                <button id="authorize_button" onclick="handleAuthClick()">&nbsp Sign In 
+                    <div id="g_id_onload"
+                        data-client_id="719481055905-l3u4qer8m5qsfmbkehr9qukfpmfpjj6a.apps.googleusercontent.com"
+                        data-callback="handleCredentialResponse"
+                        data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" data-type="icon" style="pointer-events: none"></div>
+                </button>
+            </div>
+            
+            <div id="signout_div" class="" style="display:none" >
+                <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+            </div>
+            
+            <div id="" >
+                <button class="notyet" onclick="">Create Event<br>(Not Implemented)</button>
+            </div>
+            
+            <div id="" >
+                <button class="notyet" onclick="test()">View Events<br>(Not Implemented)</button>
+            </div>
+            
+        </div>
+        
+        <div id="tabBody" class="tabBody">
+            
+            <div id="eventcontent" class="eventcontent">
+                
+                <div id="eventcreation" class="eventcreation">
+                
+                    <div id="calendar" class="calendar">
+                    
+                        <div id="calendarhead" class="calendarhead noselect">
+                            <div id="monthyear" class="monthyear"></div>
+                            <div id="monthchange" class="monthchange">
+                                <svg onclick="changeMonth(-1)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" height="40%" width="40%"><path d="M28.05 36 16 23.95 28.05 11.9 30.2 14.05 20.3 23.95 30.2 33.85Z"/></svg>
+                                <svg onclick="changeMonth(1)"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" height="40%" width="40%"><path d="M18.75 36 16.6 33.85 26.5 23.95 16.6 14.05 18.75 11.9 30.8 23.95Z"/></svg>
+                            </div>
+                        </div>
+                    
+                        <div class="calendarbody noselect">
+                            
+                            <div class="r0 c1">S</div>
+                            <div class="r0 c2">M</div>
+                            <div class="r0 c3">T</div>
+                            <div class="r0 c4">W</div>
+                            <div class="r0 c5">T</div>
+                            <div class="r0 c6">F</div>
+                            <div class="r0 c7">S</div>
+                            
+                            <div class="r1"><span id="r11" class="circle daydisabled" onclick="dateclick('r11')">0</span></div>
+                            <div class="r1"><span id="r12" class="circle daydisabled" onclick="dateclick('r12')">0</span></div>
+                            <div class="r1"><span id="r13" class="circle daydisabled" onclick="dateclick('r13')">0</span></div>
+                            <div class="r1"><span id="r14" class="circle daydisabled" onclick="dateclick('r14')">0</span></div>
+                            <div class="r1"><span id="r15" class="circle daydisabled" onclick="dateclick('r15')">0</span></div>
+                            <div class="r1"><span id="r16" class="circle daydisabled" onclick="dateclick('r16')">0</span></div>
+                            <div class="r1"><span id="r17" class="circle daydisabled" onclick="dateclick('r17')">0</span></div>
+                            
+                            <div class="r2"><span id="r21" class="circle daydisabled" onclick="dateclick('r21')">0</span></div>
+                            <div class="r2"><span id="r22" class="circle daydisabled" onclick="dateclick('r22')">0</span></div>
+                            <div class="r2"><span id="r23" class="circle daydisabled" onclick="dateclick('r23')">0</span></div>
+                            <div class="r2"><span id="r24" class="circle daydisabled" onclick="dateclick('r24')">0</span></div>
+                            <div class="r2"><span id="r25" class="circle daydisabled" onclick="dateclick('r25')">0</span></div>
+                            <div class="r2"><span id="r26" class="circle daydisabled" onclick="dateclick('r26')">0</span></div>
+                            <div class="r2"><span id="r27" class="circle daydisabled" onclick="dateclick('r27')">0</span></div>
+                            
+                            <div class="r3"><span id="r31" class="circle daydisabled" onclick="dateclick('r31')">0</span></div>
+                            <div class="r3"><span id="r32" class="circle daydisabled" onclick="dateclick('r32')">0</span></div>
+                            <div class="r3"><span id="r33" class="circle daydisabled" onclick="dateclick('r33')">0</span></div>
+                            <div class="r3"><span id="r34" class="circle daydisabled" onclick="dateclick('r34')">0</span></div>
+                            <div class="r3"><span id="r35" class="circle daydisabled" onclick="dateclick('r35')">0</span></div>
+                            <div class="r3"><span id="r36" class="circle daydisabled" onclick="dateclick('r36')">0</span></div>
+                            <div class="r3"><span id="r37" class="circle daydisabled" onclick="dateclick('r37')">0</span></div>
+                            
+                            <div class="r4"><span id="r41" class="circle daydisabled" onclick="dateclick('r41')">0</span></div>
+                            <div class="r4"><span id="r42" class="circle daydisabled" onclick="dateclick('r42')">0</span></div>
+                            <div class="r4"><span id="r43" class="circle daydisabled" onclick="dateclick('r43')">0</span></div>
+                            <div class="r4"><span id="r44" class="circle daydisabled" onclick="dateclick('r44')">0</span></div>
+                            <div class="r4"><span id="r45" class="circle daydisabled" onclick="dateclick('r45')">0</span></div>
+                            <div class="r4"><span id="r46" class="circle daydisabled" onclick="dateclick('r46')">0</span></div>
+                            <div class="r4"><span id="r47" class="circle daydisabled" onclick="dateclick('r47')">0</span></div>
+                            
+                            <div class="r5"><span id="r51" class="circle daydisabled" onclick="dateclick('r51')">0</span></div>
+                            <div class="r5"><span id="r52" class="circle daydisabled" onclick="dateclick('r52')">0</span></div>
+                            <div class="r5"><span id="r53" class="circle daydisabled" onclick="dateclick('r53')">0</span></div>
+                            <div class="r5"><span id="r54" class="circle daydisabled" onclick="dateclick('r54')">0</span></div>
+                            <div class="r5"><span id="r55" class="circle daydisabled" onclick="dateclick('r55')">0</span></div>
+                            <div class="r5"><span id="r56" class="circle daydisabled" onclick="dateclick('r56')">0</span></div>
+                            <div class="r5"><span id="r57" class="circle daydisabled" onclick="dateclick('r57')">0</span></div>
+                            
+                            <div class="r6"><span id="r61" class="circle daydisabled" onclick="dateclick('r61')">0</span></div>
+                            <div class="r6"><span id="r62" class="circle daydisabled" onclick="dateclick('r62')">0</span></div>
+                            <div class="r6"><span id="r63" class="circle daydisabled" onclick="dateclick('r63')">0</span></div>
+                            <div class="r6"><span id="r64" class="circle daydisabled" onclick="dateclick('r64')">0</span></div>
+                            <div class="r6"><span id="r65" class="circle daydisabled" onclick="dateclick('r65')">0</span></div>
+                            <div class="r6"><span id="r66" class="circle daydisabled" onclick="dateclick('r66')">0</span></div>
+                            <div class="r6"><span id="r67" class="circle daydisabled" onclick="dateclick('r67')">0</span></div>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    <div id="userinvites" class="userinvites">
+                        <button class="buttoninvite">Invite</button>
+                        <input id="guestinput" class="guestinput" value="(Not Implemented)" readonly></input>
+                        <div id="guestlist" class="guestlist">
+                            <!--
+                            foobar.barfoo@gmail.com <br>
+                            barfoo.foobar@gmail.com <br>
+                            -->
+                            
+                        </div>
+                    </div>
+                
+                    <!--div id="usernotes" class="usernotes">
+                        <button id="buttonnotes" class="buttonnotes">Update</button>
+                        <div id="notefield" class="notefield">
+                            Notes: This doesn't currently do anything.
+                            If you'd like something added here let me know how you'd like this feature to work. 
+                        </div>
+                    </div-->
+                
+                </div>
+                
+                <div id="eventdates" class="eventdates"> Sign in to see schedule
+                
+                        <!--div class="edemail" style="grid-row:1"></div>
+                        
+                        <div class="edheader" style="grid-row:1">Oct<br>1</div>
+                        <div class="edheader" style="grid-row:1">Nov<br>12</div>
+                        <div class="edheader" style="grid-row:1">Dec<br>23</div>
+                        <div class="edheader" style="grid-row:1">Jan<br>99</div>
+                        
+                        <div class="dend"></div>
+                        
+                        <div class="edemail" style="grid-row:2">stephen.frister@gmail.com</div>
+                        <div class="edcheck" style="grid-row:2"><input type="checkbox" checked="checked" onclick="return false"></div>
+                        <div class="edcheck" style="grid-row:2"><input type="checkbox" onclick="return false"></div>
+                        <div class="edcheck" style="grid-row:2"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:2"><input type="checkbox"></div>
+                        <div class="" style="grid-row:2"></div>
+                        
+                        <div class="edemail" style="grid-row:3">infinite8bitstudios@gmail.com</div>
+                        <div class="edcheck" style="grid-row:3"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:3"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:3"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:3"><input type="checkbox"></div>
+                        <div class="" style="grid-row:3"></div>
+                        
+                        <div class="edemail" style="grid-row:4">infinite8bitgames@gmail.com</div>
+                        <div class="edcheck" style="grid-row:4"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:4"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:4"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:4"><input type="checkbox"></div>
+                        <div class="" style="grid-row:4"></div>
+                        
+                        <div class="edemail" style="grid-row:5">foobar@gmail.com</div>
+                        <div class="edcheck" style="grid-row:5"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:5"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:5"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:5"><input type="checkbox"></div>
+                        <div class="" style="grid-row:5"></div>
+                        
+                        <div class="edemail" style="grid-row:6">barfoo@gmail.com</div>
+                        <div class="edcheck" style="grid-row:6"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:6"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:6"><input type="checkbox"></div>
+                        <div class="edcheck" style="grid-row:6"><input type="checkbox"></div>
+                        <div class="" style="grid-row:6"></div-->
+                        
+                        <!-- <div class="edyear" style="grid-column: 6">2022</div> -->
+                        <!-- <div class="edyear" style="grid-column: 7">2023</div> -->
+                    
+                </div>
+            
+                <br>
+                <br>
+                <br>
+                <br>
+                
+                <!--div id='googleUser'>user: ....</div>
+                <div id='googleEmail'>email: ....</div>
+                
+                <br>
+                <br-->
+                
+                <div id="content"></div>
+                
+                
+            </div>
+            
+        </div>
+        
+        
+    </body>
+    
+    <script type="text/javascript" src="./scripts/schedule.js"></script>
+    
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+    
+    
+    
+    <!--script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" type="text/javascript"></script-->
+    
+    <!-- <script async defer src="https://accounts.google.com/gsi/client" ></script> -->
+            
+    <!--div class="">
+    
+        <div id="g_id_onload"
+            data-client_id="719481055905-l3u4qer8m5qsfmbkehr9qukfpmfpjj6a.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse">
+        </div>
+        
+        <div class="g_id_signin" data-type="icon"></div>
+    
+    </div-->
+  
+    
+    
