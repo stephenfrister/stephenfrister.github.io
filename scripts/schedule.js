@@ -91,6 +91,7 @@ function updateCalendar () {
         calendaritem.innerHTML = 0
         calendaritem.classList.remove("monthcurrent")
         calendaritem.classList.remove("dayenabled")
+        calendaritem.classList.add("daydisabled")
     }
     
     // build the calendar for the selected month
@@ -115,18 +116,16 @@ function updateCalendar () {
     
     // TODO: 
     // display any actively selected days
-    
-    
-    
-    // for testing
-    // var dayToday = calendarDays[today.getDate()+dayOne.getDay()-1]
-    // dateclick( dayToday ) 
-    
-    // console.log( "todayDate: " + todayDate )
-    // console.log( "todayYear: " + todayYear )
-    // console.log( "todayMonth: " + monthNames[todayMonth] )
-    
-    
+    for (date in eventDates) {
+        
+        let eventArrYMD = eventDates[date]["date"].split(".")
+        let eventDay = parseInt(eventArrYMD[2])
+        
+        if ( parseInt(eventArrYMD[1]) == viewingMonth && eventArrYMD[0] == viewingYear ) {
+            datedisplay( eventDay )
+        }
+        
+    }
     
 }
 
@@ -137,7 +136,6 @@ function dateclick ( item ) {
     
     // record the date 
     // year, month, day
-    
     
     // datelist = document.getElementById("eventdates")
     datelist = document.getElementById("content")
@@ -151,7 +149,7 @@ function dateclick ( item ) {
     if ( parseInt(itemmonth) < 10 ) { itemmonth = "0" + itemmonth }
     
     itemdate = viewingYear + "." + itemmonth + "." + itemday
-    console.log("itemdate: " + itemdate )
+    // console.log("itemdate: " + itemdate )
     
     // remove
     if ( itemclicked.classList.contains("dayenabled") ) {
@@ -191,7 +189,7 @@ function dateclick ( item ) {
     // console.log(calendarDates)
     calendarDates = calendarDates.sort()
     
-    datelist.innerHTML = "Dates Clicked: "
+    // datelist.innerHTML = "Dates Clicked: "
     
     for ( i = 0 ; i < calendarDates.length ; i++ ) {
         // datelist.innerHTML += "<br>" + calendarDates[i]
@@ -204,20 +202,30 @@ function dateclick ( item ) {
         // itemdate = monthNames[viewingMonth] + " " + itemclicked.innerText + ", " + viewingYear
     }
     
-    
 }
 
+function datedisplay( day ) { 
+    
+    // convert from day into item 
+    let dayOne = getFirstDay( viewingMonth, viewingYear )
+    let item = calendarDays[ dayOne.getDay()+day-1 ]
+    
+    // call and click the day with the item
+    dateclick( item )
+} 
+
+
 function changeMonth( value ) { 
-    viewingMonth += parseInt(value)
+    viewingMonth += parseInt( value )
     updateCalendar()
 }
 
-function daysInMonth (month, year) {
-    return new Date(year, month+1, 0).getDate();
+function daysInMonth ( month, year) {
+    return new Date( year, month+1, 0 ).getDate();
 }
 
-function getFirstDay (month, year) {
-    return new Date(year, month, 1);
+function getFirstDay ( month, year ) {
+    return new Date( year, month, 1 );
 }
 
 
@@ -227,16 +235,7 @@ function handleCredentialResponse( obj ) {
     
     const responsePayload = parseJwt( obj.credential );
     
-    // console.log( "OBJECT: " + JSON.stringify( responsePayload ) );
-    // console.log( "ID: " + responsePayload.sub );
-    // console.log( 'Full Name: ' + responsePayload.name );
-    // console.log( 'Given Name: ' + responsePayload.given_name );
-    // console.log( 'Family Name: ' + responsePayload.family_name );
-    // console.log( "Image URL: " + responsePayload.picture );
-    // console.log( "Email: " + responsePayload.email );
-    
 }
-
 function parseJwt( token ) {
     var base64Url = token.split( '.' )[ 1 ];
     var base64 = base64Url.replace( /-/g, '+' ).replace( /_/g, '/' );
@@ -245,7 +244,6 @@ function parseJwt( token ) {
     } ).join( '' ) );
     return JSON.parse( jsonPayload );
 };
-
 
 
 
@@ -456,45 +454,10 @@ async function pushFile( fileId ) {
 
 }
 
-
-
-// https://stackoverflow.com/questions/38539158/how-to-update-already-existing-file-in-google-drive-api-v3-java
-
-/*
-const url = 'https://www.googleapis.com/upload/drive/v3/files/' + fileId + '?uploadType=media';
-if(self.fetch){
-    var setHeaders = new Headers();
-    setHeaders.append('Authorization', 'Bearer ' + authToken.access_token);
-    setHeaders.append('Content-Type', mime);
-
-    var setOptions = {
-        method: 'PATCH',
-        headers: setHeaders,
-        body: data 
-    };
-
-    fetch(url,setOptions)
-    .then(response => { if(response.ok){
-            console.log("Saved to drive");
-        }
-        else{
-            console.log("Response was not ok");
-        }
-    })
-    .catch(error => {
-        console.log("There is an error " + error.message);
-    });
-}
-*/
-
-
-
 function getEventInfo() {
     
     eventDates = eventItemActive["dates"]
     eventUsers = eventItemActive["users"]
-    
-    // console.log( "eventUsers: ", eventUsers )
     
     buildEventUsers()
     buildEventDates()
@@ -533,7 +496,9 @@ function buildEventDates() {
         let column = parseInt(date) + 2
         
         let eventData = eventDates[date]["date"]
-        let eventArrYMD = eventDates[date]["date"].split(".")        
+        let eventArrYMD = eventDates[date]["date"].split(".")
+        
+        let eventDay = parseInt(eventArrYMD[2])
         let eventMonth = monthNamesShort[parseInt(eventArrYMD[1])]
         
         let did = "date.1." + column 
@@ -545,14 +510,16 @@ function buildEventDates() {
         
         buildEventChecks( column, eventDates[date]["users"] )
         
+        if ( parseInt(eventArrYMD[1]) == viewingMonth && eventArrYMD[0] == viewingYear ) {
+            datedisplay( eventDay )
+        }
+        
     }
     
     divEventDates.innerHTML += edates
     
 }
 function buildEventChecks( column, users ) {
-    
-    // console.log(users)
     
     let echecks = ""
     
@@ -595,25 +562,16 @@ function changeResponse( row, column ) {
     var checkEmail = document.getElementById(eid);
     var checkCheck = document.getElementById(cid);
     
-    console.log( "checkEmail:", checkEmail.innerText )
-    console.log( "checkCheck:", checkCheck.checked )
-    console.log( "checkDate:", checkDate.dataset.value )
-    
-    
+    // console.log( "checkEmail:", checkEmail.innerText )
+    // console.log( "checkCheck:", checkCheck.checked )
+    // console.log( "checkDate:", checkDate.dataset.value )
     
     // first pull data to get the latest file
     getFile( schedFiles[0].id, false )
     
     // update the data that has changed
-    // console.log("eventItemActive before: ", eventItemActive )
-    
-    // let dateChanged
-    
     for ( date in eventItemActive["dates"] ) {
         if (eventItemActive["dates"][date]["date"] == checkDate.dataset.value ) {
-            // dateChanged = date
-            
-            // console.log("users before: ",eventItemActive["dates"][date]["users"])
             
             if (checkCheck.checked){
                 eventItemActive["dates"][date]["users"].push(checkEmail.innerText)
@@ -623,32 +581,11 @@ function changeResponse( row, column ) {
                 eventItemActive["dates"][date]["users"].splice(index,1)
             }
             
-            // console.log("users after: ",eventItemActive["dates"][date]["users"])
-            
         }
     }
     
     // then push the file back to the drive
     pushFile( schedFiles[0].id ) 
-    
-    
-    
-    // eventItemActive["dates"][][]
-    // console.log("eventItemActive after: ", eventItemActive )
-    
-    
-    
-    // let foobar = checkDate.dataset.value
-    // console.log(foobar)
-    
-    // let pdid = "#" + did
-    // console.log( "pdid", pdid)
-    // console.log( "pdid data", $(pdid).data('value') )
-    // console.log( "pdid data", $('#date.1.2').data('value') )
-    
-    // let foobar = $('#date.1.2').data('value')
-    // console.log(foobar)
-    
     
 }
 
